@@ -1,16 +1,20 @@
 app.visualizer = (function() {
   // globals
   var canvas,
-      ctx;
+      ctx,
+      synth;
       // _X,
       // _Y;
   var _X = 0,
       _Y = window.innerHeight/2;
 
-  function Visualizer (_canvas, mode) {
-    console.log(_canvas);
+  function Visualizer (_canvas, _synth, mode) {
+    // console.log(_canvas);
     canvas = _canvas;
     ctx = canvas.getContext("2d");
+    this.synth = _synth;
+    console.log(this.synth);
+    console.log(synth);
 
     // visualizer should take up the whole space
     canvas.height = window.innerHeight;

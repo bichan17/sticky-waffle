@@ -9,9 +9,6 @@ app.main = (function(){
 	function init (){
 		console.log("initialized!");
 
-		// VISUALIZER SETUP
-		viz = new app.visualizer.Visualizer(document.getElementById('visualizer'));
-
 		// SYNTH SETUP
 		console.log("setup UI");
 		var startButton = document.querySelector("#start");
@@ -19,6 +16,12 @@ app.main = (function(){
 		var frequencyControl = document.querySelector("#frequencyControl");
 		var wavetypeControl = document.querySelector("#wavetypeSelect");
 		synth = new app.synth.Synth(startButton, stopButton, frequencyControl, wavetypeControl);
+
+		// VISUALIZER SETUP
+		viz = new app.visualizer.Visualizer(
+			document.getElementById('visualizer'),
+			synth
+		);
 	}
 	//Public interface
 	return{
