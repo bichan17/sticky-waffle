@@ -27,11 +27,13 @@ app.synth = (function() {
 			stopSound();
 		});
 
-		fqDisplay = document.querySelector("#frequencyControlResults").innerHTML;
+		// fqDisplay = document.querySelector("#frequencyControlResults").innerHTML;
+
+		// console.log(fqDisplay);
 
 		frequencyControl.addEventListener("change", function(e){
 		 	//console.log("checked=" + e.target.value);
-		 	 fqDisplay = e.target.value;
+		 	 document.querySelector("#frequencyControlResults").innerHTML = e.target.value;
 		 	 startSound(wavetypeControl.value, e.target.value);
 			
 		 });
@@ -43,6 +45,10 @@ app.synth = (function() {
 			
 		 });
 		
+	}
+
+	Synth.prototype.getFrequencyVal = function(){
+		return this.frequencyControl.value;
 	}
 
 	function startSound(wavetype, fq){

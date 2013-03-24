@@ -19,6 +19,8 @@ app.main = (function(){
 		var frequencyControl = document.querySelector("#frequencyControl");
 		var wavetypeControl = document.querySelector("#wavetypeSelect");
 		synth = new app.synth.Synth(startButton, stopButton, frequencyControl, wavetypeControl);
+		var fq = synth.getFrequencyVal();
+		console.log(fq);
 	}
 	//Public interface
 	return{
