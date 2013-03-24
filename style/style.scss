@@ -1,0 +1,89 @@
+@import "normalize";
+
+// /* Traditional scale */
+// 6  = 0.375em
+// 7  = 0.4375em
+// 8  = 0.5em
+// 9  = 0.5625em
+// 10 = 0.625em
+// 11 = 0.6875em
+// 12 = 0.75em
+// 14 = 0.875em
+// 16 = 1em
+// 18 = 1.125em
+// 21 = 1.3125em
+// 24 = 1.5em
+// 36 = 2.25em
+// 48 = 3em
+// 60 = 3.75em
+// 72 = 4.5em
+
+
+/**
+ * base styles
+ */
+body {
+  -webkit-font-smoothing: antialiased;
+  font: 100% "Helvetica Neue", Verdana, Arial, sans-serif;
+  line-height: 1.4;
+  color: #eee;
+	margin: 0;
+	padding: 0;
+}
+.inline, .inline li {
+	display: inline-block;
+}
+
+// interface styles
+.interface {
+	margin: 2em;
+	font-size: 0.75em;
+	dt {
+		font-weight: bold;
+		color: #fff;
+	}
+	dd {
+		margin-left: 0;
+		margin-bottom: 1em;
+	}
+	ul {
+		margin: 0;
+		padding-left: 0;
+	}
+	li {
+		list-style-type: none;
+		margin-right: 1em;
+	}
+	// opacity set to 50%. 
+	// on :hover full opacity
+	opacity: 0.5;
+	&:hover { 
+		// opacity: 0.75;
+		opacity: 1;
+		// #synth:hover, #visualizer_controls:hover { opacity: 1; }
+	}
+	// fancy
+	@extend .transition;
+}
+#synth { float: left; }
+#visualizer_controls { float: right; }
+canvas {
+	z-index: -1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #000;
+}
+
+.full_opacity {
+	opacity: 1;
+}
+.transition {
+	/* transition */
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+
+// @import "bourbon/bourbon";
