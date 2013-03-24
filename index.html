@@ -8,8 +8,29 @@
 	<script type="text/javascript" src="scripts/loader.js"></script>
 </head>
 <body>
-	<div id="wrapper">
-		<h1>Hello!</h1>
-	</div>
+	<h1>Making waves</h1>
+    <p><a href="http://stuartmemo.com/making-sine-square-sawtooth-and-triangle-waves/" target="_blank">Related blogpost</a></p>
+<p>Oscillator type values:</p>
+<ul>
+    <li>Sine wave = 0
+    <li>Square wave = 1
+    <li>Sawtooth wave = 2
+    <li>Triangle wave = 3
+</ul>
+<button id="start">Start</button>
+<button id="stop">Stop</button>
+<br>
+<label for="slider1">Frequecy</label>
+<input id="slider1" type ="range" min ="100" max="1600" step ="100" value ="500"/>
+<span id="sliderResults">500</span>Hz
+<br>
+<label for="wavetypeSelect">Wave type</label>
+	<select id="wavetypeSelect">
+		<option value="0">Sine wave</option>
+		<option value="1">Square wave</option>
+		<option value="2">Sawtooth wave</option>
+		<option value="3">Triangle wave</option>
+	</select>
+
 </body>
 </html>
