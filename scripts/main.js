@@ -4,9 +4,7 @@
 
 
 app.main = (function(){
-	var aContext;
-	var oscillator;
-	var started = false;
+	var synth;
 	function init (){
 		console.log("initialized!");
 		aContext = new webkitAudioContext();
@@ -15,33 +13,12 @@ app.main = (function(){
 		console.log("setup UI");
 		var startButton = document.querySelector("#start");
 		var stopButton = document.querySelector("#stop");
-		var slider = document.querySelector("#slider1");
-		var wavetype = document.querySelector("#wavetypeSelect");
+		var frequencyControl = document.querySelector("#frequencyControl");
+		var wavetypeControl = document.querySelector("#wavetypeSelect");
 
-		startButton.addEventListener("click", function(){
-			started = true;
-			startSound(wavetype.value, slider.value);
-		});
-
-		stopButton.addEventListener("click", function(){
-			started = false;
-			stopSound();
-		});
-
-		slider.addEventListener("change", function(e){
-		 	//console.log("checked=" + e.target.value);
-		 	 document.querySelector("#sliderResults").innerHTML = e.target.value;
-
-		 	 startSound(wavetype.value, e.target.value);
-			
-		 });
+		synth = new app.synth.Synth(startButton, stopButton, frequencyControl, wavetypeControl);
 		
-		wavetype.addEventListener("change", function(e){
-		 	//console.log("checked=" + e.target.value);
-		 	 
-		 	 startSound(e.target.value, slider.value);
-			
-		 });
+
 		
 
 		// VISUALIZER SETUP
@@ -54,6 +31,8 @@ app.main = (function(){
 		window.onresize = resizeCanvas;
 
 		// drawCircle(20, 20, 4, "blue");
+
+
 		
 
 
@@ -63,25 +42,6 @@ app.main = (function(){
 		console.log('lol');
 	}
 
-	function startSound(type, fq){
-		console.log("start");
-		// oscillator.stop(0);
-		if(started == true){
-			oscillator.type = type;
-			oscillator.frequency.value = fq;
-			oscillator.connect(aContext.destination);
-			oscillator.start(0);
-		}
-
-		
-	}
-
-	function stopSound(){
-		console.log("stop");
-
-		oscillator.stop(0);
-		oscillator = aContext.createOscillator();
-	}
 
 	//Public interface
 	return{

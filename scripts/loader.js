@@ -5,7 +5,7 @@ window.addEventListener("load",function(){
 	//start dynamic loading
 	Modernizr.load([{
 		//load all libraries and scripts
-		load: ["scripts/main.js"],
+		load: ["scripts/main.js", "scripts/synth.js"],
 
 		//called when all files have finished loading and executing
 		complete: function(){
