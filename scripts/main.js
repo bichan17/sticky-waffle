@@ -43,11 +43,25 @@ app.main = (function(){
 			
 		 });
 		
+
+		// VISUALIZER SETUP
+		var viz = document.getElementById('visualizer'),
+				ctx;
+
+		// visualizer should take up the whole space
+		viz.height = window.innerHeight;
+		viz.width = window.innerWidth;
+		window.onresize = resizeCanvas;
+
+		// drawCircle(20, 20, 4, "blue");
 		
 
 
 	}
 
+	function resizeCanvas(e) {
+		console.log('lol');
+	}
 
 	function startSound(type, fq){
 		console.log("start");
