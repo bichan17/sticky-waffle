@@ -4,11 +4,30 @@
 
 
 app.main = (function(){
+	// GLOBALS
+	// synth/oscillator
 	var aContext;
 	var oscillator;
 	var started = false;
+	// visualizer/canvas
+	var viz,
+			ctx;
+
 	function init (){
 		console.log("initialized!");
+
+
+		// VISUALIZER SETUP
+		// viz = document.getElementById('visualizer');
+		viz = new app.visualizer.Visualizer(document.getElementById('visualizer'));
+
+		// // visualizer should take up the whole space
+		// viz.height = window.innerHeight;
+		// viz.width = window.innerWidth;
+		// window.onresize = resizeCanvas;
+
+
+		// SYNTH SETUP
 		aContext = new webkitAudioContext();
 		oscillator = aContext.createOscillator();
 
@@ -29,39 +48,25 @@ app.main = (function(){
 		});
 
 		slider.addEventListener("change", function(e){
-		 	//console.log("checked=" + e.target.value);
-		 	 document.querySelector("#sliderResults").innerHTML = e.target.value;
+			//console.log("checked=" + e.target.value);
+			document.querySelector("#sliderResults").innerHTML = e.target.value;
 
-		 	 startSound(wavetype.value, e.target.value);
-			
-		 });
-		
+			startSound(wavetype.value, e.target.value);
+		});
+
 		wavetype.addEventListener("change", function(e){
-		 	//console.log("checked=" + e.target.value);
-		 	 
-		 	 startSound(e.target.value, slider.value);
-			
-		 });
-		
+			//console.log("checked=" + e.target.value);
 
-		// VISUALIZER SETUP
-		var viz = document.getElementById('visualizer'),
-				ctx;
-
-		// visualizer should take up the whole space
-		viz.height = window.innerHeight;
-		viz.width = window.innerWidth;
-		window.onresize = resizeCanvas;
+			startSound(e.target.value, slider.value);
+		});
 
 		// drawCircle(20, 20, 4, "blue");
-		
-
-
 	}
 
-	function resizeCanvas(e) {
-		console.log('lol');
-	}
+	// function resizeCanvas(e) {
+	// 	viz.height = window.innerHeight;
+	// 	viz.width = window.innerWidth;
+	// }
 
 	function startSound(type, fq){
 		console.log("start");
@@ -72,8 +77,6 @@ app.main = (function(){
 			oscillator.connect(aContext.destination);
 			oscillator.start(0);
 		}
-
-		
 	}
 
 	function stopSound(){
@@ -85,8 +88,8 @@ app.main = (function(){
 
 	//Public interface
 	return{
-		init : init
-		//someVar : someVar,
+		init : init,
+		viz : viz
 		//someFunc : someFunc
 	}
 })();
