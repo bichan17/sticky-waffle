@@ -12,9 +12,9 @@ app.visualizer = (function() {
     // console.log(_canvas);
     canvas = _canvas;
     ctx = canvas.getContext("2d");
-    this.synth = _synth;
-    console.log(this.synth);
+    synth = _synth;
     console.log(synth);
+    console.log(synth.getFrequencyVal());
 
     // visualizer should take up the whole space
     canvas.height = window.innerHeight;
@@ -82,7 +82,10 @@ app.visualizer = (function() {
     if (_X > window.innerWidth) _X = 0;
     // _Y = 20 + 30* Math.sin(_X/50);
     // _Y = y-position + amplitude * waveLength 
-    _Y = (window.innerHeight/2) + 300 * Math.sin(_X/50);
+    _Y = (window.innerHeight/2) + (synth.getFrequencyVal()/5) * Math.sin(_X/50);
+
+    console.log(synth);
+    // console.log("FREQUENCY: "+synth.getFrequencyVal());
 
     // console.log("x2: "+_X);
     // console.log("y2: "+_Y);
