@@ -18,6 +18,16 @@
 // 60 = 3.75em
 // 72 = 4.5em
 
+// css3 - transition
+@mixin transition($property, $length)
+{
+	-webkit-transition: $property $length ease-out;
+	-moz-transition: $property $length ease-out;
+	-o-transition: $property $length ease-out;
+	transition: $property $length ease-out;	
+}
+
+$red : #b92d19;
 
 /**
  * base styles
@@ -27,11 +37,49 @@ body {
   font: 100% "Helvetica Neue", Verdana, Arial, sans-serif;
   line-height: 1.4;
   color: #eee;
+	background-color: #000;
 	margin: 0;
 	padding: 0;
 }
+a {
+	color: $red;
+	text-decoration: none;
+	&:hover {
+		border-bottom: 1px solid $red;
+	}
+}
 .inline, .inline li {
 	display: inline-block;
+}
+
+// header
+// title, about page
+header {
+	margin: 2em;
+	font-size: 0.75em;
+	margin-bottom: 1.5em;
+	h1 {
+		margin-bottom: 0;
+	}
+}
+
+#synth { float: left; }
+#visualizer_controls { float: right; }
+
+// footer
+footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+	padding-bottom: 1em;
+	font-size: 0.875em;
+	color: #888;
+	@include transition(color, 0.3s);
+	&:hover {
+		color: #ccc;
+	}
 }
 
 // interface styles
@@ -54,36 +102,18 @@ body {
 		list-style-type: none;
 		margin-right: 1em;
 	}
-	// opacity set to 50%. 
-	// on :hover full opacity
 	opacity: 0.5;
 	&:hover { 
-		// opacity: 0.75;
 		opacity: 1;
-		// #synth:hover, #visualizer_controls:hover { opacity: 1; }
 	}
 	// fancy
-	@extend .transition;
+	@include transition(opacity, 0.3s);
 }
-#synth { float: left; }
-#visualizer_controls { float: right; }
+
+// canvas styles
 canvas {
 	z-index: -1;
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-color: #000;
 }
-
-.full_opacity {
-	opacity: 1;
-}
-.transition {
-	/* transition */
-	-webkit-transition: all 0.3s ease-out;
-	-moz-transition: all 0.3s ease-out;
-	-o-transition: all 0.3s ease-out;
-	transition: all 0.3s ease-out;
-}
-
-// @import "bourbon/bourbon";
