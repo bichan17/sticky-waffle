@@ -12,51 +12,60 @@
 		<h1>Project: Sticky Waffle</h1>
 		<a href="http://stuartmemo.com/making-sine-square-sawtooth-and-triangle-waves/" target="_blank">Related blogpost</a>
 	</header>
-	<!-- the interface -->
-	<section class="interface">
-		<!-- the synth -->
-		<div id="synth">
-			<button id="start">Start</button>
-			<button id="stop">Stop</button>
-			<br>
-			<label for="frequencyControl">Frequecy</label>
-			<input id="frequencyControl" type ="range" min ="100" max="1600" step ="100" value ="500"/>
-			<span id="frequencyControlResults">500</span>Hz
-			<br>
-			<label for="wavetypeSelect">Wave type</label>
-				<select id="wavetypeSelect">
-					<option value="0">Sine wave</option>
-					<option value="1">Square wave</option>
-					<option value="2">Sawtooth wave</option>
-					<option value="3">Triangle wave</option>
-				</select>
-		</div>
 
-		<!-- visualizer controls -->
-		<dl id="visualizer_controls">
-			<dt>Background Color:</dt>
-			<dd>
-				<ul id="bkgd" class="inline">
-					<li><label><input type="radio" name="bkgd_color" value="black" checked>Black</label></li>
-					<li><label><input type="radio" name="bkgd_color" value="white">White</label></li>
-				</ul>
-			</dd>
-			<dt>Visualizer Mode:</dt>
-			<dd>
-				<ul id="mode" class="inline">
-					<li><label><input type="radio" name="mode" value="one" checked>One</label></li>
-					<li><label><input type="radio" name="mode" value="two">Two</label></li>
-					<li><label><input type="radio" name="mode" value="three">Three</label></li>
-				</ul>
-			</dd>
-		</dl>
+	<!-- content, the good stuff -->
+	<section>
+		<!-- the interface -->
+		<section class="interface">
+			<!-- the synth -->
+			<div id="synth">
+				<button id="start">Start</button>
+				<button id="stop">Stop</button>
+				<br>
+				<label for="frequencyControl">Frequecy</label>
+				<input id="frequencyControl" type ="range" min ="100" max="1600" step ="100" value ="500"/>
+				<span id="frequencyControlResults">500</span>Hz
+				<br>
+				<label for="wavetypeSelect">Wave type</label>
+					<select id="wavetypeSelect">
+						<option value="0">Sine wave</option>
+						<option value="1">Square wave</option>
+						<option value="2">Sawtooth wave</option>
+						<option value="3">Triangle wave</option>
+					</select>
+			</div>
+
+			<!-- visualizer controls -->
+			<dl id="visualizer_controls">
+				<dt>Background Color:</dt>
+				<dd>
+					<ul id="bkgd" class="inline">
+						<li><label><input type="radio" name="bkgd_color" value="black" checked>Black</label></li>
+						<li><label><input type="radio" name="bkgd_color" value="white">White</label></li>
+					</ul>
+				</dd>
+				<dt>Visualizer Mode:</dt>
+				<dd>
+					<ul id="mode" class="inline">
+						<li><label><input type="radio" name="mode" value="one" checked>One</label></li>
+						<li><label><input type="radio" name="mode" value="two">Two</label></li>
+						<li><label><input type="radio" name="mode" value="three">Three</label></li>
+					</ul>
+				</dd>
+			</dl>
+		</section>
+		<!-- /end interface -->
+
+		<!-- the visualizer -->
+		<canvas id="visualizer">
+			Get with the times man. Upgrade your browser.
+		</canvas>
+		<!-- /end visualizer -->
 	</section>
-	<!-- /end interface -->
+	<!-- /end good stuff -->
 
-	<!-- the visualizer -->
-	<canvas id="visualizer">
-		Get with the times man. Upgrade your browser.
-	</canvas>
-	<!-- /end visualizer -->
+	<footer>
+		<p>This is where the instructions for how to use this synth/visualizer</p>
+	</footer>
 </body>
 </html>
