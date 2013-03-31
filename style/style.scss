@@ -36,7 +36,6 @@ body {
   -webkit-font-smoothing: antialiased;
   font: 100% "Helvetica Neue", Verdana, Arial, sans-serif;
   line-height: 1.4;
-  color: #eee;
 	background-color: #000;
 	margin: 0;
 	padding: 0;
@@ -60,19 +59,39 @@ a {
     clear: both;
 }
 
-// header
+/* bkgd/text */
+.white { // white background
+	color: #222; // black text
+	footer {
+		color: #666;
+		&:hover {
+			color: #222;
+		}
+	}
+}
+.black { // black background
+	color: #eee; // white text
+	footer {
+		color: #888;
+		// &:hover {
+			// color: #ccc;
+		// }
+	}
+}
+
+/* header */
 // title, about page
 header {
 	margin: 2em;
 	font-size: 0.75em;
 	margin-bottom: 1.5em;
-	h1 {
-		margin-bottom: 0;
-	}
+}
+h1 {
+	margin-bottom: 0;
 }
 
 
-// footer
+/* footer */
 footer {
 	position: absolute;
 	bottom: 0;
@@ -81,11 +100,7 @@ footer {
 	text-align: center;
 	padding-bottom: 1em;
 	font-size: 0.875em;
-	color: #888;
 	@include transition(color, 0.3s);
-	&:hover {
-		color: #ccc;
-	}
 }
 
 // interface styles
@@ -98,10 +113,10 @@ footer {
 	@extend .cf;
 	margin: 2em;
 	font-size: 0.75em;
-	dt {
-		font-weight: bold;
-		color: #fff;
-	}
+	opacity: 0.5;
+	&:hover { opacity: 1; }
+	@include transition(opacity, 0.3s);
+	dt { font-weight: bold; }
 	dd {
 		margin-left: 0;
 		margin-bottom: 1em;
@@ -114,12 +129,6 @@ footer {
 		list-style-type: none;
 		margin-right: 1em;
 	}
-	opacity: 0.5;
-	&:hover { 
-		opacity: 1;
-	}
-	// fancy
-	@include transition(opacity, 0.3s);
 }
 
 // canvas styles

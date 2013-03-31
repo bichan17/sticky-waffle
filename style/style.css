@@ -86,7 +86,6 @@ body {
   -webkit-font-smoothing: antialiased;
   font: 100% "Helvetica Neue", Verdana, Arial, sans-serif;
   line-height: 1.4;
-  color: #eee;
   background-color: #000;
   margin: 0;
   padding: 0;
@@ -115,15 +114,36 @@ a:hover {
   clear: both;
 }
 
+/* bkgd/text */
+.white {
+  color: #222;
+}
+.white footer {
+  color: #666;
+}
+.white footer:hover {
+  color: #222;
+}
+
+.black {
+  color: #eee;
+}
+.black footer {
+  color: #888;
+}
+
+/* header */
 header {
   margin: 2em;
   font-size: 0.75em;
   margin-bottom: 1.5em;
 }
-header h1 {
+
+h1 {
   margin-bottom: 0;
 }
 
+/* footer */
 footer {
   position: absolute;
   bottom: 0;
@@ -132,14 +152,10 @@ footer {
   text-align: center;
   padding-bottom: 1em;
   font-size: 0.875em;
-  color: #888;
   -webkit-transition: color 0.3s ease-out;
   -moz-transition: color 0.3s ease-out;
   -o-transition: color 0.3s ease-out;
   transition: color 0.3s ease-out;
-}
-footer:hover {
-  color: #ccc;
 }
 
 #synth {
@@ -160,9 +176,11 @@ footer:hover {
   -o-transition: opacity 0.3s ease-out;
   transition: opacity 0.3s ease-out;
 }
+.interface:hover {
+  opacity: 1;
+}
 .interface dt {
   font-weight: bold;
-  color: #fff;
 }
 .interface dd {
   margin-left: 0;
@@ -175,9 +193,6 @@ footer:hover {
 .interface li {
   list-style-type: none;
   margin-right: 1em;
-}
-.interface:hover {
-  opacity: 1;
 }
 
 canvas {
