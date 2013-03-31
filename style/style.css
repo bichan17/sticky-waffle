@@ -104,6 +104,17 @@ a:hover {
   display: inline-block;
 }
 
+.cf:before, .interface:before,
+.cf:after,
+.interface:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after, .interface:after {
+  clear: both;
+}
+
 header {
   margin: 2em;
   font-size: 0.75em;
@@ -111,14 +122,6 @@ header {
 }
 header h1 {
   margin-bottom: 0;
-}
-
-#synth {
-  float: left;
-}
-
-#visualizer_controls {
-  float: right;
 }
 
 footer {
@@ -137,6 +140,15 @@ footer {
 }
 footer:hover {
   color: #ccc;
+}
+
+#synth {
+  float: left;
+}
+
+#visualizer_controls {
+  float: right;
+  margin: 0;
 }
 
 .interface {

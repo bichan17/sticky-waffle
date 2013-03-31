@@ -51,6 +51,14 @@ a {
 .inline, .inline li {
 	display: inline-block;
 }
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+.cf:after {
+    clear: both;
+}
 
 // header
 // title, about page
@@ -63,8 +71,6 @@ header {
 	}
 }
 
-#synth { float: left; }
-#visualizer_controls { float: right; }
 
 // footer
 footer {
@@ -83,7 +89,13 @@ footer {
 }
 
 // interface styles
+#synth { float: left; }
+#visualizer_controls { 
+	float: right;
+	margin: 0;
+}
 .interface {
+	@extend .cf;
 	margin: 2em;
 	font-size: 0.75em;
 	dt {
