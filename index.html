@@ -8,13 +8,14 @@
 	<script type="text/javascript" src="scripts/loader.js"></script>
 </head>
 <body>
+	<header>
+		<h1>Project: Sticky Waffle</h1>
+		<a href="http://stuartmemo.com/making-sine-square-sawtooth-and-triangle-waves/" target="_blank">Related blogpost</a>
+	</header>
 	<!-- the interface -->
 	<section class="interface">
-		<h1>Project: Sticky Waffle</h1>
-
 		<!-- the synth -->
 		<div id="synth">
-			<p><a href="http://stuartmemo.com/making-sine-square-sawtooth-and-triangle-waves/" target="_blank">Related blogpost</a></p>
 			<button id="start">Start</button>
 			<button id="stop">Stop</button>
 			<br>
@@ -35,17 +36,17 @@
 		<dl id="visualizer_controls">
 			<dt>Background Color:</dt>
 			<dd>
-				<ul class="inline">
-					<li><input type="radio" name="bkgd_color" value="black" checked>Black</li>
-					<li><input type="radio" name="bkgd_color" value="white">White</li>
+				<ul id="bkgd" class="inline">
+					<li><label><input type="radio" name="bkgd_color" value="black" checked>Black</label></li>
+					<li><label><input type="radio" name="bkgd_color" value="white">White</label></li>
 				</ul>
 			</dd>
 			<dt>Visualizer Mode:</dt>
 			<dd>
-				<ul class="inline">
-					<li><input type="radio" name="mode" value="one" checked>One</li>
-					<li><input type="radio" name="mode" value="two">Two</li>
-					<li><input type="radio" name="mode" value="three">Three</li>
+				<ul id="mode" class="inline">
+					<li><label><input type="radio" name="mode" value="one" checked>One</label></li>
+					<li><label><input type="radio" name="mode" value="two">Two</label></li>
+					<li><label><input type="radio" name="mode" value="three">Three</label></li>
 				</ul>
 			</dd>
 		</dl>
@@ -56,5 +57,6 @@
 	<canvas id="visualizer">
 		Get with the times man. Upgrade your browser.
 	</canvas>
+	<!-- /end visualizer -->
 </body>
 </html>
