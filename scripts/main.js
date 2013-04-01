@@ -17,6 +17,8 @@ app.main = (function(){
 		var wavetypeControl = document.querySelector("#wavetypeSelect");
 		synth = new app.synth.Synth(startButton, stopButton, frequencyControl, wavetypeControl);
 
+		console.log(synth);
+
 		// VISUALIZER SETUP
 		viz = new app.visualizer.Visualizer(
 			document.getElementById('visualizer'),
