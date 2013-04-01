@@ -74,7 +74,6 @@ function loadImageFile(_file) {
   }
 
   function update() {
-<<<<<<< HEAD
     // update sprites based on current Mode
     if (mode === 'one') {
       // X
@@ -96,21 +95,6 @@ function loadImageFile(_file) {
     } else {
       console.log('lol');
     }
-=======
-    // console.log("x: "+_X);
-    // console.log("y: "+_Y);
-    _X += 4;
-    if (_X > window.innerWidth) _X = 0;
-    // _Y = 20 + 30* Math.sin(_X/50);
-    // _Y = y-position + amplitude * waveLength 
-    _Y = (window.innerHeight/2) + (synth.getFrequencyVal()/5) * Math.sin(_X/50);
-
-    // console.log(synth);
-    // console.log("FREQUENCY: "+synth.getFrequencyVal());
-
-    // console.log("x2: "+_X);
-    // console.log("y2: "+_Y);
->>>>>>> 26e7c8916905994f3391364a3c3007ed40fc05da
   }
 
   function drawBackground() {
