@@ -1,6 +1,7 @@
 app.synth = (function() {
 	//globals
 	var aContext;
+	var myAudioAnalyser;
 	var oscillator;
 	var started = false;
 	var keydown = []; //key daemon
@@ -58,7 +59,13 @@ app.synth = (function() {
 	    })();
 
 		aContext = new webkitAudioContext();
+		this.audioContext = aContext;
 		oscillator = aContext.createOscillator();
+
+		myAudioAnalyser = aContext.createAnalyser();
+		myAudioAnalyser.smoothingTimeConstant = 0.85;
+		myAudioAnalyser.connect(aContext.destination);
+		this.audioAnalyser = myAudioAnalyser;
 
 		startButton.addEventListener("click", function(){
 			started = true;
@@ -70,12 +77,8 @@ app.synth = (function() {
 			stopSound();
 		});
 
-		// fqDisplay = document.querySelector("#frequencyControlResults").innerHTML;
-
-		// console.log(fqDisplay);
 
 		frequencyControl.addEventListener("change", function(e){
-		 	//console.log("checked=" + e.target.value);
 		 	 document.querySelector("#frequencyControlResults").innerHTML = e.target.value;
 		 	 startSound(wavetypeControl.value, e.target.value);
 			
@@ -100,6 +103,11 @@ app.synth = (function() {
 			console.log("keyup=" + e.keyCode);
 			keydown[e.keyCode] = false;
 		});
+
+		// var analyzer = aContext.createAnalyser();
+		// analyzer.fftSize = 2048; // 2048-point FFT
+		// source_node.connect(analyzer);
+		// analyzer.connect(aContext.destination);
 
 		//start loop
 		loop();
@@ -215,7 +223,7 @@ app.synth = (function() {
 		console.log("make sound: " + key);
 
 		var osc = aContext.createOscillator();
-		osc.type = wavetype;
+		osc.type = parseInt(wavetype);
 		var fq;
 		if (key == "Q") fq = 100;
 		if (key == "W") fq = 200;
@@ -225,9 +233,11 @@ app.synth = (function() {
 		if (key == "Y") fq = 600;
 
 		osc.frequency.value = fq;
+		// Synth.audioAnalyser.connect(aContext.destination);
 		osc.connect(aContext.destination);
 		osc.start(0);
 		return osc;
+
 
 
 	}
@@ -236,17 +246,15 @@ app.synth = (function() {
 		if(osc){
 			osc.stop(0);
 		}
-		else{
-			console.log("WAT");
-		}
 	}
 
 	function startSound(wavetype, fq){
 		console.log("start");
 		if(started == true){
-			oscillator.type = wavetype;
+			oscillator.type = parseInt(wavetype);
 			oscillator.frequency.value = fq;
 			oscillator.connect(aContext.destination);
+			myAudioAnalyser.connect(aContext.destination);
 			oscillator.start(0);
 		}
 	}
