@@ -216,6 +216,9 @@ app.synth = (function() {
 	Synth.prototype.getFrequencyVal = function(){
 		return this.frequencyControl.value;
 	}
+	Synth.prototype.getAnalyser = function(){
+		return this.audioAnalyser;
+	}
 
 	function makeSound(wavetype, key){
 		console.log("wavetype: "  + wavetype);
