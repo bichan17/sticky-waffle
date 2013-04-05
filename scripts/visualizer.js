@@ -9,7 +9,7 @@ app.visualizer = (function() {
       _Y = window.innerHeight/2; // center stage
 
   function Visualizer (_canvas, _synth, _settings) {
-    console.log('constructor..');
+    // console.log('constructor..');
     // the starting position will be the middle of the canvas
     canvas = _canvas;
     ctx = canvas.getContext("2d");
@@ -53,6 +53,18 @@ app.visualizer = (function() {
     // the good stuff
     draw();
   }
+
+function loadImageFile(_file) {
+  // console.log('loadImageFile');
+  // if (document.getElementById("uploadImage").files.length === 0) { return; }
+  // var oFile = document.getElementById("uploadImage").files[0];
+  // if (!rFilter.test(oFile.type)) { alert("You must select a valid image file!"); return; }
+  // console.log(_file);
+  fileReader.readAsDataURL(_file);
+  // console.log(fileReader.readAsDataURL(_file));
+}
+
+
 
   function resizeCanvas(e) {
     canvas.height = window.innerHeight;
@@ -351,37 +363,6 @@ function simpleViz() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    window.requestAnimFrame = (function(){
-      return  window.requestAnimationFrame       ||
-              window.webkitRequestAnimationFrame ||
-              window.mozRequestAnimationFrame    ||
-              window.oRequestAnimationFrame      ||
-              window.msRequestAnimationFrame     ||
-              function( callback ){
-                window.setTimeout(callback, 1000 / 60);
-              };
-    })();
 
 
 

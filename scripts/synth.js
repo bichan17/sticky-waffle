@@ -39,6 +39,7 @@ app.synth = (function() {
 		this.stopButton = stopButton;
 		this.frequencyControl = frequencyControl;
 		this.wavetypeControl = wavetypeControl;
+		this.wavetype = 0;
 		
 		this.setUp(this.startButton, this.stopButton, this.frequencyControl, this.wavetypeControl);
 		
@@ -47,25 +48,23 @@ app.synth = (function() {
 	Synth.prototype.setUp = function(startButton, stopButton, frequencyControl, wavetypeControl){
 		console.log("setup synth");
 
-		window.requestAnimFrame = (function(){
-	      return  window.requestAnimationFrame       ||
-	              window.webkitRequestAnimationFrame ||  
-	              window.mozRequestAnimationFrame    ||  
-	              window.oRequestAnimationFrame      ||  
-	              window.msRequestAnimationFrame     ||  
-	              function( callback ){ 
-	                window.setTimeout(callback, 1000 / 60); 
-	              };
-	    })();
+		this.audioContext = new webkitAudioContext();
+		this.audioAnalyser = this.audioContext.createAnalyser();
 
-		aContext = new webkitAudioContext();
-		this.audioContext = aContext;
-		oscillator = aContext.createOscillator();
+		console.log(this);
+		console.log(Synth);
 
-		myAudioAnalyser = aContext.createAnalyser();
-		myAudioAnalyser.smoothingTimeConstant = 0.85;
-		myAudioAnalyser.connect(aContext.destination);
-		this.audioAnalyser = myAudioAnalyser;
+
+		console.log("this.audioContext: "+ this.audioContext);
+
+		// aContext = new webkitAudioContext();
+		// this.audioContext = aContext;
+		oscillator = this.audioContext.createOscillator();
+
+		// myAudioAnalyser = aContext.createAnalyser();
+		// myAudioAnalyser.smoothingTimeConstant = 0.85;
+		// myAudioAnalyser.connect(aContext.destination);
+		// this.audioAnalyser = myAudioAnalyser;
 
 		startButton.addEventListener("click", function(){
 			started = true;
@@ -84,12 +83,11 @@ app.synth = (function() {
 			
 		 });
 
-
-		Synth.wavetype = 0;
+		var that = this;
 
 		wavetypeControl.addEventListener("change", function(e){
 		 	//console.log("checked=" + e.target.value);
-		 	Synth.wavetype = e.target.value;
+		 	that.wavetype = e.target.value;
 		 	 
 		 	 startSound(e.target.value, frequencyControl.value);
 			
@@ -104,23 +102,11 @@ app.synth = (function() {
 			keydown[e.keyCode] = false;
 		});
 
-		// var analyzer = aContext.createAnalyser();
-		// analyzer.fftSize = 2048; // 2048-point FFT
-		// source_node.connect(analyzer);
-		// analyzer.connect(aContext.destination);
-
-		//start loop
-		loop();
 		
 	}
 
-	function loop(){
-		// console.log("LOOOP!");
-		update();
-		window.requestAnimFrame(loop);
-	}
 
-	function update(){
+	Synth.prototype.update = function(){
 		//Q
 
 		//Q key is pressed
@@ -128,7 +114,7 @@ app.synth = (function() {
 			//Q key is not making sound
 			if(qOsc.sounding == false){
 				//make sound, save web audio oscillator object into qOsc object
-				qOsc.oscillator = makeSound(Synth.wavetype, "Q");
+				qOsc.oscillator = this.makeSound(this.wavetype, "Q");
 				//set sounding to true so we only make one oscillator
 				qOsc.sounding = true;
 			}
@@ -147,7 +133,7 @@ app.synth = (function() {
 		if(keydown[KEYBOARD.KEY_W]){
 
 			if(wOsc.sounding == false){
-				wOsc.oscillator = makeSound(Synth.wavetype, "W");
+				wOsc.oscillator = this.makeSound(this.wavetype, "W");
 				wOsc.sounding = true;
 			}
 		}else{
@@ -160,7 +146,7 @@ app.synth = (function() {
 		if(keydown[KEYBOARD.KEY_E]){
 			
 			if(eOsc.sounding == false){
-				eOsc.oscillator = makeSound(Synth.wavetype, "E");
+				eOsc.oscillator = this.makeSound(this.wavetype, "E");
 				eOsc.sounding = true;
 			}
 		}else{
@@ -173,7 +159,7 @@ app.synth = (function() {
 		if(keydown[KEYBOARD.KEY_R]){
 			
 			if(rOsc.sounding == false){
-				rOsc.oscillator = makeSound(Synth.wavetype, "R");
+				rOsc.oscillator = this.makeSound(this.wavetype, "R");
 				rOsc.sounding = true;
 			}
 		}else{
@@ -186,7 +172,7 @@ app.synth = (function() {
 		if(keydown[KEYBOARD.KEY_T]){
 			
 			if(tOsc.sounding == false){
-				tOsc.oscillator = makeSound(Synth.wavetype, "T");
+				tOsc.oscillator = this.makeSound(this.wavetype, "T");
 				tOsc.sounding = true;
 			}
 		}else{
@@ -199,7 +185,7 @@ app.synth = (function() {
 		if(keydown[KEYBOARD.KEY_Y]){
 			
 			if(yOsc.sounding == false){
-				yOsc.oscillator = makeSound(Synth.wavetype, "Y");
+				yOsc.oscillator = this.makeSound(this.wavetype, "Y");
 				yOsc.sounding = true;
 			}
 		}else{
@@ -217,14 +203,20 @@ app.synth = (function() {
 	Synth.prototype.getAnalyser = function(){
 		return this.audioAnalyser;
 	}
+	Synth.prototype.getArrayBuffer = function(){
+		return this.audioAnalyser;
+	}
 
-	function makeSound(wavetype, key){
-		console.log("wavetype: "  + wavetype);
+	Synth.prototype.makeSound = function(butttype, key){
+		console.log("wavetype: "  + this.wavetype);
 
 		console.log("make sound: " + key);
 
-		var osc = aContext.createOscillator();
-		osc.type = parseInt(wavetype);
+		console.log(Synth.audioContext);
+
+		var osc = this.audioContext.createOscillator();
+
+		osc.type = parseInt(this.wavetype);
 		var fq;
 		if (key == "Q") fq = 100;
 		if (key == "W") fq = 200;
@@ -235,7 +227,8 @@ app.synth = (function() {
 
 		osc.frequency.value = fq;
 		// Synth.audioAnalyser.connect(aContext.destination);
-		osc.connect(aContext.destination);
+		console.log("buffer: " + osc.buffer);
+		osc.connect(this.audioContext.destination);
 		osc.start(0);
 		return osc;
 
@@ -254,8 +247,8 @@ app.synth = (function() {
 		if(started == true){
 			oscillator.type = parseInt(wavetype);
 			oscillator.frequency.value = fq;
-			oscillator.connect(aContext.destination);
-			myAudioAnalyser.connect(aContext.destination);
+			oscillator.connect(Synth.audioContext.destination);
+			myAudioAnalyser.connect(Synth.audioContext.destination);
 			oscillator.start(0);
 		}
 	}
@@ -263,7 +256,7 @@ app.synth = (function() {
 		console.log("stop");
 
 		oscillator.stop(0);
-		oscillator = aContext.createOscillator();
+		oscillator = Synth.audioContext.createOscillator();
 	}
 
 	return{
