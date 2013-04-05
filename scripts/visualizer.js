@@ -10,7 +10,7 @@ app.visualizer = (function() {
   var fileReader;
 
   function Visualizer (_canvas, _synth, _settings) {
-    console.log('constructor..');
+    // console.log('constructor..');
     // the starting position will be the middle of the canvas
     canvas = _canvas;
     ctx = canvas.getContext("2d");
@@ -24,7 +24,7 @@ app.visualizer = (function() {
     window.onresize = resizeCanvas;
 
     // console.log(synth);
-    console.log(synth.getFrequencyVal());
+    // console.log(synth.getFrequencyVal());
 
 
     /* ---------------------------- */
@@ -45,13 +45,13 @@ app.visualizer = (function() {
 
 
 function loadImageFile(_file) {
-  console.log('loadImageFile');
+  // console.log('loadImageFile');
   // if (document.getElementById("uploadImage").files.length === 0) { return; }
   // var oFile = document.getElementById("uploadImage").files[0];
   // if (!rFilter.test(oFile.type)) { alert("You must select a valid image file!"); return; }
-  console.log(_file);
+  // console.log(_file);
   fileReader.readAsDataURL(_file);
-  console.log(fileReader.readAsDataURL(_file));
+  // console.log(fileReader.readAsDataURL(_file));
 }
 
 

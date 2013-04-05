@@ -11,6 +11,7 @@ app.main = (function(){
 
 	function init (){
 		console.log("initialized!");
+		// console.log(app.synth.Synth);
 		body = document.getElementsByTagName('body')[0];
 
 		// SYNTH SETUP
@@ -19,7 +20,14 @@ app.main = (function(){
 		var stopButton = document.querySelector("#stop");
 		var frequencyControl = document.querySelector("#frequencyControl");
 		var wavetypeControl = document.querySelector("#wavetypeSelect");
+
+		
+
 		synth = new app.synth.Synth(startButton, stopButton, frequencyControl, wavetypeControl);
+
+		//start loop
+
+		loop();
 
 		console.log(synth);
 
@@ -48,6 +56,26 @@ app.main = (function(){
 		// finish UI set up
 		// ----------------------------
 		body.className += 'black';
+	}
+
+	function loop(){
+		var dt = calculateDeltaTime();
+
+		
+		update(dt);
+
+		//tell the browser to let us know when its ready to animate
+		//which is usually in 1/60th of a second
+		//animate is the function that will be called back
+
+		window.requestAnimFrame(loop);
+		
+	}
+
+	function update(dt){
+		synth.update();
+
+
 	}
 
 	function changeColor(e) {
