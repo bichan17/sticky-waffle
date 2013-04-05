@@ -7,7 +7,6 @@ app.visualizer = (function() {
       color;
   var _X = 0,
       _Y = window.innerHeight/2; // center stage
-  var fileReader;
 
   function Visualizer (_canvas, _synth, _settings) {
     console.log('constructor..');
@@ -18,43 +17,42 @@ app.visualizer = (function() {
     color = _settings.color;
     mode = _settings.mode;
 
+  // Create a new `audioContext` and its `analyser`
+  // window.audioCtx = new webkitAudioContext();
+  // window.analyser = audioCtx.createAnalyser();
+  // console.log('--');
+  // console.log(audioCtx);
+  console.log(synth);
+  // If a sound is still playing, stop it.
+  // if (window.source)
+  //   source.noteOff(0);
+  // // Decode the data in our array into an audio buffer
+  // audioCtx.decodeAudioData(arrayBuffer, function(buffer) {
+  //   // Use the audio buffer with as our audio source
+  //   window.source = audioCtx.createBufferSource();
+  //   source.buffer = buffer;
+  //   // Connect to the analyser ...
+  //   source.connect(analyser);
+  //   // and back to the destination, to play the sound after the analysis.
+  //   analyser.connect(audioCtx.destination);
+  //   // Start playing the buffer.
+  //   source.noteOn(0);
+  //   // Initialize a visualizer object
+  //   var viz = new simpleViz();
+  //   // Finally, initialize the visualizer.
+  //   new visualizer(viz['update'], analyser);
+  // });
+
+
+
     // visualizer should take up the whole space
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
     window.onresize = resizeCanvas;
 
-    // console.log(synth);
-    console.log(synth.getFrequencyVal());
-
-
-    /* ---------------------------- */
-    fileReader = new FileReader();
-    fileReader.onload = function (oFREvent) {
-      // document.getElementById("uploadPreview").src = oFREvent.target.result;
-      console.log(oFREvent.target.result);
-    };
-
-    var path = 'audio/';
-    var fileName = 'opening.mp3';
-    loadImageFile(path+fileName);
-
-    /* ---------------------------- */
     // the good stuff
     draw();
   }
-
-
-function loadImageFile(_file) {
-  console.log('loadImageFile');
-  // if (document.getElementById("uploadImage").files.length === 0) { return; }
-  // var oFile = document.getElementById("uploadImage").files[0];
-  // if (!rFilter.test(oFile.type)) { alert("You must select a valid image file!"); return; }
-  console.log(_file);
-  fileReader.readAsDataURL(_file);
-  console.log(fileReader.readAsDataURL(_file));
-}
-
-
 
   function resizeCanvas(e) {
     canvas.height = window.innerHeight;
@@ -65,6 +63,8 @@ function loadImageFile(_file) {
     // var dt = calculateDeltaTime();
     // 1. update sprites
     update();
+    // console.log(synth.getAnalyser());
+    // debugger;
     // 2. draw bkgd
     drawBackground();
     // 3. everything else
@@ -75,6 +75,8 @@ function loadImageFile(_file) {
 
   function update() {
     // update sprites based on current Mode
+    // console.log(synth.getAnalyser());
+
     if (mode === 'one') {
       // X
       _X += 4;
@@ -123,111 +125,6 @@ function loadImageFile(_file) {
     return color;
   }
 
-  function loadFile(_file) {
-    console.log(_file);
-    var file = _file;
-    var reader = new FileReader();
-    console.log(reader);
-    reader.onload = function(e) {
-      console.log('lol. file loaded');
-      console.log(e.target.result);
-      analyzeFile(e.target.result);
-      // callback(e.target.result);
-    };
-    // var readFormat = readFormat || "DataUrl";
-    // reader['readAsDataUrl'](file);
-    console.log('about to load file!');
-    // reader.readAsDataURL(file);
-  }
-
-  function analyzeFile(_arrayBuffer) {
-    // code
-    console.log('analyze file');
-
-//   // Create a new `audioContext` and its `analyser`
-//   window.audioCtx = new webkitAudioContext()
-//   window.analyser = audioCtx.createAnalyser()
-//   // If a sound is still playing, stop it.
-//   if (window.source)
-//     source.noteOff(0)
-//   // Decode the data in our array into an audio buffer
-//   audioCtx.decodeAudioData(arrayBuffer, function(buffer) {
-//     // Use the audio buffer with as our audio source
-//     window.source = audioCtx.createBufferSource()   
-//     source.buffer = buffer
-//     // Connect to the analyser ...
-//     source.connect(analyser)
-//     // and back to the destination, to play the sound after the analysis.
-//     analyser.connect(audioCtx.destination)
-//     // Start playing the buffer.
-//     source.noteOn(0)
-//     // Initialize a visualizer object
-//     var viz = new simpleViz()
-//     // Finally, initialize the visualizer.
-//     new visualizer(viz['update'], analyser)
-//     document.getElementById('Info').innerHTML = ''
-//   })
-  }
-
-
-
-// Reusable dropAndLoad function: it reads a local file dropped on a
-// `dropElement` in the DOM in the specified `readFormat`
-// (In this case, we want an arrayBuffer)
-// function dropAndLoad(dropElement, callback, readFormat) {
-//   var readFormat = readFormat || "DataUrl"
-
-//   dropElement.addEventListener('dragover', function(e) {
-//     e.stopPropagation()
-//     e.preventDefault()
-//     e.dataTransfer.dropEffect = 'copy'
-//   }, false)
-
-//   dropElement.addEventListener('drop', function(e) {
-//     e.stopPropagation()
-//     e.preventDefault()
-//     loadFile(e.dataTransfer.files[0])
-//   }, false) 
-
-//   function loadFile(files) {
-//     var file = files
-//     var reader = new FileReader()
-//     reader.onload = function(e) {
-//       callback(e.target.result)
-//     }
-//     reader['readAs'+readFormat](file)
-//   }
-// }
-
-
-//   dropAndLoad(element, init, "ArrayBuffer")
-
-// function init(arrayBuffer) {
-//   document.getElementById('Info').innerHTML = 'Please Wait'
-//   // Create a new `audioContext` and its `analyser`
-//   window.audioCtx = new webkitAudioContext()
-//   window.analyser = audioCtx.createAnalyser()
-//   // If a sound is still playing, stop it.
-//   if (window.source)
-//     source.noteOff(0)
-//   // Decode the data in our array into an audio buffer
-//   audioCtx.decodeAudioData(arrayBuffer, function(buffer) {
-//     // Use the audio buffer with as our audio source
-//     window.source = audioCtx.createBufferSource()   
-//     source.buffer = buffer
-//     // Connect to the analyser ...
-//     source.connect(analyser)
-//     // and back to the destination, to play the sound after the analysis.
-//     analyser.connect(audioCtx.destination)
-//     // Start playing the buffer.
-//     source.noteOn(0)
-//     // Initialize a visualizer object
-//     var viz = new simpleViz()
-//     // Finally, initialize the visualizer.
-//     new visualizer(viz['update'], analyser)
-//     document.getElementById('Info').innerHTML = ''
-//   })
-// }
 
 
 
@@ -236,130 +133,93 @@ function loadImageFile(_file) {
 
 
 
-// BULLSHIT
-//    //var mouse
-   //mouse = getMouse(event);
-   //function getMouse(event){
-  //  var mouse = {}
-    //mouse.x = event.pageX - canvas.offsetLeft;
-      //mouse.y = event.pageY - canvas.offsetTop;
-      //return mouse;
-  //}
-//    window.onload = function() {
-//   var element = document.getElementById('container')
-//   dropAndLoad(element, init, "ArrayBuffer")
-// }
+// every viuzlier mode will be a differne function
 
+  Visualizer.prototype.doStuff = function doStuff(arrayBuffer) {
+    console.log('doStuff');
+    // document.getElementById('Info').innerHTML = 'Please Wait'
+    // Create a new `audioContext` and its `analyser`
+    window.audioCtx = new webkitAudioContext();
+    window.analyser = audioCtx.createAnalyser();
+    // If a sound is still playing, stop it.
+    if (window.source) source.noteOff(0);
+    // Decode the data in our array into an audio buffer
 
-// Reusable dropAndLoad function: it reads a local file dropped on a
-// `dropElement` in the DOM in the specified `readFormat`
-// (In this case, we want an arrayBuffer)
-// function dropAndLoad(dropElement, callback, readFormat) {
-//   var readFormat = readFormat || "DataUrl"
-
-//   dropElement.addEventListener('dragover', function(e) {
-//     e.stopPropagation()
-//     e.preventDefault()
-//     e.dataTransfer.dropEffect = 'copy'
-//   }, false)
-
-//   dropElement.addEventListener('drop', function(e) {
-//     e.stopPropagation()
-//     e.preventDefault()
-//     loadFile(e.dataTransfer.files[0])
-//   }, false) 
-
-//   function loadFile(files) {
-//     var file = files
-//     var reader = new FileReader()
-//     reader.onload = function(e) {
-//       callback(e.target.result)
-//     }
-//     reader['readAs'+readFormat](file)
-//   }
-// }
-
-// Once the file is loaded, we start getting our hands dirty.
-        // function init(arrayBuffer) {
-        //   document.getElementById('Info').innerHTML = 'Please Wait'
-        //   // Create a new `audioContext` and its `analyser`
-        //   window.audioCtx = new webkitAudioContext()
-        //   window.analyser = audioCtx.createAnalyser()
-        //   // If a sound is still playing, stop it.
-        //   if (window.source)
-        //     source.noteOff(0)
-        //   // Decode the data in our array into an audio buffer
-        //   audioCtx.decodeAudioData(arrayBuffer, function(buffer) {
-        //     // Use the audio buffer with as our audio source
-        //     window.source = audioCtx.createBufferSource()   
-        //     source.buffer = buffer
-        //     // Connect to the analyser ...
-        //     source.connect(analyser)
-        //     // and back to the destination, to play the sound after the analysis.
-        //     analyser.connect(audioCtx.destination)
-        //     // Start playing the buffer.
-        //     source.noteOn(0)
-        //     // Initialize a visualizer object
-        //     var viz = new simpleViz()
-        //     // Finally, initialize the visualizer.
-        //     new visualizer(viz['update'], analyser)
-        //     document.getElementById('Info').innerHTML = ''
-        //   })
-        // }
+    // console.log('idk');
+    // console.log(arrayBuffer);
+    audioCtx.decodeAudioData(arrayBuffer, function(buffer) {
+      // Use the audio buffer with as our audio source
+      window.source = audioCtx.createBufferSource();
+      source.buffer = buffer;
+      // Connect to the analyser ...
+      source.connect(analyser);
+      // and back to the destination, to play the sound after the analysis.
+      analyser.connect(audioCtx.destination);
+      // Start playing the buffer.
+      source.noteOn(0);
+      // Initialize a visualizer object
+      // var viz = new simpleViz(); // set-up
+      // Finally, initialize the visualizer.
+      // new visualizer(viz['update'], analyser);
+      // document.getElementById('Info').innerHTML = ''
+    });
+  };
 
 // The visualizer object. 
 // Calls the `visualization` function every time a new frame
 // is available.
 // Is passed an `analyser` (audioContext analyser).
-        // function visualizer(visualization, analyser) {
-        //   var self = this
-        //   this.visualization = visualization  
-        //   var last = Date.now()
-        //   var loop = function() {
-        //     var dt = Date.now() - last
-        //     // we get the current byteFreq data from our analyser
-        //     var byteFreq = new Uint8Array(analyser.frequencyBinCount)
-        //     analyser.getByteFrequencyData(byteFreq)
-        //     last = Date.now()
-        //     // We might want to use a delta time (`dt`) too for our visualization.
-        //     self.visualization(byteFreq, dt)
-        //     webkitRequestAnimationFrame(loop)
-        //   }
-        //   webkitRequestAnimationFrame(loop)
-        // }
+function visualizer(visualization, analyser) {
+  var self = this
+  this.visualization = visualization  
+  var last = Date.now()
+  var loop = function() {
+    var dt = Date.now() - last
+    // we get the current byteFreq data from our analyser
+    var byteFreq = new Uint8Array(analyser.frequencyBinCount)
+    analyser.getByteFrequencyData(byteFreq)
+    last = Date.now()
+    // We might want to use a delta time (`dt`) too for our visualization.
+    self.visualization(byteFreq, dt)
+    webkitRequestAnimationFrame(loop)
+  }
+  webkitRequestAnimationFrame(loop)
+}
 
 // A simple visualization. Its update function illustrates how to use 
 // the byte frequency data from an audioContext analyser.
-        // function simpleViz(canvas) {
-        //   var self = this
-        //   this.canvas = document.getElementById('canvas')
-        //   this.ctx = this.canvas.getContext("2d")
-        //   this.copyCtx = document.getElementById('canvas-copy').getContext("2d")
-        //   this.ctx.fillStyle = '#fff' 
-        //   this.circleRad = 15
-        //   this.circleGap = 20
-        //   this.barWidth = 10
-        //   this.barGap = 4
-        //   this.barWidth2 = 10
-        //   this.barGap2 = 4
-        //   this.triBase = 3
-        //   this.triGap = 0
-        //   // We get the total number of bars to display
-        //   this.bars = Math.floor(this.canvas.width / (this.barWidth + this.barGap))
-        //   this.bars2 = Math.floor(this.canvas.width / (this.barWidth2 + this.barGap2))
-        //   this.Tris = Math.floor(this.canvas.width / (this.triBase + this.triGap))
-        //   this.Circs = Math.floor(this.canvas.width / (this.circleRad + this.circleGap))
-        //   // This function is launched for each frame, together with the byte frequency data.
-        //   this.update = function(byteFreq) {
-        //     self.ctx.clearRect(0, 0, self.canvas.width, self.canvas.height)
-        //     // We take an element from the byteFreq array for each of the bars.
-        //     // Let's pretend our byteFreq contains 20 elements, and we have five bars...
-        //     var step = Math.floor(byteFreq.length / self.bars)
-        //   var step2 = Math.floor(byteFreq.length / self.bars2)
-        //   var triStep = Math.floor(byteFreq.length / self.Tris)
-        //   var circstep = Math.floor(byteFreq.length / self.Circs)
+function simpleViz() {
+  console.log("simpleViz");
+  var self = this;
+  // this.canvas = viz;
+  // this.ctx = this.canvas.getContext("2d")
+  // this.copyCtx = document.getElementById('canvas-copy').getContext("2d")
+  ctx.fillStyle = '#fff';
+  this.circleRad = 15;
+  this.circleGap = 20;
+  this.barWidth = 10;
+  this.barGap = 4;
+  this.barWidth2 = 10;
+  this.barGap2 = 4;
+  this.triBase = 3;
+  this.triGap = 0;
+  // We get the total number of bars to display
+  this.bars = Math.floor(this.canvas.width / (this.barWidth + this.barGap))
+  this.bars2 = Math.floor(this.canvas.width / (this.barWidth2 + this.barGap2))
+  this.Tris = Math.floor(this.canvas.width / (this.triBase + this.triGap))
+  this.Circs = Math.floor(this.canvas.width / (this.circleRad + this.circleGap))
+  // This function is launched for each frame, together with the byte frequency data.
+  this.update = function(byteFreq) {
+    self.ctx.clearRect(0, 0, self.canvas.width, self.canvas.height)
+    // We take an element from the byteFreq array for each of the bars.
+    // Let's pretend our byteFreq contains 20 elements, and we have five bars...
+    var step = Math.floor(byteFreq.length / self.bars)
+  var step2 = Math.floor(byteFreq.length / self.bars2)
+  var triStep = Math.floor(byteFreq.length / self.Tris)
+  var circstep = Math.floor(byteFreq.length / self.Circs)
     // `||||||||||||||||||||` elements
     // `|   |   |   |   |   ` elements we'll use for our bars
+  
     /*for (var i = 0; i < self.bars; i ++) {
       // Draw each bar
       var barHeight = byteFreq[i*step]
@@ -438,8 +298,8 @@ function loadImageFile(_file) {
     
     }
   */
-          // for (var i = 0; i < self.Tris; i ++) {
-          //   var triHeight = byteFreq[i*triStep] * 1.5
+  for (var i = 0; i < self.Tris; i ++) {
+    var triHeight = byteFreq[i*triStep] * 1.5
     /*self.ctx.beginPath();
     self.ctx.moveTo(0, i * (self.triBase + self.triGap))
     self.ctx.lineTo(triHeight, i * (self.triBase + self.triGap) + (self.triBase/2))
@@ -449,56 +309,37 @@ function loadImageFile(_file) {
     self.ctx.fill();
     self.ctx.closePath();
     */
-            // self.ctx.fillStyle= getRandomColor();;
-            // if(i > self.Tris/3){
-            // //self.ctx.fillStyle="#00FF00";
-            // }
-            // if(i > self.Tris * (2/3)){
-            // //self.ctx.fillStyle="#FF0000";
-            // }
-            // 
-            // self.ctx.beginPath();
-            // self.ctx.moveTo(i * (self.triBase + self.triGap),self.canvas.height)
-            // self.ctx.lineTo(i * (self.triBase + self.triGap) + (self.triBase/2),self.canvas.height - triHeight + 2)
-            // self.ctx.lineTo(i * (self.triBase + self.triGap) + (self.triBase), self.canvas.height)
-            // self.ctx.lineTo(i * (self.triBase + self.triGap), self.canvas.height)
-
-            // self.ctx.fill();
-            // self.ctx.closePath();
-
+    self.ctx.fillStyle= "#FFFFFF";
+    if(i > self.Tris/3){
+    //self.ctx.fillStyle="#00FF00";
+    }
+    if(i > self.Tris * (2/3)){
+    //self.ctx.fillStyle="#FF0000";
+    }
+    
+    self.ctx.beginPath();
+    self.ctx.moveTo(i * (self.triBase + self.triGap),self.canvas.height)
+    self.ctx.lineTo(i * (self.triBase + self.triGap) + (self.triBase/2),self.canvas.height - triHeight + 2)
+    self.ctx.lineTo(i * (self.triBase + self.triGap) + (self.triBase), self.canvas.height)
+    self.ctx.lineTo(i * (self.triBase + self.triGap), self.canvas.height)
+    
+    self.ctx.fill();
+    self.ctx.closePath();
+    
     //self.copyCtx.clearRect(0, 0, self.canvas.width, self.canvas.height)
     //self.copyCtx.drawImage(self.canvas, 0, 0)
-            // }
+    }
 
-          // }
-
-        // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  }
+  function getRandomColor(){
+        var red = Math.round(Math.random()*254+1);
+        var green = Math.round(Math.random()*254+1);
+        var blue=Math.round(Math.random()*254+1);
+        var color='rgb('+red+','+green+','+blue+')';
+        //  var color='rgba('+red+','+green+','+blue+',0.50)'; // 0.50 alpha
+        return color;
+  }
+}
 
 
 
@@ -557,5 +398,6 @@ function loadImageFile(_file) {
   // ===================================
   return {
     Visualizer : Visualizer
+    // doStuff : doStuff
   };
 })();

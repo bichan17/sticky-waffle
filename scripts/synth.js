@@ -208,8 +208,6 @@ app.synth = (function() {
 				yOsc.sounding = false;
 			}
 		}
-
-
 		
 	}
 

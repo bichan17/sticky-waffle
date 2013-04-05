@@ -48,6 +48,10 @@ app.main = (function(){
 		// finish UI set up
 		// ----------------------------
 		body.className += 'black';
+
+		// var element = document.getElementById('container');
+		dropAndLoad(body, "ArrayBuffer");
+		// viz.doStuff();
 	}
 
 	function changeColor(e) {
@@ -65,6 +69,62 @@ app.main = (function(){
 		viz_settings.mode = e.target.value;
 		viz.changeMode(viz_settings.mode);
 	}
+
+// ===================================
+
+
+// Reusable dropAndLoad function: it reads a local file dropped on a
+// `dropElement` in the DOM in the specified `readFormat`
+// (In this case, we want an arrayBuffer)
+function dropAndLoad(dropElement, _readFormat) {
+  var readFormat = _readFormat || "DataUrl";
+
+  dropElement.addEventListener('dragover', function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'copy';
+  }, false);
+
+  dropElement.addEventListener('drop', function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    // loadFile(e.dataTransfer.files[0]);
+    console.log('should only happen once');
+    // console.log(loadFile(e.dataTransfer.files[0]));
+    console.log(viz);
+    loadFile(e.dataTransfer.files[0]);
+  }, false) ;
+
+  function loadFile(files) {
+    var file = files;
+    // console.log(file);
+    var reader = new FileReader();
+    // console.log(reader);
+    var result;
+    reader.onload = function(e) {
+			// console.log('lol');
+			// console.log(e.target.result);
+			// result = e.target.result;
+			// console.log('result:');
+			// console.log(result);
+			// return e.target.result;
+			viz.doStuff(e.target.result);
+			// console.log(callback);
+      // callback(e.target.result);
+    };
+
+    // console.log(result);
+
+    // do we need this line? yes
+    // we return the ArrayBuffer
+    return reader['readAs'+readFormat](file);
+  }
+
+
+  // console.log('god i hope this works');
+  // console.log(loadFile);
+}
+
 
 
 	//Public interface
