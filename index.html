@@ -54,19 +54,30 @@
 
 			<!-- visualizer controls -->
 			<dl id="visualizer_controls">
+				<dt>Color:</dt>
+				<dd>
+					<ul id="color" class="inline">
+						<li><label><input type="radio" name="color" value="rgb(185,45,25)" checked>Red</label></li>
+						<li><label><input type="radio" name="color" value="rgb(255,255,255)">White</label></li>
+						<li><label><input type="radio" name="color" value="rgb(0,0,0)">Black</label></li>
+						<li><label><input type="radio" name="color" value="transition">Transition</label></li>
+						<br>
+						<li><label><input type="radio" name="color" value="random">Random</label></li>
+					</ul>
+				</dd>
 				<dt>Background Color:</dt>
 				<dd>
 					<ul id="bkgd" class="inline">
-						<li><label><input type="radio" name="bkgd_color" value="#000" checked>Black</label></li>
-						<li><label><input type="radio" name="bkgd_color" value="#fff">White</label></li>
+						<li><label><input type="radio" name="bkgd_color" value="rgb(0,0,0)" checked>Black</label></li>
+						<li><label><input type="radio" name="bkgd_color" value="rba(0,0,0)">White</label></li>
 					</ul>
 				</dd>
 				<dt>Visualizer Mode:</dt>
 				<dd>
 					<ul id="mode" class="inline">
-						<li><label><input type="radio" name="mode" value="one" checked>One</label></li>
+						<li><label><input type="radio" name="mode" value="one" checked>Bars</label></li>
 						<li><label><input type="radio" name="mode" value="two">Two</label></li>
-						<li><label><input type="radio" name="mode" value="three">Three</label></li>
+						<li><label><input type="radio" name="mode" value="three">Circles</label></li>
 					</ul>
 				</dd>
 			</dl>
