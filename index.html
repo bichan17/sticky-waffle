@@ -19,13 +19,6 @@
 		<section class="interface">
 			<!-- the synth -->
 			<div id="synth">
-				<button id="start">Start</button>
-				<button id="stop">Stop</button>
-				<br>
-				<label for="frequencyControl">Frequecy</label>
-				<input id="frequencyControl" type ="range" min ="100" max="1600" step ="100" value ="500"/>
-				<span id="frequencyControlResults">500</span>Hz
-				<br>
 				<label for="wavetypeSelect">Wave type</label>
 					<select id="wavetypeSelect">
 						<option value="0">Sine wave</option>
@@ -33,6 +26,30 @@
 						<option value="2">Sawtooth wave</option>
 						<option value="3">Triangle wave</option>
 					</select>
+
+				<h2>Filter</h2>
+		        <select id="filter-type">
+		            <option value="0" selected>Lowpass</option>
+		            <option value="1">Highpass</option>
+		            <option value="2">Bandpass</option>
+		            <option value="3">Lowshelf</option>
+		            <option value="4">Highshelf</option>
+		            <option value="5">Peaking</option>
+		            <option value="6">Notch</option>
+		            <option value="7">All Pass</option>
+		        </select>
+
+		        <div class="delay-time">
+		            <h2>Delay Time</h2>
+		            <input id="delay" type="range" min="0" max="0.999" step="0.001" value="0.500" />
+		            <output id="delay-output" for="delay"></output>
+		        </div>
+
+		        <div class="delay-feedback">
+		            <h2>Feedback</h2>
+		            <input id="feedback" type="range" min="0" max="0.9" step="0.1" value="0.2" />
+		            <output id="feedback-output" for="feedback"></output>
+		        </div>
 			</div>
 
 			<!-- visualizer controls -->

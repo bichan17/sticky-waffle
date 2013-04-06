@@ -5,7 +5,8 @@ app.visualizer = (function() {
       synth,
       mode,
       color,
-      bkgd_color;
+      bkgd_color,
+      analyser;
   var _X = 0,
       _Y = window.innerHeight/2; // center stage
 
@@ -20,13 +21,12 @@ app.visualizer = (function() {
     color = '#b92d19'; // defaults to red
     ctx.fillStyle = color;
 
+    // console.log(synth.getAnalyser());
+    analyser = synth.getAnalyser();
     // visualizer should take up the whole space
     canvas.height = window.innerHeight;
     canvas.width = window.innerWidth;
     window.onresize = resizeCanvas;
-
-    // the good stuff
-    // draw();
   }
 
   function resizeCanvas(e) {
@@ -68,6 +68,8 @@ app.visualizer = (function() {
 
   // every visualizer mode will be a different function
   function drawBars() {
+    // console.log('lol');
+    // console.log(analyser);
     var multiplier = 2,
       bar_width = 20,
       // freqByteData,
@@ -79,12 +81,13 @@ app.visualizer = (function() {
     drawBackground();
     ctx.fillStyle = color;
 
-    // freqByteData = new Uint8Array(myAudioAnalyser.frequencyBinCount);
-    // myAudioAnalyser.getByteFrequencyData(freqByteData);
+    freqByteData = new Uint8Array(analyser.frequencyBinCount);
+    analyser.getByteFrequencyData(freqByteData); // this what updates the area with new info
     barCount = Math.round(width / bar_width);
 
     for (i = 0; i < barCount; i += 1) {
-      magnitude = Math.round(Math.random()*50+1);
+      magnitude = freqByteData[i];
+      // magnitude = Math.round(Math.random()*50+1);
       // some values need adjusting to fit on the canvas
       // fillRect(x, y, width, height)
 
@@ -103,10 +106,9 @@ app.visualizer = (function() {
   function drawCircles() {
     // mode three
     // ctx.fillStyle = '#fff';
-    var byteFreq = [];
-    for (var q = 0; q < 50; q++) {
-      byteFreq.push(Math.round(Math.random()*100+1));
-    }
+
+    byteFreq = new Uint8Array(analyser.frequencyBinCount);
+    analyser.getByteFrequencyData(byteFreq);
 
     var circleRad = 15,
     circleGap = 20,

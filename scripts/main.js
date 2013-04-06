@@ -16,13 +16,14 @@ app.main = (function(){
 
 		// SYNTH SETUP
 		console.log("setup UI");
-		var startButton = document.querySelector("#start");
-		var stopButton = document.querySelector("#stop");
-		var frequencyControl = document.querySelector("#frequencyControl");
 		var wavetypeControl = document.querySelector("#wavetypeSelect");
+		var filterControl = document.querySelector("#filter-type");
+		var delayControl = document.querySelector("#delay");
+		console.log(delayControl);
+		var feedbackControl = document.querySelector("#feedback");
 
 
-		synth = new app.synth.Synth(startButton, stopButton, frequencyControl, wavetypeControl);
+		synth = new app.synth.Synth(wavetypeControl, filterControl, delayControl, feedbackControl);
 
 		// VISUALIZER SETUP
 		// ----------------------------
@@ -55,7 +56,6 @@ app.main = (function(){
 	function loop(){
 		var dt = calculateDeltaTime();
 
-		
 		update(dt);
 
 		//tell the browser to let us know when its ready to animate
@@ -63,7 +63,6 @@ app.main = (function(){
 		//animate is the function that will be called back
 
 		window.requestAnimFrame(loop);
-		
 	}
 
 	function update(dt){
@@ -92,65 +91,12 @@ app.main = (function(){
 	}
 
 // ===================================
-
-
-// Reusable dropAndLoad function: it reads a local file dropped on a
-// `dropElement` in the DOM in the specified `readFormat`
-// (In this case, we want an arrayBuffer)
-function dropAndLoad(dropElement, _readFormat) {
-  var readFormat = _readFormat || "DataUrl";
-
-  dropElement.addEventListener('dragover', function(e) {
-    e.stopPropagation();
-    e.preventDefault();
-    e.dataTransfer.dropEffect = 'copy';
-  }, false);
-
-  dropElement.addEventListener('drop', function(e) {
-    e.stopPropagation();
-    e.preventDefault();
-    // loadFile(e.dataTransfer.files[0]);
-    console.log('should only happen once');
-    // console.log(loadFile(e.dataTransfer.files[0]));
-    console.log(viz);
-    loadFile(e.dataTransfer.files[0]);
-  }, false) ;
-
-  function loadFile(files) {
-    var file = files;
-    // console.log(file);
-    var reader = new FileReader();
-    // console.log(reader);
-    var result;
-    reader.onload = function(e) {
-			// console.log('lol');
-			// console.log(e.target.result);
-			// result = e.target.result;
-			// console.log('result:');
-			// console.log(result);
-			// return e.target.result;
-			viz.doStuff(e.target.result);
-			// console.log(callback);
-      // callback(e.target.result);
-    };
-
-    // console.log(result);
-
-    // do we need this line? yes
-    // we return the ArrayBuffer
-    return reader['readAs'+readFormat](file);
-  }
-
-
-  // console.log('god i hope this works');
-  // console.log(loadFile);
-}
+// }
 
 
 
 	//Public interface
-	return{
+	return {
 		init : init
-		//someFunc : someFunc
 	};
 })();
