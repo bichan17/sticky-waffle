@@ -16,14 +16,15 @@ app.main = (function(){
 
 		// SYNTH SETUP
 		console.log("setup UI");
-		var startButton = document.querySelector("#start");
-		var stopButton = document.querySelector("#stop");
-		var frequencyControl = document.querySelector("#frequencyControl");
 		var wavetypeControl = document.querySelector("#wavetypeSelect");
+		var filterControl = document.querySelector("#filter-type");
+		var delayControl = document.querySelector("#delay");
+		console.log(delayControl);
+		var feedbackControl = document.querySelector("#feedback");
 
 		
 
-		synth = new app.synth.Synth(startButton, stopButton, frequencyControl, wavetypeControl);
+		synth = new app.synth.Synth(wavetypeControl, filterControl, delayControl, feedbackControl);
 
 		//start loop
 

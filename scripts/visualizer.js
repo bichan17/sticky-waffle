@@ -77,14 +77,14 @@ function loadImageFile(_file) {
     // update sprites based on current Mode
     if (mode === 'one') {
       // X
-      _X += 4;
-      if (_X > window.innerWidth) _X = 0;
-      // Y
-      _Y = (window.innerHeight/2) + (synth.getFrequencyVal()/5) * Math.sin(_X/50);
-    } else if (mode === 'two') {
-      // mode two
-      // idle
-      _X = window.innerWidth/2;
+    //   _X += 4;
+    //   if (_X > window.innerWidth) _X = 0;
+    //   // Y
+    //   _Y = (window.innerHeight/2) + (synth.getFrequencyVal()/5) * Math.sin(_X/50);
+    // } else if (mode === 'two') {
+    //   // mode two
+    //   // idle
+    //   _X = window.innerWidth/2;
       // _Y += (window.innerHeight/2) + (synth.getFrequencyVal()/5) * Math.sin(_X/50);
       // -306 // console.log((window.innerHeight/2) + (synth.getFrequencyVal()/5) * Math.sin(_X/50));
       // -77 // console.log((synth.getFrequencyVal()/5) * Math.sin(_X/50));
