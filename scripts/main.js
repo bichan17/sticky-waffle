@@ -21,22 +21,13 @@ app.main = (function(){
 		var frequencyControl = document.querySelector("#frequencyControl");
 		var wavetypeControl = document.querySelector("#wavetypeSelect");
 
-		
 
 		synth = new app.synth.Synth(startButton, stopButton, frequencyControl, wavetypeControl);
 
-		//start loop
-
-		loop();
-
-		console.log(synth);
-
 		// VISUALIZER SETUP
 		// ----------------------------
-		// 1. create the viz_settings object
-		viz_settings = {};
-		// 2. every change updates the viz_settings objects
-		// add event listeners to Color buttons
+		viz_settings = {}; // 1. create the viz_settings object
+		// 2. set up UI
 		var colorButtons = document.getElementById('bkgd').getElementsByTagName('input');
 		for (var i = 0; i < colorButtons.length; i++) {
 			colorButtons[i].addEventListener("change", changeColor, false);
@@ -52,14 +43,13 @@ app.main = (function(){
 		}
 		// create Visualizer | pass in: DOM <canvas> reference, synth object, settings
 		viz = new app.visualizer.Visualizer(document.getElementById('visualizer'), synth, viz_settings);
-
 		// finish UI set up
 		// ----------------------------
 		body.className += 'black';
 
 		// var element = document.getElementById('container');
-		dropAndLoad(body, "ArrayBuffer");
-		// viz.doStuff();
+
+		loop();
 	}
 
 	function loop(){
@@ -78,6 +68,9 @@ app.main = (function(){
 
 	function update(dt){
 		synth.update();
+		// console.log(synth);
+		// console.log(viz);
+		viz.update();
 
 
 	}
