@@ -61,6 +61,7 @@ a {
 
 /* bkgd/text */
 .white { // white background
+	background-color: #fff;
 	color: #222; // black text
 	footer {
 		color: #666;
@@ -70,7 +71,8 @@ a {
 	}
 }
 .black { // black background
-	color: #eee; // white text
+	background-color: #000;
+	color: #fff; // white text
 	footer {
 		color: #888;
 		// &:hover {
@@ -114,8 +116,13 @@ footer {
 	margin: 2em;
 	font-size: 0.75em;
 	opacity: 0.5;
-	&:hover { opacity: 1; }
-	@include transition(opacity, 0.3s);
+	&:hover { 
+		opacity: 1; 
+		@include transition(opacity, 1s);
+	}
+	@include transition(opacity, 1s);
+	@include transition(color, 0.3s);
+	h2 { font-size: 1em; }
 	dt { font-weight: bold; }
 	dd {
 		margin-left: 0;

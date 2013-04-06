@@ -116,6 +116,7 @@ a:hover {
 
 /* bkgd/text */
 .white {
+  background-color: #fff;
   color: #222;
 }
 .white footer {
@@ -126,7 +127,8 @@ a:hover {
 }
 
 .black {
-  color: #eee;
+  background-color: #000;
+  color: #fff;
 }
 .black footer {
   color: #888;
@@ -171,13 +173,24 @@ footer {
   margin: 2em;
   font-size: 0.75em;
   opacity: 0.5;
-  -webkit-transition: opacity 0.3s ease-out;
-  -moz-transition: opacity 0.3s ease-out;
-  -o-transition: opacity 0.3s ease-out;
-  transition: opacity 0.3s ease-out;
+  -webkit-transition: opacity 1s ease-out;
+  -moz-transition: opacity 1s ease-out;
+  -o-transition: opacity 1s ease-out;
+  transition: opacity 1s ease-out;
+  -webkit-transition: color 0.3s ease-out;
+  -moz-transition: color 0.3s ease-out;
+  -o-transition: color 0.3s ease-out;
+  transition: color 0.3s ease-out;
 }
 .interface:hover {
   opacity: 1;
+  -webkit-transition: opacity 1s ease-out;
+  -moz-transition: opacity 1s ease-out;
+  -o-transition: opacity 1s ease-out;
+  transition: opacity 1s ease-out;
+}
+.interface h2 {
+  font-size: 1em;
 }
 .interface dt {
   font-weight: bold;
