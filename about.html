@@ -23,15 +23,29 @@
 		<li>Luis Rosario</li>
 		<li>Eric Bichan</li>
 	</ul>
-	<p>Our project is a synthesizer and visualizer combo. We are using Web Audio API and canvas functionality.</p>
-	<p>Currently, the amplitude of the wave is determined by the frequency of the synthesizer.</p>
+	<h2>Abstract</h2>
+	<p>Sticky Waffle is a virtual synthesizer keyboard and visualizer combination. Users can play it like a normal piano and are able to modify the settings for both the visualizer and synthisizer parts.</p>
+	<h2>Design Decisions</h2>
+	<p>We wanted the user to have fun by allowing them the freedom to make music. On the computer this experience is best accomplished utilizing the keyboard. We made it so the keyboard becomes an actual music keyboard (much in the style of GarageBand and other such applications).</p>
+	<p>Visually we wanted something that responded directly to what the user was doing. The visualizer only responds when there are sounds being made. There is some ability for the user to choose their own color schemes.</p>
+	<p>We wanted the focus of the experience to be about making music and enjoying the resulting visualizations, as such we made a conscious decision to fade out the interface's opacity so that it would not distract from the experience.</p>
+	<h2>Technical Decisions</h2>
+	<p>We followed a module design pattern to implement our Javascript so that the synth and visualizer are their own separate objects. The objects run on the same update loop which is called within main.js</p>
+	<p>Modernizr was used to load in assets</p>
+	<h2>Extras</h2>
+	<p>We worked hard putting the finished touches on this piece. The virtual keyboard at the bottom of the screen was added to improve usability. Making the keys light up as they were pressed was also a nice feature we implemented to get people to enjoy using the keyboard. The color transitions of the visualizer and its consitency with the virtual keyboard was also a nice design touch.</p>
 	<h2>Sources/Related</h2>
+	<p>The following projects and tutorials were used, looked at, and inspired the creation of the project</p>
 	<ul>
 		<li><a href="http://stuartmemo.com/making-sine-square-sawtooth-and-triangle-waves/" target="_blank">Related blogpost</a></li>
 		<li><a href="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html" target="_blank">Web Audio API - W3C</a></li>
 		<li><a href="https://chromium.googlecode.com/svn/trunk/samples/audio/index.html" target="_blank">Web Audio Examples</a></li>
 		<li><a href="http://www.html5rocks.com/en/tutorials/webaudio/intro/" target="_blank">Web Audio Tutorial</a></li>
 		<li><a href="http://www.khanacademy.org/cs/waves/874181658" target="_blank">Wave Example (Khan Academy)</a></li>
+		<li>Code from particle.js from the volcano example in class</li>
+		<li><a href="http://alxgbsn.co.uk/wavepad/">WAVE-PD1</a></li>
+		<li><a href="http://developer.apple.com/library/safari/#documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/PlayingandSynthesizingSounds/PlayingandSynthesizingSounds.html#//apple_ref/doc/uid/TP40009523-CH6-SW4">Apple Developer - Synthesizing Sounds</a>
+
 	</ul>
 </div>
 </body>
