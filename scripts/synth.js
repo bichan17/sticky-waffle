@@ -21,6 +21,7 @@ app.synth = (function() {
 		"KEY_SEMI": 186,
 		"KEY_APOS": 222
 	};
+	// this array holds all of the sounds we make
 	var oscArray = [
 		{
 			sounding : false,
@@ -137,27 +138,30 @@ app.synth = (function() {
 
 
 
-
+	//synth constructor, it gets passed the DOM elements of the controls from main
 	function Synth(wavetypeControl, filterControl, delayControl, feedbackControl){
 		this.wavetypeControl = wavetypeControl;
 		this.filterControl = filterControl;
 		this.delayControl = delayControl;
 		this.feedbackControl = feedbackControl;
 
-
-
+		//default values for synth
 		this.wavetype = 0;
 		this.filter = 0;
 		this.delay = 0.500;
 		this.feedback = 0.2;
+
+		//holds all the node objects used by synth
 		this.nodes = {};
 
 		this.setUp(this.wavetypeControl, this.filterControl, this.delayControl, this.feedbackControl);
 	}
 
-	Synth.prototype.setUp = function(wavetypeControl, filterControl, delayControl, feedbackControl){
-		console.log("setup synth");
 
+	//set up the synth object
+	Synth.prototype.setUp = function(wavetypeControl, filterControl, delayControl, feedbackControl){
+		
+		//initialize object variables
 		this.audioContext = new webkitAudioContext();
 
 		this.nodes.filter = this.audioContext.createBiquadFilter();
@@ -173,9 +177,7 @@ app.synth = (function() {
 
 
 
-		// console.log(this.audioAnalyser);
-
-
+		//add event listeners
 		var that = this;
 
 		wavetypeControl.addEventListener("change", function(e){
@@ -195,10 +197,11 @@ app.synth = (function() {
 		});
 
 		window.addEventListener("keyup", function(e){
-			// console.log("keyup=" + e.keyCode);
 			keydown[e.keyCode] = false;
 		});
 
+
+		//add DOM element of each key to their objects
 		for (var i = 0; i < oscArray.length; i++) {
 			oscArray[i].keyDisplay = document.getElementById(oscArray[i].key);
 		}
@@ -206,11 +209,12 @@ app.synth = (function() {
 
 	Synth.prototype.update = function(){
 
+		//check if a key is pressed, make a sound
 		for (var i = 0; i < oscArray.length; i++) {
 			if(keydown[oscArray[i].key]){
 				//A key is not making sound
 				if(oscArray[i].sounding == false){
-					//make sound, save web audio oscillator object into aOsc object
+					//make sound, save web audio oscillator object into osc object
 					oscArray[i].oscillator = this.makeSound(oscArray[i].fq);
 					oscArray[i].keyDisplay.className+= "played";
 					//set sounding to true so we only make one oscillator
@@ -218,7 +222,7 @@ app.synth = (function() {
 
 				}
 			}else{
-				//A key is not pressed
+				//the key is not pressed
 
 				//if A was just making noise, turn it off
 				if(oscArray[i].sounding == true){
@@ -233,10 +237,12 @@ app.synth = (function() {
 
 	} // end update
 
+
+	//returns analyser node for the visualizer to use
 	Synth.prototype.getAnalyser = function(){
 		return this.audioAnalyser;
 	}
-
+	//returns byteData array for the visualizer to use
 	Synth.prototype.getByteData = function(){
 		var fqArray = new Uint8Array(this.audioAnalyser.frequencyBinCount);
 		this.audioAnalyser.getByteFrequencyData(fqArray);
@@ -244,6 +250,7 @@ app.synth = (function() {
 		return fqArray;
 	}
 
+	//route sounds to apply the node settings
 	Synth.prototype.routeSounds = function(){
 		var doc = document;
 
@@ -269,6 +276,8 @@ app.synth = (function() {
 
 	}
 
+
+	//makes the sound
 	Synth.prototype.makeSound = function(fq){
 
 		//route oscillator through nodes
@@ -277,6 +286,8 @@ app.synth = (function() {
 		//change frequency
 		osc.frequency.value = fq;
 		osc.start(0);
+
+		//return the osc so we can stop it later
 		return osc;
 
 	}
