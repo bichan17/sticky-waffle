@@ -211,16 +211,23 @@ app.visualizer = (function() {
   function makeParticles() {
     var particles = [];
     var emmit_radius = 50,
-        particleLimit = 10,
+        particleLimit = 5,
         fill;
 
     analyser.getByteFrequencyData(freqByteData);
 
-    for (var i = 0; i < particleLimit; i++) {
+    // for (var i = 0; i < particleLimit; i++) {
+    for (var i = 0; i < freqByteData.length; i++) {
       // emmit from 20px radius of center
       var px = Math.round(Math.random()*emmit_radius)+h_middle,
           py = Math.round(Math.random()*emmit_radius)+v_middle,
-          pr = freqByteData[i];
+          pr = freqByteData[i]/2;
+
+      // TESTING
+      px = Math.round((px/20) * i);// + Math.round((h_middle/2));
+
+      // console.log(pr);
+      // END TESTING
 
       fill = ctx.createRadialGradient(px, py, 0, px, py, pr);
       // fill.addColorStop(0, "white");
@@ -232,6 +239,7 @@ app.visualizer = (function() {
         app.particle.createParticle(
           ctx,
           {
+            // x: px,
             x: px,
             y: py,
             base_radius: pr
