@@ -20,7 +20,8 @@ app.visualizer = (function() {
       colorIndex,
       r, g, b, a,
       bkgd_color = 'rgba(0,0,0)',
-      transition; // boolean
+      transition,
+      decrease; // boolean
   // "attributes"
   var height,
       width,
@@ -50,6 +51,7 @@ app.visualizer = (function() {
     a = 1; colorCodes.push(a);
     ctx.fillStyle = color;
     transition = false;
+    decrease = false;
 
     // visualizer should take up the whole space
     window.onresize = resizeCanvas;
@@ -93,37 +95,57 @@ app.visualizer = (function() {
   function transitionColor(_alpha) {
     // increments its way up the color scale
     // - starts at the current color
+    // var decrease = false; // boolean
 
-    // increment the value
     var val = parseInt(colorCodes[colorIndex], 10);
-    val++;
 
-    // when it reaches 255
-    // switch to the next index
-    if (val >= 255) {
-      val = 255;
-      console.log('time to switch');
-      colorIndex++;
-    //   else {
-      // colorIndex++;
-      // if (colorIndex > 2) colorIndex = 0;
+    // increment the value    
+    if (decrease) {
+      val--;
 
-    //     console.log(colorIndex);
+      if (val <= 0) {
+        if (colorIndex === 3) colorIndex = 2;
+        val = 0;
+        colorCodes[colorIndex] = String(val);
+        colorIndex--;
+        if (colorIndex < 0 && val === 0) {
+          colorIndex = 0;
+          decrease = false;
+        }
+      } else {
+        colorCodes[colorIndex] = String(val);
+      }
+    } else {
+      val++;
+      // when it reaches 255
+      // switch to the next index
+      if (val >= 255) {
+        if (colorIndex <= 0) {
+          colorIndex = 0;
+         }
+        val = 255;
+        colorCodes[colorIndex] = String(val);
+        colorIndex++;
+        if (colorIndex > 2 && val === 255) {
+          colorIndex = 2;
+          decrease = true;
+        }
+        // if (colorIndex > 2 && val === 255) decrease = true;
+      } else {
+        colorCodes[colorIndex] = String(val);
+      }
     }
-    // } else {
-    // }
-    // console.log(val);
-    //   // when all are 255
-    //   // start going in reverse --
 
-    // for (var i = 0; i < colorCodes.length - 1; i++) {
-    // }
-    colorCodes[colorIndex] = String(val);
-    // a = _alpha;
-    // console.log('rgba('+colorCodes.join()+')');
-    console.log(val+' | '+colorIndex);
     return 'rgba('+colorCodes.join()+')';
   }
+
+
+
+
+
+
+
+
 
 
 
@@ -229,64 +251,6 @@ app.visualizer = (function() {
   }
 
 
-  function particles2() {
-    // code
-    console.log('particles2');
-
-    // var particles = [];
-    // var emmit_radius = 10,
-    //     particleLimit = 10,
-    //     fill;
-
-    // analyser.getByteFrequencyData(freqByteData);
-
-    // for (var i = 0; i < particleLimit; i++) {
-    //   // emmit from 20px radius of center
-    //   var px = Math.round(Math.random()*emmit_radius)+h_middle,
-    //       py = Math.round(Math.random()*emmit_radius)+v_middle,
-    //       pr = freqByteData[i]/2;
-
-    //   fill = ctx.createRadialGradient(px, py, 0, px, py, pr);
-    //   fill.addColorStop(0, "white");
-    //   fill.addColorStop(Math.random()*0.1 +0.3, "white");
-    //   fill.addColorStop(0.4, color);
-    //   fill.addColorStop(1, "black");
-
-    //   particles.push(
-    //     app.particle.createParticle(
-    //       ctx,
-    //       {
-    //         x: px,
-    //         y: py,
-    //         base_radius: pr
-    //       },
-    //       color
-    //     ) //end makeParticle()
-    //   ); //end partice push
-    // }
-
-    // drawBackground();
-
-    // // draw particles
-    // // ctx.globalCompositeOperation = "lighter";
-    // particles.forEach(function(p){
-    //   p.update();
-    //   p.draw(ctx);
-    // });
-  }
-
-
-      // _Y = (window.innerHeight/2) + (synth.getFrequencyVal()/5) * Math.sin(_X/50);
-
-
-
-
-
-
-
-
-
-
 // ===================================
   Visualizer.prototype.changeColor = function(_color) {
     transition = false;
@@ -305,8 +269,9 @@ app.visualizer = (function() {
     colorCodes[1] = colors[1];
     colorCodes[2] = colors[2];
     colorCodes[3] = 1;
-    // console.log('updated color info:');
-    // console.log(colorCodes.join());
+  };
+  Visualizer.prototype.getColor = function() {
+    return color;
   };
   Visualizer.prototype.changeBackground = function(_bkgd_color) {
     bkgd_color = _bkgd_color;

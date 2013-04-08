@@ -8,6 +8,9 @@ app.main = (function(){
 	var viz;
 	var viz_settings; // the "visualizer" object (holds settings)
 	var body;
+  var ss = document.styleSheets[0];
+  var rules = ss.cssRules || ss.rules;
+  var played_CSS = null;
 
 	function init (){
 		console.log("initialized!");
@@ -15,7 +18,6 @@ app.main = (function(){
 		body.className += 'black';
 
 		// SYNTH SETUP
-		console.log("setup UI");
 		var wavetypeControl = document.querySelector("#wavetypeSelect");
 		var filterControl = document.querySelector("#filter-type");
 		var delayControl = document.querySelector("#delay");
@@ -55,6 +57,16 @@ app.main = (function(){
 		// create Visualizer | pass in: DOM <canvas> reference, synth object, settings
 		viz = new app.visualizer.Visualizer(document.getElementById('visualizer'), synth, viz_settings);
 
+
+    for (var l = 0; l < rules.length; l++) {
+      var rule = rules[l];
+      if (/played/i.test(rule.selectorText)) {
+        played_CSS = rule;
+        break;
+      }
+    }
+
+
 		// the good stuff
 		loop();
 	}
@@ -74,12 +86,16 @@ app.main = (function(){
 	function update(dt){
 		synth.update();
 		viz.update();
+		played_CSS.style.color = viz.getColor();
 	}
 
 	function changeColor(e) {
 		// change <canvas> colors
 		viz_settings.color = e.target.value;
 		viz.changeColor(viz_settings.color);
+
+		// change the CSS rule color
+    played_CSS.style.color = viz.getColor();
 	}
 
 	function changeBackgroundColor(e) {

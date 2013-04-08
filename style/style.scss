@@ -3,11 +3,11 @@
 
 @font-face {
     font-family: 'aa_qwertz-tastenregular';
-    src: url('aaqwertz-tasten-webfont.eot');
-    src: url('aaqwertz-tasten-webfont.eot?#iefix') format('embedded-opentype'),
-         url('aaqwertz-tasten-webfont.woff') format('woff'),
-         url('aaqwertz-tasten-webfont.ttf') format('truetype'),
-         url('aaqwertz-tasten-webfont.svg#aa_qwertz-tastenregular') format('svg');
+    src: url('../fonts/aaqwertz-tasten-webfont.eot');
+    src: url('../fonts/aaqwertz-tasten-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/aaqwertz-tasten-webfont.woff') format('woff'),
+         url('../fonts/aaqwertz-tasten-webfont.ttf') format('truetype'),
+         url('../fonts/aaqwertz-tasten-webfont.svg#aa_qwertz-tastenregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -119,16 +119,18 @@ footer {
 	@include transition(color, 0.3s);
 }
 .keyboard {
-	font-family: "aa QWERTZ-Tasten", "Comic Sans";
+	font-family: 'aa_qwertz-tastenregular', "Comic Sans";
 	font-size: 2em;
 	line-height: 1.2;
+	letter-spacing: -0.2em;
 	margin: 0;
-	span:nth-child(1) { margin-right: 0.5em; }
-	span:nth-child(2) { margin: 0 0.875em 0 0.5em; }
-	span:nth-child(3) { margin-right: 0.5em; }
+	div {display:inline-block;}
+	div:nth-child(1) { margin-right: 0.5em; }
+	div:nth-child(2) { margin: 0 0.875em 0 0.5em; }
+	div:nth-child(3) { margin-right: 0.5em; }
 }
-.middle {
-	// margin: 0 1em;
+.played {
+	color: #f00;
 }
 
 
