@@ -1,5 +1,19 @@
 @import "normalize";
 
+
+@font-face {
+    font-family: 'aa_qwertz-tastenregular';
+    src: url('aaqwertz-tasten-webfont.eot');
+    src: url('aaqwertz-tasten-webfont.eot?#iefix') format('embedded-opentype'),
+         url('aaqwertz-tasten-webfont.woff') format('woff'),
+         url('aaqwertz-tasten-webfont.ttf') format('truetype'),
+         url('aaqwertz-tasten-webfont.svg#aa_qwertz-tastenregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
 // /* Traditional scale */
 // 6  = 0.375em
 // 7  = 0.4375em

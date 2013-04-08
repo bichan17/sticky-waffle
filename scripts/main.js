@@ -19,7 +19,7 @@ app.main = (function(){
 		var wavetypeControl = document.querySelector("#wavetypeSelect");
 		var filterControl = document.querySelector("#filter-type");
 		var delayControl = document.querySelector("#delay");
-		console.log(delayControl);
+		// console.log(delayControl);
 		var feedbackControl = document.querySelector("#feedback");
 
 
