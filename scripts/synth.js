@@ -285,7 +285,13 @@ app.synth = (function() {
 
 		//change frequency
 		osc.frequency.value = fq;
-		osc.start(0);
+		if (osc.start) {
+			osc.start(0);
+
+		}else{
+			osc.noteOn(0);
+		}
+		
 
 		//return the osc so we can stop it later
 		return osc;
@@ -294,7 +300,11 @@ app.synth = (function() {
 	function endSound(osc){
 		//destroy oscillator
 		if(osc){
-			osc.stop(0);
+			if(osc.stop){
+				osc.stop(0);
+			}else{
+				osc.noteOff(0);
+			}
 		}
 	}
 
