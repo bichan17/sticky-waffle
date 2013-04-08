@@ -11,8 +11,8 @@ app.main = (function(){
 
 	function init (){
 		console.log("initialized!");
-		// console.log(app.synth.Synth);
 		body = document.getElementsByTagName('body')[0];
+		body.className += 'black';
 
 		// SYNTH SETUP
 		console.log("setup UI");
@@ -25,15 +25,25 @@ app.main = (function(){
 
 		synth = new app.synth.Synth(wavetypeControl, filterControl, delayControl, feedbackControl);
 
+
+
 		// VISUALIZER SETUP
 		// ----------------------------
 		viz_settings = {}; // 1. create the viz_settings object
 		// 2. set up UI
-		var colorButtons = document.getElementById('bkgd').getElementsByTagName('input');
+		// visualizer colors
+		var colorButtons = document.getElementById('color').getElementsByTagName('input');
 		for (var i = 0; i < colorButtons.length; i++) {
 			colorButtons[i].addEventListener("change", changeColor, false);
 			// get the default checked value
 			if (colorButtons[i].checked){viz_settings.color = colorButtons[i].value;}
+		}
+		// background colors
+		var bkgdColorButtons = document.getElementById('bkgd').getElementsByTagName('input');
+		for (var k = 0; k < bkgdColorButtons.length; k++) {
+			bkgdColorButtons[k].addEventListener("change", changeBackgroundColor, false);
+			// get the default checked value
+			if (bkgdColorButtons[k].checked){viz_settings.bkgd_color = bkgdColorButtons[k].value;}
 		}
 		// add event listeners to Mode buttons
 		var modeButtons = document.getElementById('mode').getElementsByTagName('input');
@@ -44,12 +54,8 @@ app.main = (function(){
 		}
 		// create Visualizer | pass in: DOM <canvas> reference, synth object, settings
 		viz = new app.visualizer.Visualizer(document.getElementById('visualizer'), synth, viz_settings);
-		// finish UI set up
-		// ----------------------------
-		body.className += 'black';
 
-		// var element = document.getElementById('container');
-
+		// the good stuff
 		loop();
 	}
 
@@ -67,22 +73,25 @@ app.main = (function(){
 
 	function update(dt){
 		synth.update();
-		// console.log(synth);
-		// console.log(viz);
 		viz.update();
-
-
 	}
 
 	function changeColor(e) {
 		// change <canvas> colors
 		viz_settings.color = e.target.value;
-		viz.changeBackground(viz_settings.color);
+		viz.changeColor(viz_settings.color);
+	}
+
+	function changeBackgroundColor(e) {
+		// change <canvas> colors
+		viz_settings.bkgd_color = e.target.value;
+		viz.changeBackground(viz_settings.bkgd_color);
 
 		// change DOM colors
 		body.className = ''; // clear classNames
-		if (viz_settings.color === '#000') body.className += 'black';
-		else if (viz_settings.color === '#fff') body.className += 'white';
+		if (viz_settings.bkgd_color === 'rgb(0,0,0)') body.className += 'black';
+		else if (viz_settings.bkgd_color === 'rgb(255,255,255)') body.className += 'white';
+		else body.className += 'black';
 	}
 
 	function changeVizMode(e) {

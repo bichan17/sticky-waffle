@@ -104,6 +104,19 @@ footer {
 	font-size: 0.875em;
 	@include transition(color, 0.3s);
 }
+.keyboard {
+	font-family: "aa QWERTZ-Tasten", "Comic Sans";
+	font-size: 2em;
+	line-height: 1.2;
+	margin: 0;
+	span:nth-child(1) { margin-right: 0.5em; }
+	span:nth-child(2) { margin: 0 0.875em 0 0.5em; }
+	span:nth-child(3) { margin-right: 0.5em; }
+}
+.middle {
+	// margin: 0 1em;
+}
+
 
 // interface styles
 #synth { float: left; }

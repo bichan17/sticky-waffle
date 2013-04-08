@@ -160,6 +160,22 @@ footer {
   transition: color 0.3s ease-out;
 }
 
+.keyboard {
+  font-family: "aa QWERTZ-Tasten", "Comic Sans";
+  font-size: 2em;
+  line-height: 1.2;
+  margin: 0;
+}
+.keyboard span:nth-child(1) {
+  margin-right: 0.5em;
+}
+.keyboard span:nth-child(2) {
+  margin: 0 0.875em 0 0.5em;
+}
+.keyboard span:nth-child(3) {
+  margin-right: 0.5em;
+}
+
 #synth {
   float: left;
 }
