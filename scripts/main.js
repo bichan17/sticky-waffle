@@ -57,7 +57,7 @@ app.main = (function(){
 
 
 		// this was found on stackoverflow
-		// it givers us a referenece to the CSS style rule we will constantly change
+		// it gives us a referenece to the CSS style rule we will constantly change
     for (var l = 0; l < rules.length; l++) {
       var rule = rules[l]; //local var
       // regex test to find correct rule

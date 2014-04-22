@@ -6,5 +6,6 @@ copied code from one of our classmates and gonna take a look at how he got his v
 
 known issues:
 
-bar graph viz shows up too far to the left 
+bar graph viz shows up too far to the left, 
+
 some key combinations cannot be played together

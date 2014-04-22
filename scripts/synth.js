@@ -144,12 +144,13 @@ app.synth = (function() {
 		this.filterControl = filterControl;
 		this.delayControl = delayControl;
 		this.feedbackControl = feedbackControl;
+		this.proceed= true;
 
 		//default values for synth
 		this.wavetype = 0;
 		this.filter = 0;
-		this.delay = 0.500;
-		this.feedback = 0.2;
+		this.delay = 0.200;
+		this.feedback = 0;
 
 		//holds all the node objects used by synth
 		this.nodes = {};
@@ -160,50 +161,66 @@ app.synth = (function() {
 
 	//set up the synth object
 	Synth.prototype.setUp = function(wavetypeControl, filterControl, delayControl, feedbackControl){
+
+		//-----------------------------
+    // Check Web Audio API Support
+    //-----------------------------
+    try {
+        // More info at http://caniuse.com/#feat=audio-api
+        window.AudioContext = window.AudioContext || window.webkitAudioContext;
+        this.audioContext = new window.AudioContext();
+    } catch(e) {
+        this.proceed = false;
+        alert('Web Audio API not supported in this browser.');
+    }
+
+    if (this.proceed) {
 		
-		//initialize object variables
-		this.audioContext = new webkitAudioContext();
+			//initialize object variables
+			console.log("setup Synth");
 
-		this.nodes.filter = this.audioContext.createBiquadFilter();
-		this.nodes.volume = this.audioContext.createGainNode();
-		this.nodes.delay = this.audioContext.createDelayNode();
-		this.nodes.feedbackGain = this.audioContext.createGainNode();
-
-
-
-
-		this.audioAnalyser = this.audioContext.createAnalyser();
-		this.audioAnalyser.smoothingTimeConstant = 0.85;
+			this.nodes.filter = this.audioContext.createBiquadFilter();
+			this.nodes.volume = this.audioContext.createGain();
+			this.nodes.delay = this.audioContext.createDelay();
+			this.nodes.feedbackGain = this.audioContext.createGain();
 
 
 
-		//add event listeners
-		var that = this;
 
-		wavetypeControl.addEventListener("change", function(e){
-			that.wavetype = e.target.value;
-		});
-		filterControl.addEventListener("change", function(e){
-			that.filter = e.target.value;
-		});
-		delayControl.addEventListener("change", function(e){
-			that.delay = e.target.value;
-		});
-		feedbackControl.addEventListener("change", function(e){
-			that.feedback = e.target.value;
-		});
-		window.addEventListener("keydown", function(e){
-			keydown[e.keyCode] = true;
-		});
-
-		window.addEventListener("keyup", function(e){
-			keydown[e.keyCode] = false;
-		});
+			this.audioAnalyser = this.audioContext.createAnalyser();
+			this.audioAnalyser.smoothingTimeConstant = 0.85;
 
 
-		//add DOM element of each key to their objects
-		for (var i = 0; i < oscArray.length; i++) {
-			oscArray[i].keyDisplay = document.getElementById(oscArray[i].key);
+
+			//add event listeners
+			var that = this;
+
+			wavetypeControl.addEventListener("change", function(e){
+				that.wavetype = e.target.value;
+			});
+			filterControl.addEventListener("change", function(e){
+				that.filter = e.target.value;
+			});
+			delayControl.addEventListener("change", function(e){
+				that.delay = e.target.value;
+			});
+			feedbackControl.addEventListener("change", function(e){
+				that.feedback = e.target.value;
+			});
+			window.addEventListener("keydown", function(e){
+				e.preventDefault();
+				keydown[e.keyCode] = true;
+			});
+
+			window.addEventListener("keyup", function(e){
+				keydown[e.keyCode] = false;
+			});
+
+
+			//add DOM element of each key to their objects
+			for (var i = 0; i < oscArray.length; i++) {
+				oscArray[i].keyDisplay = document.getElementById(oscArray[i].key);
+			}
 		}
 	};
 
