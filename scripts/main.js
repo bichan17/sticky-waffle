@@ -16,11 +16,10 @@ app.main = (function(){
 		// SYNTH SETUP
 		// ----------------------------
 		var wavetypeControl = document.querySelector("#wavetypeSelect");
-		var filterControl = document.querySelector("#filter-type");
 		var delayControl = document.querySelector("#delay");
 		var feedbackControl = document.querySelector("#feedback");
 
-		synth = new app.synth.Synth(wavetypeControl, filterControl, delayControl, feedbackControl);
+		synth = new app.synth.Synth(wavetypeControl, delayControl, feedbackControl);
 
 
 		// VISUALIZER SETUP
@@ -92,6 +91,10 @@ app.main = (function(){
 
 	function changeColor(e) {
 		// change <canvas> colors
+
+		//change to:
+		// viz_settings.color = myColor;
+		
 		viz_settings.color = e.target.value;
 		viz.changeColor(viz_settings.color);
 	}

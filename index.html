@@ -27,29 +27,17 @@
 						<option value="3">Triangle wave</option>
 					</select>
 
-				<h2>Filter</h2>
-		        <select id="filter-type">
-		            <option value="0" selected>Lowpass</option>
-		            <option value="1">Highpass</option>
-		            <option value="2">Bandpass</option>
-		            <option value="3">Lowshelf</option>
-		            <option value="4">Highshelf</option>
-		            <option value="5">Peaking</option>
-		            <option value="6">Notch</option>
-		            <option value="7">All Pass</option>
-		        </select>
+	        <div class="delay-time">
+	            <h2>Delay Time</h2>
+	            <input id="delay" type="range" min="0" max="0.999" step="0.001" value="0.200" />
+	            <output id="delay-output" for="delay"></output>
+	        </div>
 
-		        <div class="delay-time">
-		            <h2>Delay Time</h2>
-		            <input id="delay" type="range" min="0" max="0.999" step="0.001" value="0.200" />
-		            <output id="delay-output" for="delay"></output>
-		        </div>
-
-		        <div class="delay-feedback">
-		            <h2>Delay Volume</h2>
-		            <input id="feedback" type="range" min="0" max="0.09" step="0.01" value="0" />
-		            <output id="feedback-output" for="feedback"></output>
-		        </div>
+	        <div class="delay-feedback">
+	            <h2>Delay Volume</h2>
+	            <input id="feedback" type="range" min="0" max="0.09" step="0.01" value="0" />
+	            <output id="feedback-output" for="feedback"></output>
+	        </div>
 			</div>
 
 			<!-- visualizer controls -->

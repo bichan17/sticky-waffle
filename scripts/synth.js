@@ -139,28 +139,27 @@ app.synth = (function() {
 
 
 	//synth constructor, it gets passed the DOM elements of the controls from main
-	function Synth(wavetypeControl, filterControl, delayControl, feedbackControl){
+	function Synth(wavetypeControl, delayControl, feedbackControl){
 		this.wavetypeControl = wavetypeControl;
-		this.filterControl = filterControl;
 		this.delayControl = delayControl;
 		this.feedbackControl = feedbackControl;
 		this.proceed= true;
 
 		//default values for synth
 		this.wavetype = 0;
-		this.filter = 0;
+		this.filter = 7; //all pass filter
 		this.delay = 0.200;
 		this.feedback = 0;
 
 		//holds all the node objects used by synth
 		this.nodes = {};
 
-		this.setUp(this.wavetypeControl, this.filterControl, this.delayControl, this.feedbackControl);
+		this.setUp(this.wavetypeControl, this.delayControl, this.feedbackControl);
 	}
 
 
 	//set up the synth object
-	Synth.prototype.setUp = function(wavetypeControl, filterControl, delayControl, feedbackControl){
+	Synth.prototype.setUp = function(wavetypeControl, delayControl, feedbackControl){
 
 		//-----------------------------
     // Check Web Audio API Support
@@ -171,7 +170,7 @@ app.synth = (function() {
         this.audioContext = new window.AudioContext();
     } catch(e) {
         this.proceed = false;
-        alert('Web Audio API not supported in this browser.');
+        alert('Web Audio API not supported in this browser :(');
     }
 
     if (this.proceed) {
@@ -197,9 +196,6 @@ app.synth = (function() {
 
 			wavetypeControl.addEventListener("change", function(e){
 				that.wavetype = e.target.value;
-			});
-			filterControl.addEventListener("change", function(e){
-				that.filter = e.target.value;
 			});
 			delayControl.addEventListener("change", function(e){
 				that.delay = e.target.value;
@@ -241,7 +237,7 @@ app.synth = (function() {
 			}else{
 				//the key is not pressed
 
-				//if A was just making noise, turn it off
+				//if a node was just making noise, turn it off
 				if(oscArray[i].sounding == true){
 					//pass web audio oscillator to the endSound function
 					endSound(oscArray[i].oscillator);
@@ -274,7 +270,7 @@ app.synth = (function() {
 		var source = this.audioContext.createOscillator();
 
 		source.type = parseInt(this.wavetype);
-		this.nodes.filter.type = parseInt(this.filter);
+		this.nodes.filter.type = 7; //allpass filter
 		this.nodes.feedbackGain.gain.value = this.feedback;
 		this.nodes.delay.delayTime.value = this.delay;
 		this.nodes.volume.gain.value = 0.2;
