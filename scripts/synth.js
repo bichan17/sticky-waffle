@@ -140,10 +140,8 @@ app.synth = (function() {
 
 	//synth constructor, it gets passed the DOM elements of the controls from main
 	function Synth(wavetypeControl, delayControl, feedbackControl){
-		this.wavetypeControl = wavetypeControl;
-		this.delayControl = delayControl;
-		this.feedbackControl = feedbackControl;
-		this.proceed= true;
+
+		this.proceed = true;
 
 		//default values for synth
 		this.wavetype = 0;
@@ -154,20 +152,13 @@ app.synth = (function() {
 		//holds all the node objects used by synth
 		this.nodes = {};
 
-		this.setUp(this.wavetypeControl, this.delayControl, this.feedbackControl);
-	}
-
-
-	//set up the synth object
-	Synth.prototype.setUp = function(wavetypeControl, delayControl, feedbackControl){
-
 		//-----------------------------
     // Check Web Audio API Support
     //-----------------------------
     try {
         // More info at http://caniuse.com/#feat=audio-api
         window.AudioContext = window.AudioContext || window.webkitAudioContext;
-        this.audioContext = new window.AudioContext();
+        this.audioContext = new window.AudioContext(); //declare audio context
     } catch(e) {
         this.proceed = false;
         alert('Web Audio API not supported in this browser :(');
@@ -212,13 +203,12 @@ app.synth = (function() {
 				keydown[e.keyCode] = false;
 			});
 
-
 			//add DOM element of each key to their objects
 			for (var i = 0; i < oscArray.length; i++) {
 				oscArray[i].keyDisplay = document.getElementById(oscArray[i].key);
 			}
 		}
-	};
+	}
 
 	Synth.prototype.update = function(){
 
@@ -245,7 +235,7 @@ app.synth = (function() {
 					//q is no longer making sound, so set sounding to false
 					oscArray[i].sounding = false;
 				}
-			}
+			}	
 		} // end for loop
 
 	} // end update

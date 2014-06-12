@@ -20,55 +20,25 @@
 			<!-- the synth -->
 			<div id="synth">
 				<label for="wavetypeSelect">Wave type</label>
-					<select id="wavetypeSelect">
-						<option value="0">Sine wave</option>
-						<option value="1">Square wave</option>
-						<option value="2">Sawtooth wave</option>
-						<option value="3">Triangle wave</option>
-					</select>
+				<select id="wavetypeSelect">
+					<option value="0">Sine wave</option>
+					<option value="1">Square wave</option>
+					<option value="2">Sawtooth wave</option>
+					<option value="3">Triangle wave</option>
+				</select>
 
-	        <div class="delay-time">
-	            <h2>Delay Time</h2>
-	            <input id="delay" type="range" min="0" max="0.999" step="0.001" value="0.200" />
-	            <output id="delay-output" for="delay"></output>
-	        </div>
+        <div class="delay-time">
+          <h2>Delay Time</h2>
+          <input id="delay" type="range" min="0" max="0.999" step="0.001" value="0.200" />
+          <output id="delay-output" for="delay"></output>
+        </div>
 
-	        <div class="delay-feedback">
-	            <h2>Delay Volume</h2>
-	            <input id="feedback" type="range" min="0" max="0.09" step="0.01" value="0" />
-	            <output id="feedback-output" for="feedback"></output>
-	        </div>
+        <div class="delay-feedback">
+          <h2>Delay Volume</h2>
+          <input id="feedback" type="range" min="0" max="0.09" step="0.01" value="0" />
+          <output id="feedback-output" for="feedback"></output>
+        </div>
 			</div>
-
-			<!-- visualizer controls -->
-			<dl id="visualizer_controls">
-				<dt>Color:</dt>
-				<dd>
-					<ul id="color" class="inline">
-						<li><label><input type="radio" name="color" value="rgb(185,45,25)" checked>Red</label></li>
-						<li><label><input type="radio" name="color" value="rgb(255,255,255)">White</label></li>
-						<li><label><input type="radio" name="color" value="rgb(0,0,0)">Black</label></li>
-						<li><label><input type="radio" name="color" value="transition">Transition</label></li>
-						<br>
-						<li><label><input type="radio" name="color" value="random">Random</label></li>
-					</ul>
-				</dd>
-				<dt>Background Color:</dt>
-				<dd>
-					<ul id="bkgd" class="inline">
-						<li><label><input type="radio" name="bkgd_color" value="rgb(0,0,0)" checked>Black</label></li>
-						<li><label><input type="radio" name="bkgd_color" value="rgb(255,255,255)">White</label></li>
-					</ul>
-				</dd>
-				<dt>Visualizer Mode:</dt>
-				<dd>
-					<ul id="mode" class="inline">
-						<li><label><input type="radio" name="mode" value="one" checked>Bars</label></li>
-						<li><label><input type="radio" name="mode" value="two">Particles</label></li>
-						<li><label><input type="radio" name="mode" value="three">Circles</label></li>
-					</ul>
-				</dd>
-			</dl>
 		</section>
 		<!-- /end interface -->
 
