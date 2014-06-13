@@ -7,14 +7,14 @@ app.visualizer = (function() {
  */
   //visualizer constructor
   function Visualizer(_canvas, _synth, _settings) {
-    var height,
-      width,
-      top,
-      h_middle, // horizontal
-      v_middle, // vertical
-      bottom,
-      left,
-      right;
+    var height;
+    var width;
+    var top;
+    var h_middle; // horizontal
+    var v_middle; // vertical
+    var bottom;
+    var left;
+    var right;
     // objects/settings
     var synth = _synth;
     var canvas = _canvas;
@@ -47,7 +47,7 @@ app.visualizer = (function() {
       //draw bg
       ctx.fillStyle = this.bgColor;
       ctx.fillRect(0, 0, width, height);
-      
+
       ctx.fillStyle = this.color;
       analyser.getByteFrequencyData(freqByteData); // this what updates the area with new info
       barCount = Math.round(canvas.width / bar_width);
