@@ -46,11 +46,12 @@ app.main = (function(){
 
 		synth = new app.synth.Synth();
 
-
+		//detect clicks on wavetype buttons, set synth
 		waves.each(function(index){
-				$(this).click(function(){
-					synth.setWaveType($(this).data("type"));
-				});
+			$(this).on("click", function(){
+				console.log(synth);
+				synth.setWaveType($(this).data("type"));
+			});
 		});
 
 

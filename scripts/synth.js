@@ -32,7 +32,7 @@ app.synth = (function() {
 		var NUM_KEYS = Object.keys(KEYBOARD).length - 1;
 
 		//default values for synth
-		this.wavetype = 0; //start on sine
+		this.wavetype = "sine"; //start on sine
 		this.delay = 0.200;
 		this.feedback = 0;
 		this.filter = 7; //all pass filter
@@ -64,9 +64,9 @@ app.synth = (function() {
 			this.audioAnalyser.smoothingTimeConstant = 0.85;
 
 
-			this.setWaveType = function(type){
-				this.wavetype = type;
-			}
+			// this.setWaveType = function(type){
+			// 	this.wavetype = type;
+			// }
 			this.setDelay = function(delay){
 				this.delay = delay;
 			}
@@ -112,32 +112,40 @@ app.synth = (function() {
 				this.notes[i].keyDisplay = document.getElementById(this.notes[i].key);
 			}
 
-			//route sounds to apply the node settings
-			this.routeSounds = function(){
-				var source = this.audioContext.createOscillator();
-
-				source.type = parseInt(this.wavetype);
-				nodes.filter.type = this.filter; //allpass filter
-				nodes.feedbackGain.gain.value = this.feedback;
-				nodes.delay.delayTime.value = this.delay;
-				nodes.volume.gain.value = 0.2;
-
-				source.connect(nodes.filter);
-				nodes.filter.connect(nodes.volume);
-				nodes.filter.connect(nodes.delay);
-				nodes.delay.connect(nodes.feedbackGain);
-				nodes.feedbackGain.connect(nodes.volume);
-				nodes.feedbackGain.connect(nodes.delay);
-				nodes.volume.connect(this.audioAnalyser);
-				this.audioAnalyser.connect(this.audioContext.destination);
-
-				return source;
-
-
-			}
+			
 		} //end proceed
 	}//end constructor
 
+	Synth.prototype.setWaveType = function(type){
+
+		this.wavetype = type;
+	}
+	//route sounds to apply the node settings
+	Synth.prototype.routeSounds = function(){
+		var source = this.audioContext.createOscillator();
+
+		// console.log(this.wavetype);
+
+		source.type = this.wavetype;
+
+		nodes.filter.type = this.filter; //allpass filter
+		nodes.feedbackGain.gain.value = this.feedback;
+		nodes.delay.delayTime.value = this.delay;
+		nodes.volume.gain.value = 0.2;
+
+		source.connect(nodes.filter);
+		nodes.filter.connect(nodes.volume);
+		nodes.filter.connect(nodes.delay);
+		nodes.delay.connect(nodes.feedbackGain);
+		nodes.feedbackGain.connect(nodes.volume);
+		nodes.feedbackGain.connect(nodes.delay);
+		nodes.volume.connect(this.audioAnalyser);
+		this.audioAnalyser.connect(this.audioContext.destination);
+
+		return source;
+
+
+	}
 	Synth.prototype.update = function(){
 
 		//check if a key is pressed, make a sound
