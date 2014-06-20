@@ -25,7 +25,10 @@ app.visualizer = (function() {
     ctx.fillStyle = this.color;
 
     // visualizer should take up the whole space
-    window.onresize = resizeCanvas();
+    window.onresize = function(){
+      resizeCanvas();
+    };
+    resizeCanvas();
     function resizeCanvas(e) {
       height = canvas.height = window.innerHeight;
       width = canvas.width = window.innerWidth;

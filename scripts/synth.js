@@ -32,13 +32,13 @@ app.synth = (function() {
 		var NUM_KEYS = Object.keys(KEYBOARD).length - 1;
 
 		//default values for synth
-		this.wavetype = 0;
-		this.filter = 7; //all pass filter
-		this.delay = 0.200;
-		this.feedback = 0;
+		var wavetype = 0;
+		var filter = 7; //all pass filter
+		var delay = 0.200;
+		var feedback = 0;
 
 		//holds all the node objects used by synth
-		this.nodes = {};
+		nodes = {};
 
 		//-----------------------------
     // Check Web Audio API Support
@@ -57,10 +57,10 @@ app.synth = (function() {
 			//initialize object variables
 			console.log("setup Synth");
 
-			this.nodes.filter = this.audioContext.createBiquadFilter();
-			this.nodes.volume = this.audioContext.createGain();
-			this.nodes.delay = this.audioContext.createDelay();
-			this.nodes.feedbackGain = this.audioContext.createGain();
+			nodes.filter = this.audioContext.createBiquadFilter();
+			nodes.volume = this.audioContext.createGain();
+			nodes.delay = this.audioContext.createDelay();
+			nodes.feedbackGain = this.audioContext.createGain();
 			this.audioAnalyser = this.audioContext.createAnalyser();
 			this.audioAnalyser.smoothingTimeConstant = 0.85;
 
@@ -70,13 +70,13 @@ app.synth = (function() {
 			var that = this;
 
 			wavetypeControl.addEventListener("change", function(e){
-				that.wavetype = e.target.value;
+				wavetype = e.target.value;
 			});
 			delayControl.addEventListener("change", function(e){
-				that.delay = e.target.value;
+				delay = e.target.value;
 			});
 			feedbackControl.addEventListener("change", function(e){
-				that.feedback = e.target.value;
+				feedback = e.target.value;
 			});
 			window.addEventListener("keydown", function(e){
 				e.preventDefault();
@@ -111,8 +111,32 @@ app.synth = (function() {
 			for (var i = 0; i < this.notes.length; i++) {
 				this.notes[i].keyDisplay = document.getElementById(this.notes[i].key);
 			}
-		}
-	}
+
+			//route sounds to apply the node settings
+			this.routeSounds = function(){
+				var source = this.audioContext.createOscillator();
+
+				source.type = parseInt(wavetype);
+				nodes.filter.type = 7; //allpass filter
+				nodes.feedbackGain.gain.value = feedback;
+				nodes.delay.delayTime.value = delay;
+				nodes.volume.gain.value = 0.2;
+
+				source.connect(nodes.filter);
+				nodes.filter.connect(nodes.volume);
+				nodes.filter.connect(nodes.delay);
+				nodes.delay.connect(nodes.feedbackGain);
+				nodes.feedbackGain.connect(nodes.volume);
+				nodes.feedbackGain.connect(nodes.delay);
+				nodes.volume.connect(this.audioAnalyser);
+				this.audioAnalyser.connect(this.audioContext.destination);
+
+				return source;
+
+
+			}
+		} //end proceed
+	}//end constructor
 
 	Synth.prototype.update = function(){
 
@@ -157,37 +181,13 @@ app.synth = (function() {
 		return fqArray;
 	}
 
-	//route sounds to apply the node settings
-	Synth.prototype.routeSounds = function(){
-		var doc = document;
 
-		var source = this.audioContext.createOscillator();
-
-		source.type = parseInt(this.wavetype);
-		this.nodes.filter.type = 7; //allpass filter
-		this.nodes.feedbackGain.gain.value = this.feedback;
-		this.nodes.delay.delayTime.value = this.delay;
-		this.nodes.volume.gain.value = 0.2;
-
-		source.connect(this.nodes.filter);
-		this.nodes.filter.connect(this.nodes.volume);
-		this.nodes.filter.connect(this.nodes.delay);
-		this.nodes.delay.connect(this.nodes.feedbackGain);
-		this.nodes.feedbackGain.connect(this.nodes.volume);
-		this.nodes.feedbackGain.connect(this.nodes.delay);
-		this.nodes.volume.connect(this.audioAnalyser);
-		this.audioAnalyser.connect(this.audioContext.destination);
-
-		return source;
-
-
-	}
 
 
 	//makes the sound
 	Synth.prototype.makeSound = function(fq){
 
-		//route oscillator through nodes
+		//route oscillator thru nodes
 		var osc = this.routeSounds();
 
 		//change frequency

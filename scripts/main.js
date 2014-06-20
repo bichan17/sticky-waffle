@@ -9,7 +9,7 @@ app.main = (function(){
   var played_CSS = null;
 
 	function init (){
-		console.log("initialized!");
+		console.log(ss);
 		body = document.getElementsByTagName('body')[0];
 		body.className += 'black';
 
