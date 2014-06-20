@@ -1,127 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<title>Sticky Waffle</title>
-	<link rel="stylesheet" type="text/css" href="style/style.css" />
-	<script type="text/javascript" src="scripts/modernizr.js"></script>
-	<script type="text/javascript" src="scripts/loader.js"></script>
-</head>
-<body>
-	<header>
-		<h1>Project: Sticky Waffle</h1>
-		<a href="about.html">About this project</a>
-	</header>
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundation</title>
+    <link rel="stylesheet" href="stylesheets/app.css" />
+    <!-- // <script src="bower_components/modernizr/modernizr.js"></script> -->
+    <script type="text/javascript" src="scripts/modernizr.js"></script>
+    <script type="text/javascript" src="scripts/loader.js"></script>
+  </head>
+  <body>
+    <footer>
+      <div class="row">
+        <div class="small-12 columns panel">
+          <h4>About, links, etc.</h4>
+        </div>
+      </div>
+    </footer>
+    <div id="content">
+      <canvas id="visualizer">Get a real browser!</canvas>
+      <div id="keys" class="row">
+        <div class="keyboard">
+          <div>
+            <span id="87">w</span>
+            <span id="69">e</span>
+          </div>
+          <div>
+            <span id="84">t</span>
+            <span id="89">y</span>
+            <span id="85">u</span>
+          </div>
+          <div>
+            <span id="79">o</span>
+            <span id="80">p</span>
+          </div>
+        </div>
+        <div class="keyboard">
+          <span id="65">a</span>
+          <span id="83">s</span>
+          <span id="68">d</span>
+          <span id="70">f</span>
+          <span id="71">g</span>
+          <span id="72">h</span>
+          <span id="74">j</span>
+          <span id="75">k</span>
+          <span id="76">l</span>
+          <span id="186">:</span>
+          <span id="222">'</span>
+        </div>
+      </div>
+    </div>
 
-	<!-- content, the good stuff -->
-	<section>
-		<!-- the interface -->
-		<section class="interface">
-			<!-- the synth -->
-			<div id="synth">
-				<label for="wavetypeSelect">Wave type</label>
-					<select id="wavetypeSelect">
-						<option value="0">Sine wave</option>
-						<option value="1">Square wave</option>
-						<option value="2">Sawtooth wave</option>
-						<option value="3">Triangle wave</option>
-					</select>
+    <div id="waves" class="row">
+      <div class="small-9 small-centered columns">
+        <div class="row">
+          <div class="small-3 columns">
+            <button class="small button">Button</button>
+          </div>
+          <div class="small-3 columns">
+            <button class="small button">Button</button>
+          </div>
+          <div class="small-3 columns">
+            <button class="small button">Button</button>
+          </div>
+          <div class="small-3 columns">
+            <button class="small button">Button</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="effects" class="columns">
+      <dl class="accordion" data-accordion>
+        <dd class="accordion-navigation">
+          <a href="#panel1">Delay Settings</a>
+          <button class="toggle">O/F</button>
+          <div id="panel1" class="content">
+            <div class="delay-time">
+              <h4>Delay Time</h4>
+              <input id="delay" type="range" min="0" max="0.999" step="0.001" value="0.200" />
+              <output id="delay-output" for="delay"></output>
+            </div>
 
-				<h2>Filter</h2>
-		        <select id="filter-type">
-		            <option value="0" selected>Lowpass</option>
-		            <option value="1">Highpass</option>
-		            <option value="2">Bandpass</option>
-		            <option value="3">Lowshelf</option>
-		            <option value="4">Highshelf</option>
-		            <option value="5">Peaking</option>
-		            <option value="6">Notch</option>
-		            <option value="7">All Pass</option>
-		        </select>
-
-		        <div class="delay-time">
-		            <h2>Delay Time</h2>
-		            <input id="delay" type="range" min="0" max="0.999" step="0.001" value="0.200" />
-		            <output id="delay-output" for="delay"></output>
-		        </div>
-
-		        <div class="delay-feedback">
-		            <h2>Delay Volume</h2>
-		            <input id="feedback" type="range" min="0" max="0.09" step="0.01" value="0" />
-		            <output id="feedback-output" for="feedback"></output>
-		        </div>
-			</div>
-
-			<!-- visualizer controls -->
-			<dl id="visualizer_controls">
-				<dt>Color:</dt>
-				<dd>
-					<ul id="color" class="inline">
-						<li><label><input type="radio" name="color" value="rgb(185,45,25)" checked>Red</label></li>
-						<li><label><input type="radio" name="color" value="rgb(255,255,255)">White</label></li>
-						<li><label><input type="radio" name="color" value="rgb(0,0,0)">Black</label></li>
-						<li><label><input type="radio" name="color" value="transition">Transition</label></li>
-						<br>
-						<li><label><input type="radio" name="color" value="random">Random</label></li>
-					</ul>
-				</dd>
-				<dt>Background Color:</dt>
-				<dd>
-					<ul id="bkgd" class="inline">
-						<li><label><input type="radio" name="bkgd_color" value="rgb(0,0,0)" checked>Black</label></li>
-						<li><label><input type="radio" name="bkgd_color" value="rgb(255,255,255)">White</label></li>
-					</ul>
-				</dd>
-				<dt>Visualizer Mode:</dt>
-				<dd>
-					<ul id="mode" class="inline">
-						<li><label><input type="radio" name="mode" value="one" checked>Bars</label></li>
-						<li><label><input type="radio" name="mode" value="two">Particles</label></li>
-						<li><label><input type="radio" name="mode" value="three">Circles</label></li>
-					</ul>
-				</dd>
-			</dl>
-		</section>
-		<!-- /end interface -->
-
-		<!-- the visualizer -->
-		<canvas id="visualizer">
-			Get with the times man. Upgrade your browser.
-		</canvas>
-		<!-- /end visualizer -->
-	</section>
-	<!-- /end good stuff -->
-
-	<footer>
-		<div class="keyboard">
-			<div>
-				<span id="87">w</span>
-				<span id="69">e</span>
-			</div>
-			<div>
-				<span id="84">t</span>
-				<span id="89">y</span>
-				<span id="85">u</span>
-			</div>
-			<div>
-				<span id="79">o</span>
-				<span id="80">p</span>
-			</div>
-		</div>
-		<div class="keyboard">
-			<span id="65">a</span>
-			<span id="83">s</span>
-			<span id="68">d</span>
-			<span id="70">f</span>
-			<span id="71">g</span>
-			<span id="72">h</span>
-			<span id="74">j</span>
-			<span id="75">k</span>
-			<span id="76">l</span>
-			<span id="186">:</span>
-			<span id="222">'</span>
-		</div>
-		<p><small>Made in Spring 2013. Luis Rosario &amp; Eric Bichan</small></p>
-	</footer>
-</body>
+            <div class="delay-feedback">
+              <h4>Delay Volume</h4>
+              <input id="feedback" type="range" min="0" max="0.09" step="0.01" value="0" />
+              <output id="feedback-output" for="feedback"></output>
+            </div>
+          </div>
+        </dd>
+        <dd class="accordion-navigation">
+          <a href="#panel2">Filter Settings</a>
+          <button class="toggle">O/F</button>
+          <div id="panel2" class="content">
+            Panel 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </div>
+        </dd>       
+        <dd class="accordion-navigation">
+          <a href="#panel3">Overdrive</a>
+          <button class="toggle">O/F</button>
+          <div id="panel3" class="content">
+            Panel 3. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </div>
+        </dd>
+        
+      </dl>
+    </div>
+    <div class="row">
+      <div class="small-12 columns panel">
+        <label for="wavetypeSelect">Wave type</label>
+        <select id="wavetypeSelect">
+          <option value="0">Sine wave</option>
+          <option value="1">Square wave</option>
+          <option value="2">Sawtooth wave</option>
+          <option value="3">Triangle wave</option>
+        </select>
+      </div>
+    </div>
+  </body>
 </html>

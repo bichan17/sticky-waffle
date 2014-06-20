@@ -9,51 +9,33 @@ app.main = (function(){
   var played_CSS = null;
 
 	function init (){
-		console.log("initialized!");
+		console.log(document.styleSheets);
+		$(document).foundation();
 		body = document.getElementsByTagName('body')[0];
 		body.className += 'black';
 
 		// SYNTH SETUP
 		// ----------------------------
 		var wavetypeControl = document.querySelector("#wavetypeSelect");
-		var filterControl = document.querySelector("#filter-type");
 		var delayControl = document.querySelector("#delay");
 		var feedbackControl = document.querySelector("#feedback");
 
-		synth = new app.synth.Synth(wavetypeControl, filterControl, delayControl, feedbackControl);
+		synth = new app.synth.Synth(wavetypeControl, delayControl, feedbackControl);
+
+		console.log(synth);
 
 
 		// VISUALIZER SETUP
 		// ----------------------------
-		viz_settings = {}; // 1. create the viz_settings object
-		// 2. set up UI
-		// 
-		// visualizer colors
-		var colorButtons = document.getElementById('color').getElementsByTagName('input');
-		for (var i = 0; i < colorButtons.length; i++) {
-			colorButtons[i].addEventListener("change", changeColor, false);
-			// get the default checked value
-			if (colorButtons[i].checked){viz_settings.color = colorButtons[i].value;}
-		}
+		viz_settings = {color: "rgb(185,45,25)", bgColor: "rgb(0,0,0)", mode: "one"};  // 1. create the viz_settings object
 
-		// background colors
-		var bkgdColorButtons = document.getElementById('bkgd').getElementsByTagName('input');
-		for (var k = 0; k < bkgdColorButtons.length; k++) {
-			bkgdColorButtons[k].addEventListener("change", changeBackgroundColor, false);
-			// get the default checked value
-			if (bkgdColorButtons[k].checked){viz_settings.bkgd_color = bkgdColorButtons[k].value;}
-		}
 
-		// add event listeners to Mode buttons
-		var modeButtons = document.getElementById('mode').getElementsByTagName('input');
-		for (var j = 0; j < modeButtons.length; j++) {
-			modeButtons[j].addEventListener("change", changeVizMode, false);
-			// get the default checked value
-			if (modeButtons[j].checked){viz_settings.mode = modeButtons[j].value;}
-		}
+		// console.log(viz_settings);
 
 		// create Visualizer | pass in: DOM <canvas> reference, synth object, settings
 		viz = new app.visualizer.Visualizer(document.getElementById('visualizer'), synth, viz_settings);
+
+		console.log(viz);
 
 
 		// this was found on stackoverflow
@@ -67,7 +49,7 @@ app.main = (function(){
       }
     }
 
-		// the good stuff
+		// start update loop
 		loop();
 	}
 
@@ -92,19 +74,23 @@ app.main = (function(){
 
 	function changeColor(e) {
 		// change <canvas> colors
+
+		//change to:
+		// viz_settings.color = myColor;
+		
 		viz_settings.color = e.target.value;
 		viz.changeColor(viz_settings.color);
 	}
 
 	function changeBackgroundColor(e) {
 		// change <canvas> colors
-		viz_settings.bkgd_color = e.target.value;
-		viz.changeBackground(viz_settings.bkgd_color);
+		viz_settings.bgColor = e.target.value;
+		viz.changeBackground(viz_settings.bgColor);
 
 		// change DOM colors and classNames
 		body.className = ''; // clear classNames
-		if (viz_settings.bkgd_color === 'rgb(0,0,0)') body.className += 'black';
-		else if (viz_settings.bkgd_color === 'rgb(255,255,255)') body.className += 'white';
+		if (viz_settings.bgColor === 'rgb(0,0,0)') body.className += 'black';
+		else if (viz_settings.bgColor === 'rgb(255,255,255)') body.className += 'white';
 		else body.className += 'black';
 	}
 

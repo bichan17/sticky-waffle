@@ -1,11 +1,29 @@
-sticky-waffle
-=============
+# Foundation Compass Template
 
-connected the UI to the web app
-copied code from one of our classmates and gonna take a look at how he got his visualizer built
+The easiest way to get started with Foundation + Compass.
 
-known issues:
+## Requirements
 
-bar graph viz shows up too far to the left, 
+  * Ruby 1.9+
+  * [Node.js](http://nodejs.org)
+  * [compass](http://compass-style.org/): `gem install compass`
+  * [bower](http://bower.io): `npm install bower -g`
 
-some key combinations cannot be played together
+## Quickstart
+
+  * [Download this starter compass project and unzip it](https://github.com/zurb/foundation-compass-template/archive/master.zip)
+  * Run `bower install` to install the latest version of Foundation
+  
+Then when you're working on your project, just run the following command:
+
+```bash
+compass watch
+```
+
+## Upgrading
+
+If you'd like to upgrade to a newer version of Foundation down the road just run:
+
+```bash
+bower update
+```

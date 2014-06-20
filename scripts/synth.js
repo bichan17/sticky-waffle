@@ -19,148 +19,26 @@ app.synth = (function() {
 		"KEY_L": 76,
 		"KEY_P": 80,
 		"KEY_SEMI": 186,
-		"KEY_APOS": 222
+		"KEY_APOS": 222,
+		key: function(n) {
+            return this[Object.keys(this)[n]];
+        }
 	};
-	// this array holds all of the sounds we make
-	var oscArray = [
-		{
-			sounding : false,
-			note : "C4",
-			fq : 261.63,
-			key : KEYBOARD["KEY_A"]
-		},
-		{
-			sounding : false,
-			note : "C4#",
-			fq : 277.18,
-			key : KEYBOARD["KEY_W"]
-		},
-		{
-			sounding : false,
-			note : "D4",
-			fq : 293.66,
-			key : KEYBOARD["KEY_S"]
-		},
-		{
-			sounding : false,
-			note : "D4#",
-			fq : 311.13,
-			key : KEYBOARD["KEY_E"]
-		},
-		{
-			sounding : false,
-			note : "E4",
-			fq : 329.63,
-			key : KEYBOARD["KEY_D"]
-		},
-		{
-			sounding : false,
-			note : "F4",
-			fq : 349.23,
-			key : KEYBOARD["KEY_F"]
-		},
-		{
-			sounding : false,
-			note : "F4#",
-			fq : 369.99,
-			key : KEYBOARD["KEY_T"]
-		},
-		{
-			sounding : false,
-			note : "G4",
-			fq : 392.00,
-			key : KEYBOARD["KEY_G"]
-		},
-		{
-			sounding : false,
-			note : "G4#",
-			fq : 415.30,
-			key : KEYBOARD["KEY_Y"]
-		},
-		{
-			sounding : false,
-			note : "A4",
-			fq : 440.00,
-			key : KEYBOARD["KEY_H"]
-		},
-		{
-			sounding : false,
-			note : "A4#",
-			fq : 466.16,
-			key : KEYBOARD["KEY_U"]
-		},
-		{
-			sounding : false,
-			note : "B4",
-			fq : 493.88,
-			key : KEYBOARD["KEY_J"]
-		},
-		{
-			sounding : false,
-			note : "C5",
-			fq : 523.25,
-			key : KEYBOARD["KEY_K"]
-		},
-		{
-			sounding : false,
-			note : "C5#",
-			fq : 554.37,
-			key : KEYBOARD["KEY_O"]
-		},
-		{
-			sounding : false,
-			note : "D5",
-			fq : 587.33,
-			key : KEYBOARD["KEY_L"]
-		},
-		{
-			sounding : false,
-			note : "D5#",
-			fq : 622.25,
-			key : KEYBOARD["KEY_P"]
-		},
-
-		{
-			sounding : false,
-			note : "E5",
-			fq : 659.26,
-			key : KEYBOARD["KEY_SEMI"]
-		},
-		{
-			sounding : false,
-			note : "F5",
-			fq : 698.46,
-			key : KEYBOARD["KEY_APOS"]
-		}
-	];
-	// console.log(oscArray);
-
-
-
 
 	//synth constructor, it gets passed the DOM elements of the controls from main
-	function Synth(wavetypeControl, filterControl, delayControl, feedbackControl){
-		this.wavetypeControl = wavetypeControl;
-		this.filterControl = filterControl;
-		this.delayControl = delayControl;
-		this.feedbackControl = feedbackControl;
-		this.proceed= true;
+	function Synth(wavetypeControl, delayControl, feedbackControl){
+
+		var proceed = true;
+		var NUM_KEYS = Object.keys(KEYBOARD).length - 1;
 
 		//default values for synth
-		this.wavetype = 0;
-		this.filter = 0;
-		this.delay = 0.200;
-		this.feedback = 0;
+		var wavetype = 0;
+		var filter = 7; //all pass filter
+		var delay = 0.200;
+		var feedback = 0;
 
 		//holds all the node objects used by synth
-		this.nodes = {};
-
-		this.setUp(this.wavetypeControl, this.filterControl, this.delayControl, this.feedbackControl);
-	}
-
-
-	//set up the synth object
-	Synth.prototype.setUp = function(wavetypeControl, filterControl, delayControl, feedbackControl){
+		nodes = {};
 
 		//-----------------------------
     // Check Web Audio API Support
@@ -168,25 +46,21 @@ app.synth = (function() {
     try {
         // More info at http://caniuse.com/#feat=audio-api
         window.AudioContext = window.AudioContext || window.webkitAudioContext;
-        this.audioContext = new window.AudioContext();
+        this.audioContext = new window.AudioContext(); //declare audio context
     } catch(e) {
-        this.proceed = false;
-        alert('Web Audio API not supported in this browser.');
+        proceed = false;
+        alert('This website depends on technology that your browser does not support :(');
     }
 
-    if (this.proceed) {
+    if (proceed) {
 		
 			//initialize object variables
 			console.log("setup Synth");
 
-			this.nodes.filter = this.audioContext.createBiquadFilter();
-			this.nodes.volume = this.audioContext.createGain();
-			this.nodes.delay = this.audioContext.createDelay();
-			this.nodes.feedbackGain = this.audioContext.createGain();
-
-
-
-
+			nodes.filter = this.audioContext.createBiquadFilter();
+			nodes.volume = this.audioContext.createGain();
+			nodes.delay = this.audioContext.createDelay();
+			nodes.feedbackGain = this.audioContext.createGain();
 			this.audioAnalyser = this.audioContext.createAnalyser();
 			this.audioAnalyser.smoothingTimeConstant = 0.85;
 
@@ -196,16 +70,13 @@ app.synth = (function() {
 			var that = this;
 
 			wavetypeControl.addEventListener("change", function(e){
-				that.wavetype = e.target.value;
-			});
-			filterControl.addEventListener("change", function(e){
-				that.filter = e.target.value;
+				wavetype = e.target.value;
 			});
 			delayControl.addEventListener("change", function(e){
-				that.delay = e.target.value;
+				delay = e.target.value;
 			});
 			feedbackControl.addEventListener("change", function(e){
-				that.feedback = e.target.value;
+				feedback = e.target.value;
 			});
 			window.addEventListener("keydown", function(e){
 				e.preventDefault();
@@ -217,39 +88,84 @@ app.synth = (function() {
 			});
 
 
-			//add DOM element of each key to their objects
-			for (var i = 0; i < oscArray.length; i++) {
-				oscArray[i].keyDisplay = document.getElementById(oscArray[i].key);
+			var root = 261.63;
+
+			//calculates the freqency and builds the note objects
+			function buildNotes(){
+				var noteArray = [];
+				var a = Math.pow(2,(1/12)); //constant
+				for (var i = 0; i < NUM_KEYS; i++) {
+					// fn = f0 * (a)^n 
+					var fq = root * Math.pow(a, i)
+					var note = new app.note.Note(fq, KEYBOARD.key(i));
+					noteArray.push(note);
+				};
+
+				return noteArray;
 			}
-		}
-	};
+			this.notes = buildNotes();
+
+
+
+			
+
+			//add DOM element of each key to their objects
+			for (var i = 0; i < this.notes.length; i++) {
+				this.notes[i].keyDisplay = document.getElementById(this.notes[i].key);
+			}
+
+			//route sounds to apply the node settings
+			this.routeSounds = function(){
+				var source = this.audioContext.createOscillator();
+
+				source.type = parseInt(wavetype);
+				nodes.filter.type = 7; //allpass filter
+				nodes.feedbackGain.gain.value = feedback;
+				nodes.delay.delayTime.value = delay;
+				nodes.volume.gain.value = 0.2;
+
+				source.connect(nodes.filter);
+				nodes.filter.connect(nodes.volume);
+				nodes.filter.connect(nodes.delay);
+				nodes.delay.connect(nodes.feedbackGain);
+				nodes.feedbackGain.connect(nodes.volume);
+				nodes.feedbackGain.connect(nodes.delay);
+				nodes.volume.connect(this.audioAnalyser);
+				this.audioAnalyser.connect(this.audioContext.destination);
+
+				return source;
+
+
+			}
+		} //end proceed
+	}//end constructor
 
 	Synth.prototype.update = function(){
 
 		//check if a key is pressed, make a sound
-		for (var i = 0; i < oscArray.length; i++) {
-			if(keydown[oscArray[i].key]){
+		for (var i = 0; i < this.notes.length; i++) {
+			if(keydown[this.notes[i].key]){
 				//A key is not making sound
-				if(oscArray[i].sounding == false){
+				if(this.notes[i].sounding == false){
 					//make sound, save web audio oscillator object into osc object
-					oscArray[i].oscillator = this.makeSound(oscArray[i].fq);
-					oscArray[i].keyDisplay.className+= "played";
+					this.notes[i].oscillator = this.makeSound(this.notes[i].fq);
+					this.notes[i].keyDisplay.className+= "played";
 					//set sounding to true so we only make one oscillator
-					oscArray[i].sounding = true;
+					this.notes[i].sounding = true;
 
 				}
 			}else{
 				//the key is not pressed
 
-				//if A was just making noise, turn it off
-				if(oscArray[i].sounding == true){
+				//if a node was just making noise, turn it off
+				if(this.notes[i].sounding == true){
 					//pass web audio oscillator to the endSound function
-					endSound(oscArray[i].oscillator);
-					oscArray[i].keyDisplay.className = '';
+					endSound(this.notes[i].oscillator);
+					this.notes[i].keyDisplay.className = '';
 					//q is no longer making sound, so set sounding to false
-					oscArray[i].sounding = false;
+					this.notes[i].sounding = false;
 				}
-			}
+			}	
 		} // end for loop
 
 	} // end update
@@ -267,37 +183,13 @@ app.synth = (function() {
 		return fqArray;
 	}
 
-	//route sounds to apply the node settings
-	Synth.prototype.routeSounds = function(){
-		var doc = document;
 
-		var source = this.audioContext.createOscillator();
-
-		source.type = parseInt(this.wavetype);
-		this.nodes.filter.type = parseInt(this.filter);
-		this.nodes.feedbackGain.gain.value = this.feedback;
-		this.nodes.delay.delayTime.value = this.delay;
-		this.nodes.volume.gain.value = 0.2;
-
-		source.connect(this.nodes.filter);
-		this.nodes.filter.connect(this.nodes.volume);
-		this.nodes.filter.connect(this.nodes.delay);
-		this.nodes.delay.connect(this.nodes.feedbackGain);
-		this.nodes.feedbackGain.connect(this.nodes.volume);
-		this.nodes.feedbackGain.connect(this.nodes.delay);
-		this.nodes.volume.connect(this.audioAnalyser);
-		this.audioAnalyser.connect(this.audioContext.destination);
-
-		return source;
-
-
-	}
 
 
 	//makes the sound
 	Synth.prototype.makeSound = function(fq){
 
-		//route oscillator through nodes
+		//route oscillator thru nodes
 		var osc = this.routeSounds();
 
 		//change frequency
