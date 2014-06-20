@@ -13,6 +13,31 @@ app.main = (function(){
 		body = document.getElementsByTagName('body')[0];
 		body.className += 'black';
 
+		var $content = $( "#content" );
+
+		//detect mouse movement, reveal footer
+		var timeout = null;
+		var moving = false;
+		var idleTime = 1500;
+		$(document).on('mousemove', function() {
+		    if (timeout !== null) {
+		    		if(moving == false){
+		        	$content.animate({ "top": "-85px" }, "fast" );
+		        	moving = true;
+		    		}
+		        clearTimeout(timeout);
+		    }
+
+		    timeout = setTimeout(function() {
+		    	if (!$('footer').is(':hover')) {
+		        $content.animate({ "top": "0px" }, "fast", function(){
+		        	moving = false;
+		        });
+			    }
+		        
+		    }, idleTime);
+		});
+
 		// SYNTH SETUP
 		// ----------------------------
 		var waves = $(".wave");

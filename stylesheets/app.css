@@ -8001,6 +8001,15 @@ footer {
 }
 
 /* line 26, ../scss/app.scss */
+#hover {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 25%;
+}
+
+/* line 34, ../scss/app.scss */
 canvas {
   position: absolute;
   top: 0;
@@ -8010,7 +8019,7 @@ canvas {
   background: #000;
 }
 
-/* line 34, ../scss/app.scss */
+/* line 42, ../scss/app.scss */
 #content {
   height: 100%;
   width: 100%;
@@ -8018,22 +8027,22 @@ canvas {
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* line 40, ../scss/app.scss */
+/* line 48, ../scss/app.scss */
 #effects {
   width: 20%;
 }
 
-/* line 43, ../scss/app.scss */
+/* line 51, ../scss/app.scss */
 .accordion {
   overflow: hidden;
 }
-/* line 45, ../scss/app.scss */
+/* line 53, ../scss/app.scss */
 .accordion dd > a {
   float: left;
   width: 80%;
 }
 
-/* line 50, ../scss/app.scss */
+/* line 58, ../scss/app.scss */
 button.toggle {
   float: right;
   width: 20%;
@@ -8043,20 +8052,20 @@ button.toggle {
 }
 
 @-moz-document url-prefix() {
-  /* line 60, ../scss/app.scss */
+  /* line 68, ../scss/app.scss */
   button.toggle {
     padding: 1.1rem 0 1.1rem;
   }
 }
 
-/* line 66, ../scss/app.scss */
+/* line 74, ../scss/app.scss */
 dd.accordion-navigation {
   display: inline-block;
   width: 100%;
   float: left;
 }
 
-/* line 72, ../scss/app.scss */
+/* line 80, ../scss/app.scss */
 #keys {
   position: absolute;
   bottom: 0;
@@ -8068,7 +8077,7 @@ dd.accordion-navigation {
   color: #888;
 }
 
-/* line 82, ../scss/app.scss */
+/* line 90, ../scss/app.scss */
 .keyboard {
   font-family: 'aa_qwertz-tastenregular', "Comic Sans";
   font-size: 2em;
@@ -8076,24 +8085,24 @@ dd.accordion-navigation {
   letter-spacing: -0.2em;
   margin: 0;
 }
-/* line 88, ../scss/app.scss */
+/* line 96, ../scss/app.scss */
 .keyboard div {
   display: inline-block;
 }
-/* line 89, ../scss/app.scss */
+/* line 97, ../scss/app.scss */
 .keyboard div:nth-child(1) {
   margin-right: 0.5em;
 }
-/* line 90, ../scss/app.scss */
+/* line 98, ../scss/app.scss */
 .keyboard div:nth-child(2) {
   margin: 0 0.875em 0 0.5em;
 }
-/* line 91, ../scss/app.scss */
+/* line 99, ../scss/app.scss */
 .keyboard div:nth-child(3) {
   margin-right: 0.5em;
 }
 
-/* line 94, ../scss/app.scss */
+/* line 102, ../scss/app.scss */
 .played {
   color: #f00;
 }
