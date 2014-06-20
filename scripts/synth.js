@@ -26,16 +26,17 @@ app.synth = (function() {
 	};
 
 	//synth constructor, it gets passed the DOM elements of the controls from main
-	function Synth(wavetypeControl, delayControl, feedbackControl){
+	function Synth(){
 
 		var proceed = true;
 		var NUM_KEYS = Object.keys(KEYBOARD).length - 1;
 
 		//default values for synth
-		var wavetype = 0;
-		var filter = 7; //all pass filter
-		var delay = 0.200;
-		var feedback = 0;
+		this.wavetype = 0; //start on sine
+		this.delay = 0.200;
+		this.feedback = 0;
+		this.filter = 7; //all pass filter
+		
 
 		//holds all the node objects used by synth
 		nodes = {};
@@ -55,8 +56,6 @@ app.synth = (function() {
     if (proceed) {
 		
 			//initialize object variables
-			console.log("setup Synth");
-
 			nodes.filter = this.audioContext.createBiquadFilter();
 			nodes.volume = this.audioContext.createGain();
 			nodes.delay = this.audioContext.createDelay();
@@ -65,19 +64,16 @@ app.synth = (function() {
 			this.audioAnalyser.smoothingTimeConstant = 0.85;
 
 
-
+			this.setWaveType = function(type){
+				this.wavetype = type;
+			}
+			this.setDelay = function(delay){
+				this.delay = delay;
+			}
+			this.setFeedback = function(fb){
+				this.feedback = fb;
+			}
 			//add event listeners
-			var that = this;
-
-			wavetypeControl.addEventListener("change", function(e){
-				wavetype = e.target.value;
-			});
-			delayControl.addEventListener("change", function(e){
-				delay = e.target.value;
-			});
-			feedbackControl.addEventListener("change", function(e){
-				feedback = e.target.value;
-			});
 			window.addEventListener("keydown", function(e){
 				e.preventDefault();
 				keydown[e.keyCode] = true;
@@ -89,6 +85,8 @@ app.synth = (function() {
 
 
 			var root = 261.63;
+
+
 
 			//calculates the freqency and builds the note objects
 			function buildNotes(){
@@ -118,10 +116,10 @@ app.synth = (function() {
 			this.routeSounds = function(){
 				var source = this.audioContext.createOscillator();
 
-				source.type = parseInt(wavetype);
-				nodes.filter.type = 7; //allpass filter
-				nodes.feedbackGain.gain.value = feedback;
-				nodes.delay.delayTime.value = delay;
+				source.type = parseInt(this.wavetype);
+				nodes.filter.type = this.filter; //allpass filter
+				nodes.feedbackGain.gain.value = this.feedback;
+				nodes.delay.delayTime.value = this.delay;
 				nodes.volume.gain.value = 0.2;
 
 				source.connect(nodes.filter);

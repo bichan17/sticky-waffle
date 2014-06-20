@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sticky Waffle</title>
     <link rel="stylesheet" href="stylesheets/app.css" />
-    <!-- // <script src="bower_components/modernizr/modernizr.js"></script> -->
+    <link rel="stylesheet" href="bower_components/jquery-ui/themes/base/minified/jquery-ui.min.css" />
     <script type="text/javascript" src="scripts/modernizr.js"></script>
     <script type="text/javascript" src="scripts/loader.js"></script>
   </head>
@@ -51,22 +51,12 @@
       </div>
     </div>
 
-    <div id="waves" class="row">
-      <div class="small-9 small-centered columns">
-        <div class="row">
-          <div class="small-3 columns">
-            <button class="small button">Button</button>
-          </div>
-          <div class="small-3 columns">
-            <button class="small button">Button</button>
-          </div>
-          <div class="small-3 columns">
-            <button class="small button">Button</button>
-          </div>
-          <div class="small-3 columns">
-            <button class="small button">Button</button>
-          </div>
-        </div>
+    <div id="wavestypes" class="row">
+      <div class="small-7 small-centered columns">
+          <button data-type="0" class="wave button">Sine</button>
+          <button data-type="3" class="wave button">Triangle</button>
+          <button data-type="2" class="wave button">Sawtooth</button>
+          <button data-type="1" class="wave button">Square</button>
       </div>
     </div>
     <div id="effects" class="columns">
@@ -102,19 +92,7 @@
             Panel 3. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </div>
         </dd>
-        
       </dl>
-    </div>
-    <div class="row">
-      <div class="small-12 columns panel">
-        <label for="wavetypeSelect">Wave type</label>
-        <select id="wavetypeSelect">
-          <option value="0">Sine wave</option>
-          <option value="1">Square wave</option>
-          <option value="2">Sawtooth wave</option>
-          <option value="3">Triangle wave</option>
-        </select>
-      </div>
     </div>
   </body>
 </html>

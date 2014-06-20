@@ -9,34 +9,32 @@ app.main = (function(){
   var played_CSS = null;
 
 	function init (){
-		console.log(document.styleSheets);
 		$(document).foundation();
 		body = document.getElementsByTagName('body')[0];
 		body.className += 'black';
 
 		// SYNTH SETUP
 		// ----------------------------
-		var wavetypeControl = document.querySelector("#wavetypeSelect");
-		var delayControl = document.querySelector("#delay");
-		var feedbackControl = document.querySelector("#feedback");
+		var waves = $(".wave");
+		var delayControl = $("#delay");
+		var feedbackControl = $("#feedback");
 
-		synth = new app.synth.Synth(wavetypeControl, delayControl, feedbackControl);
+		synth = new app.synth.Synth();
 
-		console.log(synth);
+
+		waves.each(function(index){
+				$(this).click(function(){
+					synth.setWaveType($(this).data("type"));
+				});
+		});
 
 
 		// VISUALIZER SETUP
 		// ----------------------------
 		viz_settings = {color: "rgb(185,45,25)", bgColor: "rgb(0,0,0)", mode: "one"};  // 1. create the viz_settings object
 
-
-		// console.log(viz_settings);
-
 		// create Visualizer | pass in: DOM <canvas> reference, synth object, settings
 		viz = new app.visualizer.Visualizer(document.getElementById('visualizer'), synth, viz_settings);
-
-		console.log(viz);
-
 
 		// this was found on stackoverflow
 		// it gives us a referenece to the CSS style rule we will constantly change
