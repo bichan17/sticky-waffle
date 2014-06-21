@@ -73,8 +73,8 @@ app.visualizer = (function() {
       }
     }
   }
-  Visualizer.prototype.changeColor = function(_color) {
-    color = _color;
+  Visualizer.prototype.setColor = function(_color) {
+    this.color = _color;
   };
   Visualizer.prototype.getColor = function() {
     return this.color;

@@ -55,6 +55,19 @@ canvas{
     width: 80%;
   }
 }
+button#sine.selected{
+  background-color: #2040DF;
+}
+button#triangle.selected{
+  background-color: #F3FA2E;
+}
+button#sawtooth.selected{
+  background-color: #5CA904
+;
+}
+button#square.selected{
+  background-color: #FF3C1A;
+}
 button.toggle{
   float: right;
   width: 20%;

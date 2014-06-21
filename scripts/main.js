@@ -38,6 +38,20 @@ app.main = (function(){
 		    }, idleTime);
 		});
 
+		//for smooth accordion opening
+		$(".accordion dd").on("click", "a:eq(0)", function (event)
+      {
+        var dd_parent = $(this).parent();
+
+        if(dd_parent.hasClass('active'))
+          $(".accordion dd div.content:visible").slideToggle("normal");
+        else
+        {
+          $(".accordion dd div.content:visible").slideToggle("normal");
+          $(this).parent().find(".content").slideToggle("normal");
+        }
+      });
+
 		// SYNTH SETUP
 		// ----------------------------
 		var waves = $(".wave");
@@ -49,15 +63,20 @@ app.main = (function(){
 		//detect clicks on wavetype buttons, set synth
 		waves.each(function(index){
 			$(this).on("click", function(){
-				console.log(synth);
+				waves.each(function(indexo){
+					$(this).removeClass("selected");
+				});
+				$(this).addClass("selected");
 				synth.setWaveType($(this).data("type"));
+				viz.setColor($(this).data("color"));
+
 			});
 		});
 
 
 		// VISUALIZER SETUP
 		// ----------------------------
-		viz_settings = {color: "rgb(185,45,25)", bgColor: "rgb(0,0,0)", mode: "one"};  // 1. create the viz_settings object
+		viz_settings = {color: $("#sine").data("color"), bgColor: "rgb(0,0,0)", mode: "one"};  // 1. create the viz_settings object
 
 		// create Visualizer | pass in: DOM <canvas> reference, synth object, settings
 		viz = new app.visualizer.Visualizer(document.getElementById('visualizer'), synth, viz_settings);
@@ -103,19 +122,6 @@ app.main = (function(){
 		// viz_settings.color = myColor;
 		
 		viz_settings.color = e.target.value;
-		viz.changeColor(viz_settings.color);
-	}
-
-	function changeBackgroundColor(e) {
-		// change <canvas> colors
-		viz_settings.bgColor = e.target.value;
-		viz.changeBackground(viz_settings.bgColor);
-
-		// change DOM colors and classNames
-		body.className = ''; // clear classNames
-		if (viz_settings.bgColor === 'rgb(0,0,0)') body.className += 'black';
-		else if (viz_settings.bgColor === 'rgb(255,255,255)') body.className += 'white';
-		else body.className += 'black';
 	}
 
 	function changeVizMode(e) {
