@@ -79,12 +79,16 @@ app.synth = (function() {
 
 				for (var i = 0; i < idArray.length; i++) {
 					if(idArray[i] == "delay"){
+						nodes.delay.disconnect();
 						order.push(nodes.delay);
 					}
 					if(idArray[i] == "chorus"){
+						nodes.chorus.disconnect();
+
 						order.push(nodes.chorus);
 					}
 					if(idArray[i] == "overdrive"){
+						nodes.overdrive.disconnect();
 						order.push(nodes.overdrive);
 					}
 				};
@@ -152,6 +156,7 @@ app.synth = (function() {
 				console.log("first");
 				console.log(this.nodeOrder[i]);
 				nodes.filter.connect(this.nodeOrder[i].input);
+				this.nodeOrder[i].connect(this.nodeOrder[i+1].input);
 			}else if (i == this.nodeOrder.length-1){
 				console.log("last");
 				console.log(this.nodeOrder[i]);
@@ -160,7 +165,7 @@ app.synth = (function() {
 			}else{
 				console.log("middle");
 				console.log(this.nodeOrder[i]);
-				
+
 				this.nodeOrder[i].connect(this.nodeOrder[i+1].input);
 			}
 		};
