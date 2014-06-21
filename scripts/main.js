@@ -22,7 +22,7 @@ app.main = (function(){
 		$(document).on('mousemove', function() {
 		    if (timeout !== null) {
 		    		if(moving == false){
-		        	$content.animate({ "top": "-85px" }, "fast" );
+		        	$content.animate({ "top": "-16px" }, "fast" );
 		        	moving = true;
 		    		}
 		        clearTimeout(timeout);
