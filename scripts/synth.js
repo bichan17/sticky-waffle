@@ -30,12 +30,14 @@ app.synth = (function() {
 
 		var proceed = true;
 		var NUM_KEYS = Object.keys(KEYBOARD).length - 1;
+		var tuna
 
 		//default values for synth
 		this.wavetype = "sine"; //start on sine
 		this.delay = 0.200;
 		this.feedback = 0;
 		this.filter = 7; //all pass filter
+
 		
 
 		//holds all the node objects used by synth
@@ -45,9 +47,13 @@ app.synth = (function() {
     // Check Web Audio API Support
     //-----------------------------
     try {
-        // More info at http://caniuse.com/#feat=audio-api
         window.AudioContext = window.AudioContext || window.webkitAudioContext;
         this.audioContext = new window.AudioContext(); //declare audio context
+        tuna = new Tuna(this.audioContext);
+        //tuna effects
+				nodes.delay = new tuna.Delay();
+				nodes.chorus = new tuna.Chorus();
+				nodes.overdrive = new tuna.Overdrive();
     } catch(e) {
         proceed = false;
         alert('This website depends on technology that your browser does not support :(');
@@ -58,15 +64,36 @@ app.synth = (function() {
 			//initialize object variables
 			nodes.filter = this.audioContext.createBiquadFilter();
 			nodes.volume = this.audioContext.createGain();
-			nodes.delay = this.audioContext.createDelay();
-			nodes.feedbackGain = this.audioContext.createGain();
+
+			
 			this.audioAnalyser = this.audioContext.createAnalyser();
 			this.audioAnalyser.smoothingTimeConstant = 0.85;
 
 
-			// this.setWaveType = function(type){
-			// 	this.wavetype = type;
-			// }
+			this.setWaveType = function(type){
+				this.wavetype = type;
+			}
+
+			this.setNodeOrder = function(idArray){
+				var order = [];
+
+				for (var i = 0; i < idArray.length; i++) {
+					if(idArray[i] == "delay"){
+						order.push(nodes.delay);
+					}
+					if(idArray[i] == "chorus"){
+						order.push(nodes.chorus);
+					}
+					if(idArray[i] == "overdrive"){
+						order.push(nodes.overdrive);
+					}
+				};
+
+
+				this.nodeOrder = order;
+
+			}
+
 			this.setDelay = function(delay){
 				this.delay = delay;
 			}
@@ -85,9 +112,6 @@ app.synth = (function() {
 
 
 			var root = 261.63;
-
-
-
 			//calculates the freqency and builds the note objects
 			function buildNotes(){
 				var noteArray = [];
@@ -102,24 +126,13 @@ app.synth = (function() {
 				return noteArray;
 			}
 			this.notes = buildNotes();
-
-
-
-			
-
 			//add DOM element of each key to their objects
 			for (var i = 0; i < this.notes.length; i++) {
 				this.notes[i].keyDisplay = document.getElementById(this.notes[i].key);
 			}
-
-			
 		} //end proceed
 	}//end constructor
 
-	Synth.prototype.setWaveType = function(type){
-
-		this.wavetype = type;
-	}
 	//route sounds to apply the node settings
 	Synth.prototype.routeSounds = function(){
 		var source = this.audioContext.createOscillator();
@@ -129,16 +142,29 @@ app.synth = (function() {
 		source.type = this.wavetype;
 
 		nodes.filter.type = this.filter; //allpass filter
-		nodes.feedbackGain.gain.value = this.feedback;
-		nodes.delay.delayTime.value = this.delay;
-		nodes.volume.gain.value = 0.2;
-
+		nodes.volume.gain.value = 0.2; //overall volume
+		// nodes.chorus.bypass = false;
 		source.connect(nodes.filter);
-		nodes.filter.connect(nodes.volume);
-		nodes.filter.connect(nodes.delay);
-		nodes.delay.connect(nodes.feedbackGain);
-		nodes.feedbackGain.connect(nodes.volume);
-		nodes.feedbackGain.connect(nodes.delay);
+		// console.log(this.nodeOrder);
+
+		for (var i = 0; i < this.nodeOrder.length; i++) {
+			if(i==0){
+				console.log("first");
+				console.log(this.nodeOrder[i]);
+				nodes.filter.connect(this.nodeOrder[i].input);
+			}else if (i == this.nodeOrder.length-1){
+				console.log("last");
+				console.log(this.nodeOrder[i]);
+
+				this.nodeOrder[i].connect(nodes.volume);
+			}else{
+				console.log("middle");
+				console.log(this.nodeOrder[i]);
+				
+				this.nodeOrder[i].connect(this.nodeOrder[i+1].input);
+			}
+		};
+
 		nodes.volume.connect(this.audioAnalyser);
 		this.audioAnalyser.connect(this.audioContext.destination);
 
@@ -181,16 +207,6 @@ app.synth = (function() {
 	Synth.prototype.getAnalyser = function(){
 		return this.audioAnalyser;
 	}
-	//returns byteData array for the visualizer to use
-	Synth.prototype.getByteData = function(){
-		var fqArray = new Uint8Array(this.audioAnalyser.frequencyBinCount);
-		this.audioAnalyser.getByteFrequencyData(fqArray);
-
-		return fqArray;
-	}
-
-
-
 
 	//makes the sound
 	Synth.prototype.makeSound = function(fq){

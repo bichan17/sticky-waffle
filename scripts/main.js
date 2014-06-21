@@ -38,9 +38,6 @@ app.main = (function(){
 		    }, idleTime);
 		});
 
-		//to make accordion sortable
-		$( "#sortable" ).sortable();
-
 		//for smooth accordion opening
 		$(".accordion dd").on("click", "a:eq(0)", function (event)
       {
@@ -63,6 +60,11 @@ app.main = (function(){
 
 		synth = new app.synth.Synth();
 
+		console.log(synth);
+		//set default node order
+		synth.setNodeOrder(["delay","chorus","overdrive"]);
+
+
 		//detect clicks on wavetype buttons, set synth
 		waves.each(function(index){
 			$(this).on("click", function(){
@@ -74,6 +76,16 @@ app.main = (function(){
 				viz.setColor($(this).data("color"));
 
 			});
+		});
+
+		//to make accordion sortable
+		$( "#sortable" ).sortable({
+		    update: function( event, ui ) {
+		    	var order = $.map($(this).find('dd'), function(el) {
+                    return $(el).attr('id');
+                });
+		    	synth.setNodeOrder(order);
+		    }
 		});
 
 
