@@ -38,6 +38,9 @@ app.main = (function(){
 		    }, idleTime);
 		});
 
+		//to make accordion sortable
+		$( "#sortable" ).sortable();
+
 		//for smooth accordion opening
 		$(".accordion dd").on("click", "a:eq(0)", function (event)
       {
