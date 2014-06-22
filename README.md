@@ -7,6 +7,7 @@ Originally build and designed by [Luis Rosario][luis] and [Eric Bichan][eric] in
   * Foundation
   * jQuery
   * jQuery-UI
+  * [jQuery-Knob](https://github.com/aterrien/jQuery-Knob)
   * [Tuna](https://github.com/Dinahmoe/tuna)
   * [compass](http://compass-style.org/): `gem install compass`
   * [bower](http://bower.io): `npm install bower -g`

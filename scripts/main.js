@@ -38,19 +38,28 @@ app.main = (function(){
 		    }, idleTime);
 		});
 
-		//for smooth accordion opening
+		var knobDefaults = {
+			width: "80%", 
+			fgColor : "#66CC66",
+			angleOffset : -125,
+			angleArc : 250
+		}
+
+		// for smooth accordion opening
 		$(".accordion dd").on("click", "a:eq(0)", function (event)
       {
         var dd_parent = $(this).parent();
 
         if(dd_parent.hasClass('active'))
-          $(".accordion dd div.content:visible").slideToggle("normal");
+          $(".accordion dd div.content:visible").slideToggle("fast");
         else
         {
-          $(".accordion dd div.content:visible").slideToggle("normal");
-          $(this).parent().find(".content").slideToggle("normal");
+          $(".accordion dd div.content:visible").slideToggle("fast");
+          $(this).parent().find(".content").slideToggle("fast");
         }
+      	dd_parent.find(".dial").knob(knobDefaults);
       });
+
 
 		// SYNTH SETUP
 		// ----------------------------
@@ -85,8 +94,16 @@ app.main = (function(){
                     return $(el).attr('id');
                 });
 		    	synth.setNodeOrder(order);
-		    }
+		    },
+		    cancel: ".content,.range-slider,.range-slider-handle,.range-slider-active-segment"
 		});
+
+
+
+		// $('.dial').css({
+		// 	"display": "inline"
+
+		// });
 
 
 		// VISUALIZER SETUP

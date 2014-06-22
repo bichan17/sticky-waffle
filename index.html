@@ -55,9 +55,9 @@
     <div id="wavestypes" class="row">
       <div class="small-7 small-centered columns">
           <button id="sine" data-color="rgb(32, 64, 223)" data-type="sine" class="selected wave button">Sine</button>
-          <button id="triangle" data-color="rgb(243, 250, 46) " data-type="triangle" class="wave button">Triangle</button>
-          <button id="sawtooth" data-color="rgb(92, 169, 4) " data-type="sawtooth" class="wave button">Sawtooth</button>
-          <button id="square" data-color="rgb(255, 60, 26) " data-type="square" class="wave button">Square</button>
+          <button id="triangle" data-color="rgb(243, 250, 46)" data-type="triangle" class="wave button">Triangle</button>
+          <button id="sawtooth" data-color="rgb(92, 169, 4)" data-type="sawtooth" class="wave button">Sawtooth</button>
+          <button id="square" data-color="rgb(255, 60, 26)" data-type="square" class="wave button">Square</button>
       </div>
     </div>
     <div id="effects" class="columns">
@@ -65,32 +65,71 @@
         <dd id="delay" class="accordion-navigation">
           <a href="#panel1">Delay</a>
           <button class="toggle">OFF</button>
-          <div id="panel1" class="content">
-            <div class="delay-time">
-              <h4>Delay Time</h4>
-              <input id="delay" type="range" min="0" max="0.999" step="0.001" value="0.200" />
-              <output id="delay-output" for="delay"></output>
-            </div>
-
-            <div class="delay-feedback">
-              <h4>Delay Volume</h4>
-              <input id="feedback" type="range" min="0" max="0.09" step="0.01" value="0" />
-              <output id="feedback-output" for="feedback"></output>
+          <div id="panel1" class="row content">
+            <div class="small-12 columns text-center">
+              <ul class="small-block-grid-1 large-block-grid-2">
+                <li>
+                  <span class="round radius label">Feedback</span>
+                  <input type="text" id="feedback_delay" data-min="0" data-max="100" data-step="1" value="45" class="dial">
+                </li>
+                <li>
+                  <span class="round radius label">Delay Time</span>
+                  <input type="text" id="delayTime_delay" data-min="0" data-max="2000" data-step="10" value="150" class="dial">
+                </li>
+                <li>
+                  <span class="round radius label">Wet Signal</span>
+                  <input type="text" id="wet_delay" data-min="0" data-max="100" data-step="1" value="25" class="dial">
+                </li>
+                <li>
+                  <span class="round radius label">Dry Signal</span>
+                  <input type="text" id="dry_delay" data-min="0" data-max="100" data-step="1" value="100" class="dial">
+                </li>
+              </ul>
             </div>
           </div>
         </dd>
         <dd id="chorus" class="accordion-navigation">
           <a href="#panel2">Chorus</a>
           <button class="toggle">OFF</button>
-          <div id="panel2" class="content">
-            Panel 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          <div id="panel2" class="row content">
+            <div class="small-12 columns text-center">
+              <ul class="small-block-grid-1 large-block-grid-2">
+                <li>
+                  <span class="round radius label">Feedback</span>
+                  <input type="text" id="feedback_chorus" data-min="0" data-max="100" data-step="1" value="20" class="dial">
+                </li>
+                <li>
+                  <span class="round radius label">Rate</span>
+                  <input type="text" id="rate_chorus" data-min="0" data-max="800" data-step="1" value="150" class="dial">
+                </li>
+                <li>
+                  <span class="round radius label">Delay</span>
+                  <input type="text" id="delay_chorus" data-min="0" data-max="1000" data-step="1" value="45" class="dial">
+                </li>
+              </ul>
+            </div>
           </div>
         </dd>       
         <dd id="overdrive" class="accordion-navigation">
           <a href="#panel3">Overdrive</a>
           <button class="toggle">OFF</button>
-          <div id="panel3" class="content">
-            Panel 3. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          <div id="panel3" class="row content">
+            <div class="small-12 columns text-center">
+              <ul class="small-block-grid-1 large-block-grid-2">
+                <li>
+                  <span class="round radius label">Gain</span>
+                  <input type="text" id="gain_overdrive" data-min="0" data-max="100" data-step="1" value="50" class="dial">
+                </li>
+                <li>
+                  <span class="round radius label">Drive</span>
+                  <input type="text" id="drive_overdrive" data-min="0" data-max="100" data-step="1" value="70" class="dial">
+                </li>
+                <li>
+                  <span class="round radius label">Curve</span>
+                  <input type="text" id="curve_overdrive" data-min="0" data-max="100" data-step="1" value="100" class="dial">
+                </li>
+              </ul>
+            </div>
           </div>
         </dd>
       </dl>

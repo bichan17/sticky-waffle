@@ -31,7 +31,7 @@ footer{
   height: 25%;
   // pointer-events:none;
 }
-canvas{
+#visualizer{
   position: absolute;
   top: 0;
   left: 0;
@@ -55,6 +55,11 @@ canvas{
     width: 80%;
   }
 }
+.dial{
+  //fix for jquery knob with foundation
+  // display: inline !important;
+  // box-shadow: none !important;
+}
 button#sine.selected{
   background-color: #2040DF;
 }
@@ -62,8 +67,7 @@ button#triangle.selected{
   background-color: #F3FA2E;
 }
 button#sawtooth.selected{
-  background-color: #5CA904
-;
+  background-color: #5CA904;
 }
 button#square.selected{
   background-color: #FF3C1A;

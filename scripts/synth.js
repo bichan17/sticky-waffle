@@ -51,9 +51,20 @@ app.synth = (function() {
         this.audioContext = new window.AudioContext(); //declare audio context
         tuna = new Tuna(this.audioContext);
         //tuna effects
-				nodes.delay = new tuna.Delay();
-				nodes.chorus = new tuna.Chorus();
-				nodes.overdrive = new tuna.Overdrive();
+				nodes.delay = new tuna.Delay({
+					feedback: 0.7,    //0 to 1+
+          delayTime: 150,    //how many milliseconds should the wet signal be delayed? 
+          wetLevel: 1,    //0 to 1+
+          dryLevel: 0.25,       //0 to 1+
+          cutoff: 22050,        //cutoff frequency of the built in highpass-filter. 20 to 22050
+          bypass: 0
+        });
+				nodes.chorus = new tuna.Chorus({
+					bypass: 1
+				});
+				nodes.overdrive = new tuna.Overdrive({
+					bypass: 1
+				});
     } catch(e) {
         proceed = false;
         alert('This website depends on technology that your browser does not support :(');
@@ -152,7 +163,7 @@ app.synth = (function() {
 		nodes.volume.gain.value = 0.2; //overall volume
 		// nodes.chorus.bypass = false;
 		source.connect(nodes.filter);
-		// console.log(this.nodeOrder);
+		console.log(this.nodeOrder);
 
 		for (var i = 0; i < this.nodeOrder.length; i++) {
 			if(i==0){

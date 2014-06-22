@@ -3533,7 +3533,7 @@ span.postfix.radius, label.postfix.radius {
 
 /* We use this to get basic styling on all basic form elements */
 /* line 387, ../bower_components/foundation/scss/foundation/components/_forms.scss */
-input[type="text"],
+input[type="text"]:not(.dial),
 input[type="password"],
 input[type="date"],
 input[type="datetime"],
@@ -3551,7 +3551,7 @@ textarea {
   background-color: white;
   font-family: inherit;
   border: 1px solid #cccccc;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
   color: rgba(0, 0, 0, 0.75);
   display: block;
   font-size: 0.875rem;
@@ -3565,7 +3565,7 @@ textarea {
   transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
 }
 /* line 189, ../bower_components/foundation/scss/foundation/components/_global.scss */
-input[type="text"]:focus,
+input[type="text"]:not(.dial):focus,
 input[type="password"]:focus,
 input[type="date"]:focus,
 input[type="datetime"]:focus,
@@ -3583,7 +3583,7 @@ textarea:focus {
   border-color: #999999;
 }
 /* line 124, ../bower_components/foundation/scss/foundation/components/_forms.scss */
-input[type="text"]:focus,
+input[type="text"]:not(.dial):focus,
 input[type="password"]:focus,
 input[type="date"]:focus,
 input[type="datetime"]:focus,
@@ -3602,7 +3602,7 @@ textarea:focus {
   outline: none;
 }
 /* line 131, ../bower_components/foundation/scss/foundation/components/_forms.scss */
-input[type="text"][disabled], fieldset[disabled] input[type="text"],
+input[type="text"]:not(.dial)[disabled], fieldset[disabled] input[type="text"]:not(.dial),
 input[type="password"][disabled], fieldset[disabled]
 input[type="password"],
 input[type="date"][disabled], fieldset[disabled]
@@ -3632,7 +3632,7 @@ textarea {
   background-color: #dddddd;
 }
 /* line 393, ../bower_components/foundation/scss/foundation/components/_forms.scss */
-input[type="text"].radius,
+input[type="text"]:not(.dial).radius,
 input[type="password"].radius,
 input[type="date"].radius,
 input[type="datetime"].radius,
@@ -8010,7 +8010,7 @@ footer {
 }
 
 /* line 34, ../scss/app.scss */
-canvas {
+#visualizer {
   position: absolute;
   top: 0;
   left: 0;
@@ -8042,27 +8042,27 @@ canvas {
   width: 80%;
 }
 
-/* line 58, ../scss/app.scss */
+/* line 63, ../scss/app.scss */
 button#sine.selected {
   background-color: #2040DF;
 }
 
-/* line 61, ../scss/app.scss */
+/* line 66, ../scss/app.scss */
 button#triangle.selected {
   background-color: #F3FA2E;
 }
 
-/* line 64, ../scss/app.scss */
+/* line 69, ../scss/app.scss */
 button#sawtooth.selected {
-  background-color: #5ca904;
+  background-color: #5CA904;
 }
 
-/* line 68, ../scss/app.scss */
+/* line 72, ../scss/app.scss */
 button#square.selected {
   background-color: #FF3C1A;
 }
 
-/* line 71, ../scss/app.scss */
+/* line 75, ../scss/app.scss */
 button.toggle {
   float: right;
   width: 20%;
@@ -8072,20 +8072,20 @@ button.toggle {
 }
 
 @-moz-document url-prefix() {
-  /* line 81, ../scss/app.scss */
+  /* line 85, ../scss/app.scss */
   button.toggle {
     padding: 1.1rem 0 1.1rem;
   }
 }
 
-/* line 87, ../scss/app.scss */
+/* line 91, ../scss/app.scss */
 dd.accordion-navigation {
   display: inline-block;
   width: 100%;
   float: left;
 }
 
-/* line 93, ../scss/app.scss */
+/* line 97, ../scss/app.scss */
 #keys {
   position: absolute;
   bottom: 0;
@@ -8097,7 +8097,7 @@ dd.accordion-navigation {
   color: #888;
 }
 
-/* line 103, ../scss/app.scss */
+/* line 107, ../scss/app.scss */
 .keyboard {
   font-family: 'aa_qwertz-tastenregular', "Comic Sans";
   font-size: 2em;
@@ -8105,24 +8105,24 @@ dd.accordion-navigation {
   letter-spacing: -0.2em;
   margin: 0;
 }
-/* line 109, ../scss/app.scss */
+/* line 113, ../scss/app.scss */
 .keyboard div {
   display: inline-block;
 }
-/* line 110, ../scss/app.scss */
+/* line 114, ../scss/app.scss */
 .keyboard div:nth-child(1) {
   margin-right: 0.5em;
 }
-/* line 111, ../scss/app.scss */
+/* line 115, ../scss/app.scss */
 .keyboard div:nth-child(2) {
   margin: 0 0.875em 0 0.5em;
 }
-/* line 112, ../scss/app.scss */
+/* line 116, ../scss/app.scss */
 .keyboard div:nth-child(3) {
   margin-right: 0.5em;
 }
 
-/* line 115, ../scss/app.scss */
+/* line 119, ../scss/app.scss */
 .played {
   color: #f00;
 }

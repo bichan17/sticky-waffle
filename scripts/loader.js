@@ -5,7 +5,7 @@ window.addEventListener("load",function(){
 	//start dynamic loading
 	Modernizr.load([{
 		//load all libraries and scripts
-		load: ["bower_components/jquery/dist/jquery.min.js","bower_components/jquery-ui/ui/minified/jquery-ui.min.js","bower_components/foundation/js/foundation.min.js","scripts/tuna.js","scripts/utils.js", "scripts/note.js", "scripts/synth.js", "scripts/visualizer.js", "scripts/main.js"],
+		load: ["bower_components/jquery/dist/jquery.min.js","bower_components/jquery-ui/ui/minified/jquery-ui.min.js","bower_components/jquery-knob/js/jquery.knob.js","bower_components/foundation/js/foundation.min.js","scripts/tuna.js","scripts/utils.js", "scripts/note.js", "scripts/synth.js", "scripts/visualizer.js", "scripts/main.js"],
 
 		//called when all files have finished loading and executing
 		complete: function(){
