@@ -98,11 +98,14 @@ app.synth = (function() {
 
 			}
 
-			this.setDelay = function(delay){
-				this.delay = delay;
+			this.setDelay = function(delaySettings){
+				// nodes.delay. = delaySettings.
 			}
-			this.setFeedback = function(fb){
-				this.feedback = fb;
+			this.setChorus = function(chorusSettings){
+				// nodes.chorus. = chorusSettings.
+			}
+			this.setOverdrive = function(overdriveSettings){
+				// nodes.overdrive. = overdriveSettings.
 			}
 			//add event listeners
 			window.addEventListener("keydown", function(e){
@@ -153,19 +156,11 @@ app.synth = (function() {
 
 		for (var i = 0; i < this.nodeOrder.length; i++) {
 			if(i==0){
-				console.log("first");
-				console.log(this.nodeOrder[i]);
 				nodes.filter.connect(this.nodeOrder[i].input);
 				this.nodeOrder[i].connect(this.nodeOrder[i+1].input);
 			}else if (i == this.nodeOrder.length-1){
-				console.log("last");
-				console.log(this.nodeOrder[i]);
-
 				this.nodeOrder[i].connect(nodes.volume);
 			}else{
-				console.log("middle");
-				console.log(this.nodeOrder[i]);
-
 				this.nodeOrder[i].connect(this.nodeOrder[i+1].input);
 			}
 		};
