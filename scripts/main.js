@@ -3,14 +3,11 @@ app.main = (function(){
 	var synth;
 	var viz;
 	var viz_settings; // the "visualizer" object (holds settings)
+	var order = ["delay","chorus","overdrive"];
 	var effectSettings = {
 		delay : {},
 		chorus : {},
-		overdrive : {},
-		phaser : {},
-		compressor : {},
-		convolver : {},
-		tremolo : {}
+		overdrive : {}
 	};
 	var body;
   var ss = document.styleSheets[0];
@@ -47,32 +44,33 @@ app.main = (function(){
 		    }, idleTime);
 		});
 
-		//read default vals, build effectSettings
+		//read default knob vals, build intitial effectSettings
 		$(".dial").each(function(index){
 			var effect = $(this).closest(".accordion dd").attr("id");
 			var prop = $(this).data("prop");
-			var val = $(this).attr("value");
+			var scale = parseInt($(this).data("scale"));
+			var val = parseInt($(this).attr("value"));
 			effectSettings[effect].bypass = 1;
-			effectSettings[effect][prop] = parseInt(val);
+			effectSettings[effect][prop] = val/scale;
 		});
-		console.log(effectSettings);
 
-
-
+		//setup knobs
 		var knobDefaults = {
 			width: "80%", 
 			fgColor : "#66CC66",
 			angleOffset : -125,
 			angleArc : 250,
 			release: function(v){
-				var effect = $(this).closest(".accordion dd").attr("id");
+				var effect = this.$.closest(".accordion dd").attr("id");
 				var prop = this.$.data("prop");
-				effectSettings[effect][prop] = v;
-				console.log(effectSettings);
-				//synth.updateSettings(effectSettings);
+				var scale = parseInt(this.$.data("scale"));
+				effectSettings[effect][prop] = v/scale;
+
+				synth.changeSettings(effectSettings);
 			}
 		}
 
+		//bypass button click
 		$(".toggle").on("click", function(event){
 			var effect = $(this).closest(".accordion dd").attr("id");
 
@@ -87,7 +85,7 @@ app.main = (function(){
 				$(this).text("ON");
 				effectSettings[effect].bypass = false;
 			}
-			console.log(effectSettings);
+			synth.changeSettings(effectSettings);
 		});
 
 		// for smooth accordion opening
@@ -112,11 +110,11 @@ app.main = (function(){
 		var delayControl = $("#delay");
 		var feedbackControl = $("#feedback");
 
-		synth = new app.synth.Synth();
+		synth = new app.synth.Synth(effectSettings);
 
 		console.log(synth);
 		//set default node order
-		synth.setNodeOrder(["delay","chorus","overdrive"]);
+		synth.setNodeOrder(order);
 
 
 		//detect clicks on wavetype buttons, set synth
@@ -135,9 +133,10 @@ app.main = (function(){
 		//to make accordion sortable
 		$( "#sortable" ).sortable({
 		    update: function( event, ui ) {
-		    	var order = $.map($(this).find('dd'), function(el) {
+		    	var newOrder = $.map($(this).find('dd'), function(el) {
                     return $(el).attr('id');
                 });
+		    	order = newOrder;
 		    	synth.setNodeOrder(order);
 		    },
 		    cancel: ".content,.range-slider,.range-slider-handle,.range-slider-active-segment"

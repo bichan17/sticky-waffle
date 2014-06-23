@@ -26,7 +26,7 @@ app.synth = (function() {
 	};
 
 	//synth constructor, it gets passed the DOM elements of the controls from main
-	function Synth(){
+	function Synth(settings){
 
 		var proceed = true;
 		var NUM_KEYS = Object.keys(KEYBOARD).length - 1;
@@ -37,6 +37,8 @@ app.synth = (function() {
 		this.delay = 0.200;
 		this.feedback = 0;
 		this.filter = 7; //all pass filter
+
+		this.nodeOrder = settings.order;
 
 		
 
@@ -52,17 +54,14 @@ app.synth = (function() {
         tuna = new Tuna(this.audioContext);
         //tuna effects
 				nodes.delay = new tuna.Delay({
-					feedback: 0.7,    //0 to 1+
-          delayTime: 150,    //how many milliseconds should the wet signal be delayed? 
-          wetLevel: 1,    //0 to 1+
-          dryLevel: 0.25,       //0 to 1+
           cutoff: 22050,        //cutoff frequency of the built in highpass-filter. 20 to 22050
-          bypass: 0
+          bypass: 1
         });
 				nodes.chorus = new tuna.Chorus({
 					bypass: 1
 				});
 				nodes.overdrive = new tuna.Overdrive({
+					algorithmIndex: 0,
 					bypass: 1
 				});
     } catch(e) {
@@ -109,6 +108,31 @@ app.synth = (function() {
 
 			}
 
+			this.changeSettings = function(settings){
+				// console.log("settings");
+				// console.log(settings);
+
+				// console.log("nodes");
+				// console.log(nodes);
+
+				for(var effect in settings){
+					for(var prop in settings[effect]){
+						var val = settings[effect][prop];
+						// nodes.chorus.bypass = false;
+						console.log(effect);
+						console.log(prop);
+
+
+						nodes[effect][prop] = val;
+
+					}
+				}
+				// console.log("nodes after");
+				// console.log(nodes);
+
+
+
+			}
 			this.setDelay = function(delaySettings){
 				// nodes.delay. = delaySettings.
 			}
@@ -161,9 +185,7 @@ app.synth = (function() {
 
 		nodes.filter.type = this.filter; //allpass filter
 		nodes.volume.gain.value = 0.2; //overall volume
-		// nodes.chorus.bypass = false;
-		source.connect(nodes.filter);
-		console.log(this.nodeOrder);
+		source.connect(nodes.filter)
 
 		for (var i = 0; i < this.nodeOrder.length; i++) {
 			if(i==0){
