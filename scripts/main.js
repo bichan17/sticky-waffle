@@ -3,6 +3,15 @@ app.main = (function(){
 	var synth;
 	var viz;
 	var viz_settings; // the "visualizer" object (holds settings)
+	var effectSettings = {
+		delay : {},
+		chorus : {},
+		overdrive : {},
+		phaser : {},
+		compressor : {},
+		convolver : {},
+		tremolo : {}
+	};
 	var body;
   var ss = document.styleSheets[0];
   var rules = ss.cssRules || ss.rules;
@@ -38,12 +47,48 @@ app.main = (function(){
 		    }, idleTime);
 		});
 
+		//read default vals, build effectSettings
+		$(".dial").each(function(index){
+			var effect = $(this).closest(".accordion dd").attr("id");
+			var prop = $(this).data("prop");
+			var val = $(this).attr("value");
+			effectSettings[effect].bypass = 1;
+			effectSettings[effect][prop] = parseInt(val);
+		});
+		console.log(effectSettings);
+
+
+
 		var knobDefaults = {
 			width: "80%", 
 			fgColor : "#66CC66",
 			angleOffset : -125,
-			angleArc : 250
+			angleArc : 250,
+			release: function(v){
+				var effect = $(this).closest(".accordion dd").attr("id");
+				var prop = this.$.data("prop");
+				effectSettings[effect][prop] = v;
+				console.log(effectSettings);
+				//synth.updateSettings(effectSettings);
+			}
 		}
+
+		$(".toggle").on("click", function(event){
+			var effect = $(this).closest(".accordion dd").attr("id");
+
+			if($(this).hasClass("on")){
+				//turn off
+				$(this).removeClass("on");
+				$(this).text("OFF");
+				effectSettings[effect].bypass = true;
+			}else{
+				//turn on
+				$(this).addClass("on");
+				$(this).text("ON");
+				effectSettings[effect].bypass = false;
+			}
+			console.log(effectSettings);
+		});
 
 		// for smooth accordion opening
 		$(".accordion dd").on("click", "a:eq(0)", function (event)
@@ -138,7 +183,6 @@ app.main = (function(){
 
 		window.requestAnimFrame(loop);
 	}
-
 	function update(){
 		// the synth and viz objects have their own update functions
 		synth.update();

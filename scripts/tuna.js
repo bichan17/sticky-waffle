@@ -772,7 +772,6 @@
         if(!properties) {
             properties = this.getDefaults();
         }
-        console.log("hello");
         this.input = userContext.createGain();
         this.activateNode = userContext.createGain();
         this.dry = userContext.createGain();

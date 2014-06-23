@@ -225,7 +225,6 @@
             // detects relative width / height
             this.relativeWidth = ((this.o.width % 1 !== 0) &&
                 this.o.width.indexOf('%'));
-            console.log(this.o.width.indexOf('%'));
             this.relativeHeight = ((this.o.height % 1 !== 0) &&
                 this.o.height.indexOf('%'));
 

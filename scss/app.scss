@@ -55,10 +55,8 @@ footer{
     width: 80%;
   }
 }
-.dial{
-  //fix for jquery knob with foundation
-  // display: inline !important;
-  // box-shadow: none !important;
+button.toggle.on{
+  background-color: #5CA904;
 }
 button#sine.selected{
   background-color: #2040DF;

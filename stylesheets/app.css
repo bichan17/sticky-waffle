@@ -8042,27 +8042,32 @@ footer {
   width: 80%;
 }
 
-/* line 63, ../scss/app.scss */
+/* line 58, ../scss/app.scss */
+button.toggle.on {
+  background-color: #5CA904;
+}
+
+/* line 61, ../scss/app.scss */
 button#sine.selected {
   background-color: #2040DF;
 }
 
-/* line 66, ../scss/app.scss */
+/* line 64, ../scss/app.scss */
 button#triangle.selected {
   background-color: #F3FA2E;
 }
 
-/* line 69, ../scss/app.scss */
+/* line 67, ../scss/app.scss */
 button#sawtooth.selected {
   background-color: #5CA904;
 }
 
-/* line 72, ../scss/app.scss */
+/* line 70, ../scss/app.scss */
 button#square.selected {
   background-color: #FF3C1A;
 }
 
-/* line 75, ../scss/app.scss */
+/* line 73, ../scss/app.scss */
 button.toggle {
   float: right;
   width: 20%;
@@ -8072,20 +8077,20 @@ button.toggle {
 }
 
 @-moz-document url-prefix() {
-  /* line 85, ../scss/app.scss */
+  /* line 83, ../scss/app.scss */
   button.toggle {
     padding: 1.1rem 0 1.1rem;
   }
 }
 
-/* line 91, ../scss/app.scss */
+/* line 89, ../scss/app.scss */
 dd.accordion-navigation {
   display: inline-block;
   width: 100%;
   float: left;
 }
 
-/* line 97, ../scss/app.scss */
+/* line 95, ../scss/app.scss */
 #keys {
   position: absolute;
   bottom: 0;
@@ -8097,7 +8102,7 @@ dd.accordion-navigation {
   color: #888;
 }
 
-/* line 107, ../scss/app.scss */
+/* line 105, ../scss/app.scss */
 .keyboard {
   font-family: 'aa_qwertz-tastenregular', "Comic Sans";
   font-size: 2em;
@@ -8105,24 +8110,24 @@ dd.accordion-navigation {
   letter-spacing: -0.2em;
   margin: 0;
 }
-/* line 113, ../scss/app.scss */
+/* line 111, ../scss/app.scss */
 .keyboard div {
   display: inline-block;
 }
-/* line 114, ../scss/app.scss */
+/* line 112, ../scss/app.scss */
 .keyboard div:nth-child(1) {
   margin-right: 0.5em;
 }
-/* line 115, ../scss/app.scss */
+/* line 113, ../scss/app.scss */
 .keyboard div:nth-child(2) {
   margin: 0 0.875em 0 0.5em;
 }
-/* line 116, ../scss/app.scss */
+/* line 114, ../scss/app.scss */
 .keyboard div:nth-child(3) {
   margin-right: 0.5em;
 }
 
-/* line 119, ../scss/app.scss */
+/* line 117, ../scss/app.scss */
 .played {
   color: #f00;
 }
