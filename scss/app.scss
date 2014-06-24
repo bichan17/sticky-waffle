@@ -81,6 +81,12 @@ footer {
   dd > a {
     float: left;
     width: 75%;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    img{
+      height: 1rem;
+      vertical-align: -0.05rem;
+    }
   }
 }
 li.wave {
@@ -106,8 +112,10 @@ button {
   &.toggle {
     float: right;
     width: 25%;
+    height: 2.9rem;
     margin: 0;
-    padding: 1.22rem 0 1.22rem;
+    padding: 0;
+    font-size: 1rem;
     vertical-align: middle;
     &.on {
       background-color: #5CA904;
@@ -118,7 +126,7 @@ button {
 //MOZ hack :(
 @-moz-document url-prefix() {
   button.toggle {
-    padding: 1.1rem 0 1.1rem;
+    // padding: 1.1rem 0 1.1rem;
   }
 }
 

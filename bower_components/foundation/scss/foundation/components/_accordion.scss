@@ -42,9 +42,10 @@ $accordion-content-active-bg-color: #fff !default;
         > .content {
           display: none;
           padding: $accordion-content-padding;
+          background: $accordion-content-active-bg-color;
+
           &.active {
             display: block;
-            background: $accordion-content-active-bg-color;
           }
         }
       }
