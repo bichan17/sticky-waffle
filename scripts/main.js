@@ -106,7 +106,7 @@ app.main = (function(){
 
 		// SYNTH SETUP
 		// ----------------------------
-		var waves = $(".wave");
+		var waves = $(".wave.button");
 		var delayControl = $("#delay");
 		var feedbackControl = $("#feedback");
 

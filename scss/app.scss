@@ -14,8 +14,17 @@
 
 }
 
+body, html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
 
-footer{
+.off-canvas-wrap, .inner-wrap, .page {
+  height: 100%;
+}
+
+footer {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -23,7 +32,8 @@ footer{
   // height: 64px;
   background: #666;
 }
-#hover{
+
+#hover {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -31,7 +41,8 @@ footer{
   height: 25%;
   // pointer-events:none;
 }
-#visualizer{
+
+#visualizer {
   position: absolute;
   top: 0;
   left: 0;
@@ -39,60 +50,75 @@ footer{
   height: 100%;
   background: #000;
 }
-#content{
+
+#content {
   height: 100%;
   width: 100%;
   position: absolute;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
-#effects{
+
+#effects {
   width: 20%;
+  h3{
+    color: white;
+  }
 }
-.accordion{
+
+.accordion {
   overflow: hidden;
-  dd > a{
+  dd > a {
     float: left;
     width: 80%;
   }
 }
-button.toggle.on{
-  background-color: #5CA904;
-}
-button#sine.selected{
-  background-color: #2040DF;
-}
-button#triangle.selected{
-  background-color: #F3FA2E;
-}
-button#sawtooth.selected{
-  background-color: #5CA904;
-}
-button#square.selected{
-  background-color: #FF3C1A;
-}
-button.toggle{
-  float: right;
-  width: 20%;
-  margin: 0;
-  padding: 1.22rem 0 1.22rem;
-  vertical-align: middle;
+li.wave {
+    width: 25%;
+  }
+button {
+  &.wave {
+    width: 100%;
+    padding: 1rem;
+  }
+  &#sine.selected {
+    background-color: #2040DF;
+  }
+  &#triangle.selected {
+    background-color: #F3FA2E;
+  }
+  &#sawtooth.selected {
+    background-color: #5CA904;
+  }
+  &#square.selected {
+    background-color: #FF3C1A;
+  }
+  &.toggle {
+    float: right;
+    width: 20%;
+    margin: 0;
+    padding: 1.22rem 0 1.22rem;
+    vertical-align: middle;
+    &.on {
+      background-color: #5CA904;
+    }
+  }
 }
 
 //MOZ hack :(
 @-moz-document url-prefix() {
-    button.toggle {
-        padding: 1.1rem 0 1.1rem;
-    }
+  button.toggle {
+    padding: 1.1rem 0 1.1rem;
+  }
 }
 
 
-dd.accordion-navigation{
+dd.accordion-navigation {
   display: inline-block;
   width: 100%;
   float: left;
-
 }
-#keys{
+
+#keys {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -102,22 +128,30 @@ dd.accordion-navigation{
   font-size: 0.875em;
   color: #888;
 }
+
 .keyboard {
   font-family: 'aa_qwertz-tastenregular', "Comic Sans";
   font-size: 2em;
   line-height: 1.2;
   letter-spacing: -0.2em;
   margin: 0;
-  div {display:inline-block;}
-  div:nth-child(1) { margin-right: 0.5em; }
-  div:nth-child(2) { margin: 0 0.875em 0 0.5em; }
-  div:nth-child(3) { margin-right: 0.5em; }
+  div {
+    display: inline-block;
+    &:nth-child(1) {
+      margin-right: 0.5em;
+    }
+    &:nth-child(2) {
+      margin: 0 0.875em 0 0.5em;
+    }
+    &:nth-child(3) {
+      margin-right: 0.5em;
+    }
+  }
 }
 
 .played {
   color: #f00;
 }
-
 // Or selectively include components
 // @import
 //   "foundation/components/accordion",

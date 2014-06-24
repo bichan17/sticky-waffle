@@ -10,121 +10,137 @@
     <script type="text/javascript" src="scripts/loader.js"></script>
   </head>
   <body>
-    <footer>
-      <div class="row">
-        <div class="small-12 columns">
-          this sticky waffle made by <a href="http://www.ericbichan.com">eric bichan</a>
-          <span class="right"><a href="https://github.com/bichan17/sticky-waffle">github</a></span>
-        </div>
-      </div>
-    </footer>
-    
-    <div id="content">
-      <canvas id="visualizer">Get a real browser!</canvas>
-      <div id="keys" class="row">
-        <div class="keyboard">
-          <div>
-            <span id="87">w</span>
-            <span id="69">e</span>
+    <div class="page">
+      <div class="" data-offcanvas>
+        <div class="">
+          <footer>
+            <div class="row">
+              <div class="small-12 columns">
+                this sticky waffle made by <a href="http://www.ericbichan.com">eric bichan</a>
+                <span class="right"><a href="https://github.com/bichan17/sticky-waffle">github</a></span>
+              </div>
+            </div>
+          </footer>  
+          <div id="content">
+
+            <canvas id="visualizer">Get a real browser!</canvas>
+            <div id="keys" class="row">
+              <!-- <h1><a class="left-off-canvas-toggle" href="#" >Menu</a></h1> -->
+
+              <div class="keyboard">
+                <div>
+                  <span id="87">w</span>
+                  <span id="69">e</span>
+                </div>
+                <div>
+                  <span id="84">t</span>
+                  <span id="89">y</span>
+                  <span id="85">u</span>
+                </div>
+                <div>
+                  <span id="79">o</span>
+                  <span id="80">p</span>
+                </div>
+              </div>
+              <div class="keyboard">
+                <span id="65">a</span>
+                <span id="83">s</span>
+                <span id="68">d</span>
+                <span id="70">f</span>
+                <span id="71">g</span>
+                <span id="72">h</span>
+                <span id="74">j</span>
+                <span id="75">k</span>
+                <span id="76">l</span>
+                <span id="186">:</span>
+                <span id="222">'</span>
+              </div>
+            </div>
           </div>
-          <div>
-            <span id="84">t</span>
-            <span id="89">y</span>
-            <span id="85">u</span>
-          </div>
-          <div>
-            <span id="79">o</span>
-            <span id="80">p</span>
-          </div>
-        </div>
-        <div class="keyboard">
-          <span id="65">a</span>
-          <span id="83">s</span>
-          <span id="68">d</span>
-          <span id="70">f</span>
-          <span id="71">g</span>
-          <span id="72">h</span>
-          <span id="74">j</span>
-          <span id="75">k</span>
-          <span id="76">l</span>
-          <span id="186">:</span>
-          <span id="222">'</span>
-        </div>
-      </div>
-    </div>
-    <div id="wavestypes" class="row">
-      <div class="small-7 small-centered columns">
-          <button id="sine" data-color="rgb(32, 64, 223)" data-type="sine" class="selected wave button">Sine</button>
-          <button id="triangle" data-color="rgb(243, 250, 46)" data-type="triangle" class="wave button">Triangle</button>
-          <button id="sawtooth" data-color="rgb(92, 169, 4)" data-type="sawtooth" class="wave button">Sawtooth</button>
-          <button id="square" data-color="rgb(255, 60, 26)" data-type="square" class="wave button">Square</button>
-      </div>
-    </div>
-    <div id="effects" class="columns">
-      <dl id="sortable" class="accordion" data-accordion>
-        <dd id="delay" class="accordion-navigation">
-          <a href="#panel1">Delay</a>
-          <button class="toggle">OFF</button>
-          <div id="panel1" class="row content">
-            <div class="small-12 columns text-center">
-              <ul class="small-block-grid-1 large-block-grid-2">
-                <li>
-                  <span class="round radius label">Feedback</span>
-                  <input type="text" data-prop="feedback" data-min="0" data-max="100" data-scale="100" data-step="1" value="45" class="dial">
-                </li>
-                <li>
-                  <span class="round radius label">Delay Time</span>
-                  <input type="text" data-prop="delayTime" data-min="0" data-max="2000" data-scale="1" data-step="10" value="150" class="dial">
-                </li>
-                <li>
-                  <span class="round radius label">Wet Signal</span>
-                  <input type="text" data-prop="wetLevel" data-min="0" data-max="100" data-scale="100" data-step="1" value="25" class="dial">
-                </li>
-                <li>
-                  <span class="round radius label">Dry Signal</span>
-                  <input type="text" data-prop="dryLevel" data-min="0" data-max="100" data-scale="100" data-step="1"  value="100" class="dial">
-                </li>
+
+          <div id="wavestypes" class="row">
+            <div class="small-12 large-8 large-centered columns">
+              <ul class="button-group text-center">
+                <li class="wave"><button id="sine" data-color="rgb(32, 64, 223)" data-type="sine" class="selected wave button">Sine</button></li>
+                <li class="wave"><button id="triangle" data-color="rgb(243, 250, 46)" data-type="triangle" class="wave button">Triangle</button></li>
+                <li class="wave"><button id="sawtooth" data-color="rgb(92, 169, 4)" data-type="sawtooth" class="wave button">Sawtooth</button></li>
+                <li class="wave"><button id="square" data-color="rgb(255, 60, 26)" data-type="square" class="wave button">Square</button></li>
               </ul>
             </div>
           </div>
-        </dd>
-        <dd id="chorus" class="accordion-navigation">
-          <a href="#panel2">Chorus</a>
-          <button class="toggle">OFF</button>
-          <div id="panel2" class="row content">
-            <div class="small-12 columns text-center">
-              <ul class="small-block-grid-1 large-block-grid-2">
-                <li>
-                  <span class="round radius label">Feedback</span>
-                  <input type="text" data-prop="feedback" data-min="0" data-max="100" data-scale="100" data-step="1" value="20" class="dial">
-                </li>
-                <li>
-                  <span class="round radius label">Rate</span>
-                  <input type="text" data-prop="rate" data-min="0" data-max="800" data-scale="100" data-step="1" value="150" class="dial">
-                </li>
-                <li>
-                  <span class="round radius label">Delay</span>
-                  <input type="text" data-prop="delay" data-min="0" data-max="1000" data-scale="1000" data-step="1" value="45" class="dial">
-                </li>
-              </ul>
+
+          <aside class="">
+            <div id="effects" class="columns">
+              <h3>Effect Chain</h3>
+              <dl id="sortable" class="accordion" data-accordion>
+                <dd id="delay" class="accordion-navigation">
+                  <a href="#panel1">Delay</a>
+                  <button class="toggle">OFF</button>
+                  <div id="panel1" class="row content">
+                    <div class="small-12 columns text-center">
+                      <ul class="small-block-grid-1 large-block-grid-2">
+                        <li>
+                          <span class="round radius label">Feedback</span>
+                          <input type="text" data-prop="feedback" data-min="0" data-max="100" data-scale="100" data-step="1" value="45" class="dial">
+                        </li>
+                        <li>
+                          <span class="round radius label">Delay Time</span>
+                          <input type="text" data-prop="delayTime" data-min="0" data-max="2000" data-scale="1" data-step="10" value="150" class="dial">
+                        </li>
+                        <li>
+                          <span class="round radius label">Wet Signal</span>
+                          <input type="text" data-prop="wetLevel" data-min="0" data-max="100" data-scale="100" data-step="1" value="25" class="dial">
+                        </li>
+                        <li>
+                          <span class="round radius label">Dry Signal</span>
+                          <input type="text" data-prop="dryLevel" data-min="0" data-max="100" data-scale="100" data-step="1"  value="100" class="dial">
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </dd>
+                <dd id="chorus" class="accordion-navigation">
+                  <a href="#panel2">Chorus</a>
+                  <button class="toggle">OFF</button>
+                  <div id="panel2" class="row content">
+                    <div class="small-12 columns text-center">
+                      <ul class="small-block-grid-1 large-block-grid-2">
+                        <li>
+                          <span class="round radius label">Feedback</span>
+                          <input type="text" data-prop="feedback" data-min="0" data-max="100" data-scale="100" data-step="1" value="20" class="dial">
+                        </li>
+                        <li>
+                          <span class="round radius label">Rate</span>
+                          <input type="text" data-prop="rate" data-min="0" data-max="800" data-scale="100" data-step="1" value="150" class="dial">
+                        </li>
+                        <li>
+                          <span class="round radius label">Delay</span>
+                          <input type="text" data-prop="delay" data-min="0" data-max="1000" data-scale="1000" data-step="1" value="45" class="dial">
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </dd>       
+                <dd id="overdrive" class="accordion-navigation">
+                  <a href="#panel3">Overdrive</a>
+                  <button class="toggle">OFF</button>
+                  <div id="panel3" class="row content">
+                    <div class="small-12 columns text-center">
+                      <ul class="small-block-grid-1 large-block-grid-2">
+                        <li>
+                          <span class="round radius label">Curve</span>
+                          <input type="text" data-prop="curveAmount" data-min="0" data-max="100" data-scale="100" data-step="1" value="100" class="dial">
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </dd>
+              </dl>
             </div>
-          </div>
-        </dd>       
-        <dd id="overdrive" class="accordion-navigation">
-          <a href="#panel3">Overdrive</a>
-          <button class="toggle">OFF</button>
-          <div id="panel3" class="row content">
-            <div class="small-12 columns text-center">
-              <ul class="small-block-grid-1 large-block-grid-2">
-                <li>
-                  <span class="round radius label">Curve</span>
-                  <input type="text" data-prop="curveAmount" data-min="0" data-max="100" data-scale="100" data-step="1" value="100" class="dial">
-                </li>
-              </ul>
-            </div>
-          </div>
-        </dd>
-      </dl>
+          </aside>
+          <a class="exit-off-canvas"></a>
+        </div>
+      </div>
     </div>
   </body>
 </html>

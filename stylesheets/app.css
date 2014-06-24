@@ -7991,7 +7991,19 @@ th.hide-for-touch {
   font-style: normal;
 }
 
-/* line 18, ../scss/app.scss */
+/* line 17, ../scss/app.scss */
+body, html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* line 23, ../scss/app.scss */
+.off-canvas-wrap, .inner-wrap, .page {
+  height: 100%;
+}
+
+/* line 27, ../scss/app.scss */
 footer {
   position: absolute;
   bottom: 0;
@@ -8000,7 +8012,7 @@ footer {
   background: #666;
 }
 
-/* line 26, ../scss/app.scss */
+/* line 36, ../scss/app.scss */
 #hover {
   position: absolute;
   bottom: 0;
@@ -8009,7 +8021,7 @@ footer {
   height: 25%;
 }
 
-/* line 34, ../scss/app.scss */
+/* line 45, ../scss/app.scss */
 #visualizer {
   position: absolute;
   top: 0;
@@ -8019,7 +8031,7 @@ footer {
   background: #000;
 }
 
-/* line 42, ../scss/app.scss */
+/* line 54, ../scss/app.scss */
 #content {
   height: 100%;
   width: 100%;
@@ -8027,47 +8039,52 @@ footer {
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* line 48, ../scss/app.scss */
+/* line 61, ../scss/app.scss */
 #effects {
   width: 20%;
 }
+/* line 63, ../scss/app.scss */
+#effects h3 {
+  color: white;
+}
 
-/* line 51, ../scss/app.scss */
+/* line 68, ../scss/app.scss */
 .accordion {
   overflow: hidden;
 }
-/* line 53, ../scss/app.scss */
+/* line 70, ../scss/app.scss */
 .accordion dd > a {
   float: left;
   width: 80%;
 }
 
-/* line 58, ../scss/app.scss */
-button.toggle.on {
-  background-color: #5CA904;
+/* line 75, ../scss/app.scss */
+li.wave {
+  width: 25%;
 }
 
-/* line 61, ../scss/app.scss */
+/* line 79, ../scss/app.scss */
+button.wave {
+  width: 100%;
+  padding: 1rem;
+}
+/* line 83, ../scss/app.scss */
 button#sine.selected {
   background-color: #2040DF;
 }
-
-/* line 64, ../scss/app.scss */
+/* line 86, ../scss/app.scss */
 button#triangle.selected {
   background-color: #F3FA2E;
 }
-
-/* line 67, ../scss/app.scss */
+/* line 89, ../scss/app.scss */
 button#sawtooth.selected {
   background-color: #5CA904;
 }
-
-/* line 70, ../scss/app.scss */
+/* line 92, ../scss/app.scss */
 button#square.selected {
   background-color: #FF3C1A;
 }
-
-/* line 73, ../scss/app.scss */
+/* line 95, ../scss/app.scss */
 button.toggle {
   float: right;
   width: 20%;
@@ -8075,22 +8092,26 @@ button.toggle {
   padding: 1.22rem 0 1.22rem;
   vertical-align: middle;
 }
+/* line 101, ../scss/app.scss */
+button.toggle.on {
+  background-color: #5CA904;
+}
 
 @-moz-document url-prefix() {
-  /* line 83, ../scss/app.scss */
+  /* line 109, ../scss/app.scss */
   button.toggle {
     padding: 1.1rem 0 1.1rem;
   }
 }
 
-/* line 89, ../scss/app.scss */
+/* line 115, ../scss/app.scss */
 dd.accordion-navigation {
   display: inline-block;
   width: 100%;
   float: left;
 }
 
-/* line 95, ../scss/app.scss */
+/* line 121, ../scss/app.scss */
 #keys {
   position: absolute;
   bottom: 0;
@@ -8102,7 +8123,7 @@ dd.accordion-navigation {
   color: #888;
 }
 
-/* line 105, ../scss/app.scss */
+/* line 132, ../scss/app.scss */
 .keyboard {
   font-family: 'aa_qwertz-tastenregular', "Comic Sans";
   font-size: 2em;
@@ -8110,24 +8131,24 @@ dd.accordion-navigation {
   letter-spacing: -0.2em;
   margin: 0;
 }
-/* line 111, ../scss/app.scss */
+/* line 138, ../scss/app.scss */
 .keyboard div {
   display: inline-block;
 }
-/* line 112, ../scss/app.scss */
+/* line 140, ../scss/app.scss */
 .keyboard div:nth-child(1) {
   margin-right: 0.5em;
 }
-/* line 113, ../scss/app.scss */
+/* line 143, ../scss/app.scss */
 .keyboard div:nth-child(2) {
   margin: 0 0.875em 0 0.5em;
 }
-/* line 114, ../scss/app.scss */
+/* line 146, ../scss/app.scss */
 .keyboard div:nth-child(3) {
   margin-right: 0.5em;
 }
 
-/* line 117, ../scss/app.scss */
+/* line 152, ../scss/app.scss */
 .played {
   color: #f00;
 }
