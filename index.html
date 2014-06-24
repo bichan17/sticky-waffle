@@ -11,8 +11,8 @@
   </head>
   <body>
     <div class="page">
-      <div class="" data-offcanvas>
-        <div class="">
+      <div id="cWrap" data-offcanvas>
+        <div id="iWrap">
           <footer>
             <div class="row">
               <div class="small-12 columns">
@@ -25,7 +25,6 @@
 
             <canvas id="visualizer">Get a real browser!</canvas>
             <div id="keys" class="row">
-              <!-- <h1><a class="left-off-canvas-toggle" href="#" >Menu</a></h1> -->
 
               <div class="keyboard">
                 <div>
@@ -57,9 +56,8 @@
               </div>
             </div>
           </div>
-
-          <div id="wavestypes" class="row">
-            <div class="small-12 large-8 large-centered columns">
+          <div id="wavetypes" class="row">
+            <div class="small-12 medium-8 medium-centered columns">
               <ul class="button-group text-center">
                 <li class="wave"><button id="sine" data-color="rgb(32, 64, 223)" data-type="sine" class="selected wave button">Sine</button></li>
                 <li class="wave"><button id="triangle" data-color="rgb(243, 250, 46)" data-type="triangle" class="wave button">Triangle</button></li>
@@ -68,8 +66,12 @@
               </ul>
             </div>
           </div>
-
-          <aside class="">
+          <div class="FX row">
+            <div class="small-12 columns">
+                <h1><a class="left-off-canvas-toggle" href="#" >FX</a></h1>
+            </div>
+          </div>
+          <aside>
             <div id="effects" class="columns">
               <h3>Effect Chain</h3>
               <dl id="sortable" class="accordion" data-accordion>

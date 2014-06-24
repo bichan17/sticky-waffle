@@ -9,19 +9,48 @@ app.main = (function(){
 		chorus : {},
 		overdrive : {}
 	};
-	var body;
   var ss = document.styleSheets[0];
   var rules = ss.cssRules || ss.rules;
   var played_CSS = null;
 
 	function init (){
-		$(document).foundation();
-		body = document.getElementsByTagName('body')[0];
-		body.className += 'black';
 
-		var $content = $( "#content" );
+
+		function makeMenu(){
+			$("#cWrap").addClass("off-canvas-wrap");
+			$("#iWrap").addClass("inner-wrap");
+			$("#iWrap aside").addClass("left-off-canvas-menu");
+			$("#effects").show();
+		}
+		function breakMenu(){
+			$("#cWrap").removeClass("off-canvas-wrap");
+			$("#iWrap").removeClass("inner-wrap");
+			$("#iWrap aside").removeClass("left-off-canvas-menu");
+		}
+
+		//check for small screen, make menu
+		if($(window).width() <= 1024){
+			makeMenu();
+		}
+
+		$(window).resize(function(){
+      if($(window).width() <= 1024){
+				makeMenu();
+			}else{
+				breakMenu();
+			}
+    });
+
+		//run foundation
+		$(document).foundation({
+			offcanvas: {
+		    close_on_click: false
+		  }
+		});
+
 
 		//detect mouse movement, reveal footer
+		var $content = $( "#content" );
 		var timeout = null;
 		var moving = false;
 		var idleTime = 1500;
@@ -46,10 +75,11 @@ app.main = (function(){
 
 		//read default knob vals, build intitial effectSettings
 		$(".dial").each(function(index){
-			var effect = $(this).closest(".accordion dd").attr("id");
-			var prop = $(this).data("prop");
-			var scale = parseInt($(this).data("scale"));
-			var val = parseInt($(this).attr("value"));
+			var $this = $(this);
+			var effect = $this.closest(".accordion dd").attr("id");
+			var prop = $this.data("prop");
+			var scale = parseInt($this.data("scale"));
+			var val = parseInt($this.attr("value"));
 			effectSettings[effect].bypass = 1;
 			effectSettings[effect][prop] = val/scale;
 		});
@@ -61,9 +91,10 @@ app.main = (function(){
 			angleOffset : -125,
 			angleArc : 250,
 			release: function(v){
-				var effect = this.$.closest(".accordion dd").attr("id");
-				var prop = this.$.data("prop");
-				var scale = parseInt(this.$.data("scale"));
+				var $this = this.$;
+				var effect = $this.closest(".accordion dd").attr("id");
+				var prop = $this.data("prop");
+				var scale = parseInt($this.data("scale"));
 				effectSettings[effect][prop] = v/scale;
 
 				synth.changeSettings(effectSettings);
@@ -72,17 +103,19 @@ app.main = (function(){
 
 		//bypass button click
 		$(".toggle").on("click", function(event){
-			var effect = $(this).closest(".accordion dd").attr("id");
+			var $this = $(this);
 
-			if($(this).hasClass("on")){
+			var effect = $this.closest(".accordion dd").attr("id");
+
+			if($this.hasClass("on")){
 				//turn off
-				$(this).removeClass("on");
-				$(this).text("OFF");
+				$this.removeClass("on");
+				$this.text("OFF");
 				effectSettings[effect].bypass = true;
 			}else{
 				//turn on
-				$(this).addClass("on");
-				$(this).text("ON");
+				$this.addClass("on");
+				$this.text("ON");
 				effectSettings[effect].bypass = false;
 			}
 			synth.changeSettings(effectSettings);

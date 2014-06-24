@@ -73,7 +73,7 @@ $menu-slide: "transform 500ms ease" !default;
 // Remove transition flicker on phones
 @mixin kill-flicker {
   // -webkit-transform: translateZ(0x);
-  -webkit-backface-visibility: hidden;
+  // -webkit-backface-visibility: hidden;
 }
 
 // Basic properties for the content wraps

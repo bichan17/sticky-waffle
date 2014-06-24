@@ -7133,7 +7133,6 @@ meta.foundation-mq-topbar {
 }
 /* line 271, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
 .off-canvas-wrap {
-  -webkit-backface-visibility: hidden;
   position: relative;
   width: 100%;
   overflow: hidden;
@@ -7146,7 +7145,6 @@ meta.foundation-mq-topbar {
 
 /* line 272, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
 .inner-wrap {
-  -webkit-backface-visibility: hidden;
   position: relative;
   width: 100%;
   -webkit-transition: -webkit-transform 500ms ease;
@@ -7167,7 +7165,6 @@ meta.foundation-mq-topbar {
 
 /* line 274, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
 .tab-bar {
-  -webkit-backface-visibility: hidden;
   background: #333333;
   color: white;
   height: 2.8125rem;
@@ -7267,7 +7264,6 @@ meta.foundation-mq-topbar {
 
 /* line 308, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
 .left-off-canvas-menu {
-  -webkit-backface-visibility: hidden;
   width: 15.625rem;
   top: 0;
   bottom: 0;
@@ -7286,14 +7282,9 @@ meta.foundation-mq-topbar {
   transform: translate3d(-100%, 0, 0);
   left: 0;
 }
-/* line 97, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
-.left-off-canvas-menu * {
-  -webkit-backface-visibility: hidden;
-}
 
 /* line 309, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
 .right-off-canvas-menu {
-  -webkit-backface-visibility: hidden;
   width: 15.625rem;
   top: 0;
   bottom: 0;
@@ -7311,10 +7302,6 @@ meta.foundation-mq-topbar {
   -o-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0);
   right: 0;
-}
-/* line 97, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
-.right-off-canvas-menu * {
-  -webkit-backface-visibility: hidden;
 }
 
 /* line 311, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
@@ -7358,7 +7345,6 @@ ul.off-canvas-list li a:hover {
 }
 /* line 320, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
 .move-right .exit-off-canvas {
-  -webkit-backface-visibility: hidden;
   transition: background 300ms ease;
   cursor: pointer;
   box-shadow: -4px 0 4px rgba(0, 0, 0, 0.5), 4px 0 4px rgba(0, 0, 0, 0.5);
@@ -7390,7 +7376,6 @@ ul.off-canvas-list li a:hover {
 }
 /* line 328, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
 .move-left .exit-off-canvas {
-  -webkit-backface-visibility: hidden;
   transition: background 300ms ease;
   cursor: pointer;
   box-shadow: -4px 0 4px rgba(0, 0, 0, 0.5), 4px 0 4px rgba(0, 0, 0, 0.5);
@@ -7422,7 +7407,6 @@ ul.off-canvas-list li a:hover {
 }
 /* line 339, ../bower_components/foundation/scss/foundation/components/_offcanvas.scss */
 .offcanvas-overlap .exit-offcanvas-menu {
-  -webkit-backface-visibility: hidden;
   transition: background 300ms ease;
   cursor: pointer;
   box-shadow: -4px 0 4px rgba(0, 0, 0, 0.5), 4px 0 4px rgba(0, 0, 0, 0.5);
@@ -7983,6 +7967,11 @@ th.hide-for-touch {
     display: table-cell !important;
   }
 }
+/* 0, 640px */
+/* 641px, 1024px */
+/* 1025px, 1440px */
+/* 1441px, 1920px */
+/* 1921px */
 @font-face {
   font-family: 'aa_qwertz-tastenregular';
   src: url("../fonts/aaqwertz-tasten-webfont.eot");
@@ -7991,19 +7980,19 @@ th.hide-for-touch {
   font-style: normal;
 }
 
-/* line 17, ../scss/app.scss */
+/* line 27, ../scss/app.scss */
 body, html {
   height: 100%;
   width: 100%;
   overflow: hidden;
 }
 
-/* line 23, ../scss/app.scss */
+/* line 33, ../scss/app.scss */
 .off-canvas-wrap, .inner-wrap, .page {
   height: 100%;
 }
 
-/* line 27, ../scss/app.scss */
+/* line 37, ../scss/app.scss */
 footer {
   position: absolute;
   bottom: 0;
@@ -8012,7 +8001,7 @@ footer {
   background: #666;
 }
 
-/* line 36, ../scss/app.scss */
+/* line 46, ../scss/app.scss */
 #hover {
   position: absolute;
   bottom: 0;
@@ -8021,7 +8010,7 @@ footer {
   height: 25%;
 }
 
-/* line 45, ../scss/app.scss */
+/* line 55, ../scss/app.scss */
 #visualizer {
   position: absolute;
   top: 0;
@@ -8031,7 +8020,7 @@ footer {
   background: #000;
 }
 
-/* line 54, ../scss/app.scss */
+/* line 64, ../scss/app.scss */
 #content {
   height: 100%;
   width: 100%;
@@ -8039,79 +8028,80 @@ footer {
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* line 61, ../scss/app.scss */
+/* line 71, ../scss/app.scss */
 #effects {
-  width: 20%;
+  width: 100%;
+  display: hidden;
 }
-/* line 63, ../scss/app.scss */
+/* line 74, ../scss/app.scss */
 #effects h3 {
   color: white;
 }
 
-/* line 68, ../scss/app.scss */
+/* line 79, ../scss/app.scss */
 .accordion {
   overflow: hidden;
 }
-/* line 70, ../scss/app.scss */
+/* line 81, ../scss/app.scss */
 .accordion dd > a {
   float: left;
-  width: 80%;
+  width: 75%;
 }
 
-/* line 75, ../scss/app.scss */
+/* line 86, ../scss/app.scss */
 li.wave {
   width: 25%;
 }
 
-/* line 79, ../scss/app.scss */
+/* line 90, ../scss/app.scss */
 button.wave {
   width: 100%;
   padding: 1rem;
 }
-/* line 83, ../scss/app.scss */
+/* line 94, ../scss/app.scss */
 button#sine.selected {
   background-color: #2040DF;
 }
-/* line 86, ../scss/app.scss */
+/* line 97, ../scss/app.scss */
 button#triangle.selected {
   background-color: #F3FA2E;
 }
-/* line 89, ../scss/app.scss */
+/* line 100, ../scss/app.scss */
 button#sawtooth.selected {
   background-color: #5CA904;
 }
-/* line 92, ../scss/app.scss */
+/* line 103, ../scss/app.scss */
 button#square.selected {
   background-color: #FF3C1A;
 }
-/* line 95, ../scss/app.scss */
+/* line 106, ../scss/app.scss */
 button.toggle {
   float: right;
-  width: 20%;
+  width: 25%;
   margin: 0;
   padding: 1.22rem 0 1.22rem;
   vertical-align: middle;
 }
-/* line 101, ../scss/app.scss */
+/* line 112, ../scss/app.scss */
 button.toggle.on {
   background-color: #5CA904;
 }
 
 @-moz-document url-prefix() {
-  /* line 109, ../scss/app.scss */
+  /* line 120, ../scss/app.scss */
   button.toggle {
     padding: 1.1rem 0 1.1rem;
   }
 }
 
-/* line 115, ../scss/app.scss */
+/* line 126, ../scss/app.scss */
 dd.accordion-navigation {
   display: inline-block;
   width: 100%;
   float: left;
 }
 
-/* line 121, ../scss/app.scss */
+/* line 132, ../scss/app.scss */
 #keys {
   position: absolute;
   bottom: 0;
@@ -8123,7 +8113,7 @@ dd.accordion-navigation {
   color: #888;
 }
 
-/* line 132, ../scss/app.scss */
+/* line 143, ../scss/app.scss */
 .keyboard {
   font-family: 'aa_qwertz-tastenregular', "Comic Sans";
   font-size: 2em;
@@ -8131,24 +8121,48 @@ dd.accordion-navigation {
   letter-spacing: -0.2em;
   margin: 0;
 }
-/* line 138, ../scss/app.scss */
+/* line 149, ../scss/app.scss */
 .keyboard div {
   display: inline-block;
 }
-/* line 140, ../scss/app.scss */
+/* line 151, ../scss/app.scss */
 .keyboard div:nth-child(1) {
   margin-right: 0.5em;
 }
-/* line 143, ../scss/app.scss */
+/* line 154, ../scss/app.scss */
 .keyboard div:nth-child(2) {
   margin: 0 0.875em 0 0.5em;
 }
-/* line 146, ../scss/app.scss */
+/* line 157, ../scss/app.scss */
 .keyboard div:nth-child(3) {
   margin-right: 0.5em;
 }
 
-/* line 152, ../scss/app.scss */
+/* line 163, ../scss/app.scss */
 .played {
   color: #f00;
+}
+
+/* line 166, ../scss/app.scss */
+.FX {
+  display: block;
+  color: white;
+}
+
+/* line 171, ../scss/app.scss */
+#effects {
+  display: none;
+}
+
+@media only screen and (min-width: 64.063em) {
+  /* line 175, ../scss/app.scss */
+  #effects {
+    display: block;
+    width: 20%;
+  }
+
+  /* line 179, ../scss/app.scss */
+  .FX {
+    display: none;
+  }
 }
