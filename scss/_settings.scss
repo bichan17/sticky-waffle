@@ -283,16 +283,16 @@ $accordion-content-active-bg-color: scale-color($accordion-navigation-bg-color, 
 // Block Grid
 
 // $include-html-grid-classes: $include-html-classes;
-// $include-xl-html-block-grid-classes: false;
+$include-xl-html-block-grid-classes: false;
 
 // We use this to control the maximum number of block grid elements per row
-// $block-grid-elements: 12;
-// $block-grid-default-spacing: rem-calc(20);
-// $align-block-grid-to-grid: false;
+$block-grid-elements: 12;
+$block-grid-default-spacing: rem-calc(20);
+$align-block-grid-to-grid: false;
 
 
 // Enables media queries for block-grid classes. Set to false if writing semantic HTML.
-// $block-grid-media-queries: true;
+$block-grid-media-queries: true;
 
 // Breadcrumbs
 

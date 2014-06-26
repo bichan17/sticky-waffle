@@ -8037,74 +8037,80 @@ footer {
 #effects h3 {
   color: white;
 }
+/* line 77, ../scss/app.scss */
+#effects span.propLabel {
+  text-align: center;
+  white-space: nowrap;
+}
 
-/* line 79, ../scss/app.scss */
+/* line 83, ../scss/app.scss */
 .accordion {
   overflow: hidden;
 }
-/* line 81, ../scss/app.scss */
+/* line 85, ../scss/app.scss */
 .accordion dd > a {
   float: left;
   width: 75%;
   padding: 0.5rem;
   font-size: 1.2rem;
 }
-/* line 86, ../scss/app.scss */
+/* line 90, ../scss/app.scss */
 .accordion dd > a img {
   height: 1rem;
   vertical-align: -0.05rem;
+  margin-right: .1rem;
 }
 
-/* line 92, ../scss/app.scss */
+/* line 97, ../scss/app.scss */
 li.wave {
   width: 25%;
 }
 
-/* line 96, ../scss/app.scss */
+/* line 101, ../scss/app.scss */
 button.wave {
   width: 100%;
   padding: 1rem;
 }
-/* line 100, ../scss/app.scss */
+/* line 105, ../scss/app.scss */
 button#sine.selected {
   background-color: #2040DF;
 }
-/* line 103, ../scss/app.scss */
+/* line 108, ../scss/app.scss */
 button#triangle.selected {
   background-color: #F3FA2E;
 }
-/* line 106, ../scss/app.scss */
+/* line 111, ../scss/app.scss */
 button#sawtooth.selected {
   background-color: #5CA904;
 }
-/* line 109, ../scss/app.scss */
+/* line 114, ../scss/app.scss */
 button#square.selected {
   background-color: #FF3C1A;
 }
-/* line 112, ../scss/app.scss */
+/* line 117, ../scss/app.scss */
 button.toggle {
   float: right;
   width: 25%;
-  height: 2.9rem;
+  height: 2.86rem;
   margin: 0;
   padding: 0;
   font-size: 1rem;
   vertical-align: middle;
 }
-/* line 120, ../scss/app.scss */
+/* line 125, ../scss/app.scss */
 button.toggle.on {
   background-color: #5CA904;
 }
 
 @-moz-document url-prefix() {}
-/* line 134, ../scss/app.scss */
+/* line 139, ../scss/app.scss */
 dd.accordion-navigation {
   display: inline-block;
   width: 100%;
   float: left;
 }
 
-/* line 140, ../scss/app.scss */
+/* line 145, ../scss/app.scss */
 #keys {
   position: absolute;
   bottom: 0;
@@ -8116,7 +8122,7 @@ dd.accordion-navigation {
   color: #888;
 }
 
-/* line 151, ../scss/app.scss */
+/* line 156, ../scss/app.scss */
 .keyboard {
   font-family: 'aa_qwertz-tastenregular', "Comic Sans";
   font-size: 2em;
@@ -8124,47 +8130,47 @@ dd.accordion-navigation {
   letter-spacing: -0.2em;
   margin: 0;
 }
-/* line 157, ../scss/app.scss */
+/* line 162, ../scss/app.scss */
 .keyboard div {
   display: inline-block;
 }
-/* line 159, ../scss/app.scss */
+/* line 164, ../scss/app.scss */
 .keyboard div:nth-child(1) {
   margin-right: 0.5em;
 }
-/* line 162, ../scss/app.scss */
+/* line 167, ../scss/app.scss */
 .keyboard div:nth-child(2) {
   margin: 0 0.875em 0 0.5em;
 }
-/* line 165, ../scss/app.scss */
+/* line 170, ../scss/app.scss */
 .keyboard div:nth-child(3) {
   margin-right: 0.5em;
 }
 
-/* line 171, ../scss/app.scss */
+/* line 176, ../scss/app.scss */
 .played {
   color: #f00;
 }
 
-/* line 174, ../scss/app.scss */
+/* line 179, ../scss/app.scss */
 .FX {
   display: block;
   color: white;
 }
 
-/* line 179, ../scss/app.scss */
+/* line 184, ../scss/app.scss */
 #effects {
   display: none;
 }
 
 @media only screen and (min-width: 64.063em) {
-  /* line 183, ../scss/app.scss */
+  /* line 188, ../scss/app.scss */
   #effects {
     display: block;
     width: 20%;
   }
 
-  /* line 187, ../scss/app.scss */
+  /* line 192, ../scss/app.scss */
   .FX {
     display: none;
   }

@@ -74,6 +74,10 @@ footer {
   h3{
     color: white;
   }
+  span.propLabel{
+    text-align: center;
+    white-space: nowrap;
+  }
 }
 
 .accordion {
@@ -86,6 +90,7 @@ footer {
     img{
       height: 1rem;
       vertical-align: -0.05rem;
+      margin-right: .1rem;
     }
   }
 }
@@ -112,7 +117,7 @@ button {
   &.toggle {
     float: right;
     width: 25%;
-    height: 2.9rem;
+    height: 2.86rem;
     margin: 0;
     padding: 0;
     font-size: 1rem;
