@@ -144,7 +144,7 @@ app.synth = (function() {
 			}
 			//add event listeners
 			window.addEventListener("keydown", function(e){
-				e.preventDefault();
+				// e.preventDefault();
 				keydown[e.keyCode] = true;
 			});
 

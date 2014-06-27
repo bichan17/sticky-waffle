@@ -42,8 +42,8 @@
 
 // We use these to control various global styles
 // $body-bg: #fff;
-// $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-color: #fff;
+$body-font-family: "Futura", Futura, Helvetica, Arial, sans-serif;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
 
@@ -225,19 +225,22 @@ $primary-color: #4f4f4f;
 // $microformat-abbr-font-decoration: none;
 
 // Accordion
+$effect-chain-bg: rgba(0, 0, 0, 0);
+$effect-chain-font-color: #fff;
+$effect-chain-hover-factor: 80%;
 
 // $include-html-accordion-classes: $include-html-classes;
 
 // $accordion-navigation-padding: rem-calc(16);
-$accordion-navigation-bg-color: #efefef  ;
-$accordion-navigation-hover-bg-color: scale-color($accordion-navigation-bg-color, $lightness: -8%);
-$accordion-navigation-active-bg-color: scale-color($accordion-navigation-bg-color, $lightness: -5%);
-// $accordion-navigation-font-color: #222;
+$accordion-navigation-bg-color: $effect-chain-bg;
+$accordion-navigation-hover-bg-color: scale-color(rgba($accordion-navigation-bg-color, 0.5), $lightness: $effect-chain-hover-factor);
+$accordion-navigation-active-bg-color: $effect-chain-bg;
+$accordion-navigation-font-color: #fff;
 // $accordion-navigation-font-size: rem-calc(16);
 // $accordion-navigation-font-family: $body-font-family;
 
 // $accordion-content-padding: $column-gutter/2;
-$accordion-content-active-bg-color: scale-color($accordion-navigation-bg-color, $lightness: -5%);
+$accordion-content-active-bg-color: $effect-chain-bg;
 
 // Alert Boxes
 
@@ -352,12 +355,12 @@ $block-grid-media-queries: true;
 // $button-font-align: center;
 
 // We use these to control various hover effects.
-// $button-function-factor: -20%;
+$button-function-factor: $effect-chain-hover-factor;
 
 // We use these to control button border styles.
 // $button-border-width: 0px;
 // $button-border-style: solid;
-// $button-bg: $primary-color;
+$button-bg: $effect-chain-bg;
 // $button-border-color: scale-color($bg, $lightness: $button-function-factor);
 
 // We use this to set the default radius used throughout the core.

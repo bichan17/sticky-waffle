@@ -87,8 +87,8 @@ app.main = (function(){
 		//setup knobs
 		var knobDefaults = {
 			width: "91%", 
-			fgColor : "#4f4f4f",
-			bgColor:"#FFFFFF",
+			fgColor : "#ffffff",
+			bgColor:"rgba(255, 255, 255, 0.3)",
 			angleOffset : -125,
 			angleArc : 250,
 			release: function(v){

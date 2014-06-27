@@ -68,32 +68,84 @@ footer {
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 
+$list-width: 7%;
+$effect-chain-grey: #787878;
+$effect-font-size: 1.2rem;
+$effect-padding: 0.25rem;
+$effect-button-height: 2.35rem;
+
 #effects {
-  width: 100%;
+  float: right;
   display: hidden;
   h3{
     color: white;
+    margin-left: $list-width;
+  }
+  ul#numbers{
+    width: $list-width;
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: $effect-padding;
+    font-size: $effect-font-size;
+    li{
+      width: 100%;
+      height: $effect-button-height;
+      color: $effect-chain-grey;
+    }
+  }
+  #chain{
+    margin: 0;
+    padding: 0;
+    width: 93%;
+    float: left;
   }
   span.propLabel{
     text-align: center;
     white-space: nowrap;
   }
-}
-
-.accordion {
-  overflow: hidden;
-  dd > a {
-    float: left;
-    width: 75%;
-    padding: 0.5rem;
-    font-size: 1.2rem;
-    img{
-      height: 1rem;
-      vertical-align: -0.05rem;
-      margin-right: .1rem;
+  .accordion {
+    overflow: hidden;
+    button{
+      float: left;
+      width: 18.5%;
+      height: $effect-button-height;
+      margin: 0;
+      padding: 0;
+      font-size: 1rem;
+      font-weight: bold;
+      vertical-align: middle;
+      &.handle{
+        background-image: url(../assets/icons_sort.svg);
+        background-size: 20px 20px;
+        background-position: center;
+        background-repeat: no-repeat;
+        // background-color: rgba(255, 255, 255, 0.0);
+      }
+      &.toggle.on {
+        background-color: #5CA904;
+      }
+    }
+    dd{
+      &:not(:last-child){
+        border-bottom:1px solid $effect-chain-grey;
+      }
+    }
+    dd > a {
+      float: left;
+      width: 63%;
+      padding: $effect-padding;
+      font-size: $effect-font-size;
+      img{
+        height: 1rem;
+        vertical-align: -0.05rem;
+        margin-right: .1rem;
+      }
     }
   }
 }
+
+
 li.wave {
     width: 25%;
   }
@@ -113,18 +165,6 @@ button {
   }
   &#square.selected {
     background-color: #FF3C1A;
-  }
-  &.toggle {
-    float: right;
-    width: 25%;
-    height: 2.86rem;
-    margin: 0;
-    padding: 0;
-    font-size: 1rem;
-    vertical-align: middle;
-    &.on {
-      background-color: #5CA904;
-    }
   }
 }
 
@@ -187,7 +227,7 @@ dd.accordion-navigation {
 @media #{$large-up} {
   #effects{
     display: block;
-    width: 20%;
+    width: 25%;
   }
   .FX{
     display: none;

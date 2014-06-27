@@ -71,14 +71,22 @@
                 <h1><a class="left-off-canvas-toggle" href="#" >FX</a></h1>
             </div>
           </div>
-          <aside>
-            <div id="effects" class="columns">
-              <h3>Effect Chain</h3>
+          <aside id="effects" class="columns">
+            <h3>EFFECT CHAIN</h3>
+            <ul id="numbers">
+              <li>1.</li>
+              <li>2.</li>
+              <li>3.</li>
+              <li>4.</li>
+              <li>5.</li>
+              <li>6.</li>
+            </ul>
+            <div id="chain" class="columns">
               <dl id="sortable" class="accordion" data-accordion>
                 <dd id="delay" class="accordion-navigation">
+                  <button class="handle"></button>
                   <a href="#panel1">
-                    <img src="assets/sort.svg" alt="sort">
-                    <span>Delay</span>
+                    <span>delay</span>
                   </a>
                   <button class="toggle">OFF</button>
                   <div id="panel1" class="row content">
@@ -106,9 +114,9 @@
                   </div>
                 </dd>
                 <dd id="chorus" class="accordion-navigation">
+                  <button class="handle"></button>
                   <a href="#panel2">
-                    <img src="assets/sort.svg" alt="sort">
-                    <span>Chorus</span>
+                    <span>chorus</span>
                   </a>
                   <button class="toggle">OFF</button>
                   <div id="panel2" class="row content">
@@ -129,11 +137,11 @@
                       </ul>
                     </div>
                   </div>
-                </dd>       
+                </dd>
                 <dd id="overdrive" class="accordion-navigation">
+                  <button class="handle"></button>
                   <a href="#panel3">
-                    <img src="assets/sort.svg" alt="sort">
-                    <span>Overdrive</span>
+                    <span>overdrive</span>
                   </a>
                   <button class="toggle">OFF</button>
                   <div id="panel3" class="row content">
@@ -146,6 +154,7 @@
                       </ul>
                     </div>
                   </div>
+
                 </dd>
               </dl>
             </div>
