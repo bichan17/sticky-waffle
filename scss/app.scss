@@ -168,7 +168,7 @@ $effect-button-height: 2.35rem;
 
           display: inline-block;
           &.text{
-            font-size: 1.2rem;
+            font-size: 1.4rem;
           }
           &.icon{
             background-size: 1.9rem;
@@ -177,7 +177,7 @@ $effect-button-height: 2.35rem;
             width: 2rem;
             height: 2rem;
             margin-right: 0.75rem;
-            vertical-align: top;
+            vertical-align: bottom;
           }
           &#sine-icon{
             background-image: url(../assets/icons_sine.svg);

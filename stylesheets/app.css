@@ -8141,7 +8141,7 @@ footer {
 }
 /* line 170, ../scss/app.scss */
 #wavetypes ul li a span.text {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 /* line 173, ../scss/app.scss */
 #wavetypes ul li a span.icon {
@@ -8151,7 +8151,7 @@ footer {
   width: 2rem;
   height: 2rem;
   margin-right: 0.75rem;
-  vertical-align: top;
+  vertical-align: bottom;
 }
 /* line 182, ../scss/app.scss */
 #wavetypes ul li a span#sine-icon {

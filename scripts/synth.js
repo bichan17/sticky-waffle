@@ -64,6 +64,13 @@ app.synth = (function() {
 					algorithmIndex: 0,
 					bypass: 1
 				});
+				nodes.convolver = new tuna.Convolver({
+					impulse: "assets/impulses/ir_rev_short.wav",
+					bypass: 1
+				});
+				nodes.wahwah = new tuna.WahWah({
+					bypass: 1
+				});
     } catch(e) {
         proceed = false;
         alert('This website depends on technology that your browser does not support :(');
@@ -94,12 +101,19 @@ app.synth = (function() {
 					}
 					if(idArray[i] == "chorus"){
 						nodes.chorus.disconnect();
-
 						order.push(nodes.chorus);
 					}
 					if(idArray[i] == "overdrive"){
 						nodes.overdrive.disconnect();
 						order.push(nodes.overdrive);
+					}
+					if(idArray[i] == "convolver"){
+						nodes.convolver.disconnect();
+						order.push(nodes.convolver);
+					}
+					if(idArray[i] == "wahwah"){
+						nodes.wahwah.disconnect();
+						order.push(nodes.wahwah);
 					}
 				};
 
@@ -119,28 +133,17 @@ app.synth = (function() {
 					for(var prop in settings[effect]){
 						var val = settings[effect][prop];
 						// nodes.chorus.bypass = false;
-						console.log(effect);
-						console.log(prop);
-
-
+						console.log("setting " + effect + " " + prop + " to " + val);
 						nodes[effect][prop] = val;
 
 					}
 				}
 				// console.log("nodes after");
 				// console.log(nodes);
+				console.log("------");
 
 
 
-			}
-			this.setDelay = function(delaySettings){
-				// nodes.delay. = delaySettings.
-			}
-			this.setChorus = function(chorusSettings){
-				// nodes.chorus. = chorusSettings.
-			}
-			this.setOverdrive = function(overdriveSettings){
-				// nodes.overdrive. = overdriveSettings.
 			}
 			//add event listeners
 			window.addEventListener("keydown", function(e){
@@ -178,9 +181,7 @@ app.synth = (function() {
 	//route sounds to apply the node settings
 	Synth.prototype.routeSounds = function(){
 		var source = this.audioContext.createOscillator();
-
-		// console.log(this.wavetype);
-
+		
 		source.type = this.wavetype;
 
 		nodes.filter.type = this.filter; //allpass filter

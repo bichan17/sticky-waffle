@@ -3,11 +3,13 @@ app.main = (function(){
 	var synth;
 	var viz;
 	var viz_settings; // the "visualizer" object (holds settings)
-	var order = ["delay","chorus","overdrive"];
+	var order = ["overdrive","wahwah","chorus","delay","convolver"];
 	var effectSettings = {
 		delay : {},
 		chorus : {},
-		overdrive : {}
+		overdrive : {},
+		convolver: {},
+		wahwah: {}
 	};
   var ss = document.styleSheets[0];
   var rules = ss.cssRules || ss.rules;
@@ -146,7 +148,7 @@ app.main = (function(){
 
 		synth = new app.synth.Synth(effectSettings);
 
-		console.log(synth);
+		// console.log(synth);
 		//set default node order
 		synth.setNodeOrder(order);
 

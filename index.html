@@ -88,35 +88,42 @@
               <li>3.</li>
               <li>4.</li>
               <li>5.</li>
-              <li>6.</li>
             </ul>
             <div id="chain" class="columns">
               <dl id="sortable" class="accordion" data-accordion>
-                <dd id="delay" class="accordion-navigation">
+                <dd id="overdrive" class="accordion-navigation">
                   <button class="handle"></button>
-                  <a href="#panel1">
-                    <span>delay</span>
+                  <a href="#panel3">
+                    <span>overdrive</span>
                   </a>
                   <button class="toggle">OFF</button>
-                  <div id="panel1" class="row content">
+                  <div id="panel3" class="row content">
                     <div class="small-12 columns text-center">
                       <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-2 xlarge-block-grid-3">
                         <li>
-                          <input type="text" data-prop="feedback" data-min="0" data-max="100" data-scale="100" data-step="1" value="45" class="dial">
-                          <span class="propLabel">Feedback</span>
+                          <input type="text" data-prop="curveAmount" data-min="0" data-max="100" data-scale="100" data-step="1" value="80" class="dial">
+                          <span class="propLabel">curve</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </dd>
+                <dd id="wahwah" class="accordion-navigation">
+                  <button class="handle"></button>
+                  <a href="#panel4">
+                    <span>wahwah</span>
+                  </a>
+                  <button class="toggle">OFF</button>
+                  <div id="panel4" class="row content">
+                    <div class="small-12 columns text-center">
+                      <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-2 xlarge-block-grid-3">
+                        <li>
+                          <input type="text" data-prop="baseFrequency" data-min="0" data-max="100" data-scale="100" data-step="1" value="14" class="dial">
+                          <span class="propLabel">frequency</span>
                         </li>
                         <li>
-                          <input type="text" data-prop="delayTime" data-min="0" data-max="2000" data-scale="1" data-step="10" value="150" class="dial">
-                          <span class="propLabel">Delay Time</span>
-
-                        </li>
-                        <li>
-                          <input type="text" data-prop="wetLevel" data-min="0" data-max="100" data-scale="100" data-step="1" value="25" class="dial">
-                          <span class="propLabel">Wet Signal</span>
-                        </li>
-                        <li>
-                          <input type="text" data-prop="dryLevel" data-min="0" data-max="100" data-scale="100" data-step="1"  value="100" class="dial">
-                          <span class="propLabel">Dry Signal</span>
+                          <input type="text" data-prop="excursionOctaves" data-min="100" data-max="600" data-scale="100" data-step="1" value="190" class="dial">
+                          <span class="propLabel">excursion octaves</span>
                         </li>
                       </ul>
                     </div>
@@ -132,38 +139,71 @@
                     <div class="small-12 columns text-center">
                       <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-2 xlarge-block-grid-3">
                         <li>
-                          <input type="text" data-prop="feedback" data-min="0" data-max="100" data-scale="100" data-step="1" value="20" class="dial">
-                          <span class="propLabel">Feedback</span>
+                          <input type="text" data-prop="feedback" data-min="0" data-max="100" data-scale="100" data-step="1" value="85" class="dial">
+                          <span class="propLabel">feedback</span>
                         </li>
                         <li>
-                          <input type="text" data-prop="rate" data-min="0" data-max="800" data-scale="100" data-step="1" value="150" class="dial">
-                          <span class="propLabel">Rate</span>
+                          <input type="text" data-prop="rate" data-min="0" data-max="800" data-scale="100" data-step="1" value="300" class="dial">
+                          <span class="propLabel">rate</span>
                         </li>
                         <li>
-                          <input type="text" data-prop="delay" data-min="0" data-max="1000" data-scale="1000" data-step="1" value="45" class="dial">
-                          <span class="propLabel">Delay</span>
+                          <input type="text" data-prop="delay" data-min="0" data-max="1000" data-scale="1000" data-step="1" value="520" class="dial">
+                          <span class="propLabel">delay</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </dd>                
+                <dd id="delay" class="accordion-navigation">
+                  <button class="handle"></button>
+                  <a href="#panel1">
+                    <span>delay</span>
+                  </a>
+                  <button class="toggle">OFF</button>
+                  <div id="panel1" class="row content">
+                    <div class="small-12 columns text-center">
+                      <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-2 xlarge-block-grid-3">
+                        <li>
+                          <input type="text" data-prop="feedback" data-min="0" data-max="100" data-scale="100" data-step="1" value="70" class="dial">
+                          <span class="propLabel">feedback</span>
+                        </li>
+                        <li>
+                          <input type="text" data-prop="delayTime" data-min="0" data-max="2000" data-scale="1" data-step="10" value="350" class="dial">
+                          <span class="propLabel">delay time</span>
+
+                        </li>
+                        <li>
+                          <input type="text" data-prop="wetLevel" data-min="0" data-max="100" data-scale="100" data-step="1" value="40" class="dial">
+                          <span class="propLabel">wet signal</span>
+                        </li>
+                        <li>
+                          <input type="text" data-prop="dryLevel" data-min="0" data-max="100" data-scale="100" data-step="1"  value="100" class="dial">
+                          <span class="propLabel">dry signal</span>
                         </li>
                       </ul>
                     </div>
                   </div>
                 </dd>
-                <dd id="overdrive" class="accordion-navigation">
+                <dd id="convolver" class="accordion-navigation">
                   <button class="handle"></button>
-                  <a href="#panel3">
-                    <span>overdrive</span>
+                  <a href="#panel5">
+                    <span>reverb</span>
                   </a>
                   <button class="toggle">OFF</button>
-                  <div id="panel3" class="row content">
+                  <div id="panel5" class="row content">
                     <div class="small-12 columns text-center">
                       <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-2 xlarge-block-grid-3">
                         <li>
-                          <span class="propLabel">Curve</span>
-                          <input type="text" data-prop="curveAmount" data-min="0" data-max="100" data-scale="100" data-step="1" value="100" class="dial">
+                          <input type="text" data-prop="dryLevel" data-min="0" data-max="200" data-scale="100" data-step="1" value="100" class="dial">
+                          <span class="propLabel">dry level</span>
+                        </li>
+                        <li>
+                          <input type="text" data-prop="wetLevel" data-min="0" data-max="200" data-scale="100" data-step="1" value="100" class="dial">
+                          <span class="propLabel">wet level</span>
                         </li>
                       </ul>
                     </div>
                   </div>
-
                 </dd>
               </dl>
             </div>
