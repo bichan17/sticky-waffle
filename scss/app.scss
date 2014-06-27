@@ -67,7 +67,8 @@ footer {
   position: absolute;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
-
+$ui-margin-width: percentage(61/1440);
+$ui-margin-top: 1.5rem;
 $list-width: 7%;
 $effect-chain-grey: #787878;
 $effect-font-size: 1.2rem;
@@ -76,9 +77,10 @@ $effect-button-height: 2.35rem;
 
 #effects {
   float: right;
+  margin-top: $ui-margin-top;
+  margin-right: $ui-margin-width;
   display: hidden;
   h3{
-    color: white;
     margin-left: $list-width;
   }
   ul#numbers{
@@ -127,6 +129,11 @@ $effect-button-height: 2.35rem;
       }
     }
     dd{
+      &.accordion-navigation {
+        display: inline-block;
+        width: 100%;
+        float: left;
+      }
       &:not(:last-child){
         border-bottom:1px solid $effect-chain-grey;
       }
@@ -145,41 +152,86 @@ $effect-button-height: 2.35rem;
   }
 }
 
+#wavetypes{
+  width: 25%;
+  margin-left: $ui-margin-width;
+  margin-top: $ui-margin-top;
+  ul{
+    margin: 0;
+    li{
+      list-style: none;
+      margin-bottom: 0.5rem;
+      a {
+        color: white;
 
-li.wave {
-    width: 25%;
-  }
-button {
-  &.wave {
-    width: 100%;
-    padding: 1rem;
-  }
-  &#sine.selected {
-    background-color: #2040DF;
-  }
-  &#triangle.selected {
-    background-color: #F3FA2E;
-  }
-  &#sawtooth.selected {
-    background-color: #5CA904;
-  }
-  &#square.selected {
-    background-color: #FF3C1A;
+        span{
+
+          display: inline-block;
+          &.text{
+            font-size: 1.2rem;
+          }
+          &.icon{
+            background-size: 1.9rem;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 2rem;
+            height: 2rem;
+            margin-right: 0.75rem;
+            vertical-align: top;
+          }
+          &#sine-icon{
+            background-image: url(../assets/icons_sine.svg);
+          }
+          &#triangle-icon{
+            background-image: url(../assets/icons_triangle.svg);
+          }
+          &#sawtooth-icon{
+            background-image: url(../assets/icons_sawtooth.svg);
+          }
+          &#square-icon{
+            background-image: url(../assets/icons_square.svg);
+          }
+        }
+
+        &.wave {
+          width: 100%;
+        }
+        &#sine.selected {
+          color: #0071BC;
+          span#sine-icon{
+            background-image: url(../assets/icons_sine_color.svg);
+          }
+        }
+        &#triangle.selected {
+          color: #00B7BA;
+          span#triangle-icon{
+            background-image: url(../assets/icons_triangle_color.svg);
+          }
+        }
+        &#sawtooth.selected {
+          color: #EDDE00;
+          span#sawtooth-icon{
+            background-image: url(../assets/icons_sawtooth_color.svg);
+          }
+        }
+        &#square.selected {
+          color: #CF0008;
+          span#square-icon{
+            background-image: url(../assets/icons_square_color.svg);
+          }
+        }
+      }
+    }
   }
 }
+
+
 
 //MOZ hack :(
 @-moz-document url-prefix() {
   button.toggle {
     // padding: 1.1rem 0 1.1rem;
   }
-}
-
-
-dd.accordion-navigation {
-  display: inline-block;
-  width: 100%;
-  float: left;
 }
 
 #keys {
