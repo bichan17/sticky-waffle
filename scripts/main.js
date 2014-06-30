@@ -132,10 +132,9 @@ app.main = (function(){
         var num = $( "#numbers li" )[index];
 
         var speed = 200;
+
+        //start up knob
         dd_parent.find(".dial").knob(knobDefaults);
-
-
-
 
         if(dd_parent.hasClass('active')){
         	console.log("close");
@@ -146,9 +145,7 @@ app.main = (function(){
           	},
 				    step: function( now, fx ){
 				      if(fx.prop =="height"){
-				      	// console.log(fx);
 				      	$(num).css( "margin-bottom", now );
-
 				      }
 				    }
           });
@@ -158,19 +155,16 @@ app.main = (function(){
 				  //close prev
           $(".accordion dd div.content:visible").slideToggle({
           	duration: speed,
-				    step: function( promise ){
-			      	$( "#numbers li" ).css( "margin-bottom", '0' );
+				    start: function( promise ){
+			      	$( "#numbers li" ).animate({"margin-bottom": "0"}, speed);
 				    }
           });
-
           //open new
           $(this).parent().find(".content").slideToggle({
           	duration: speed,
 				    step: function( now, fx ){
 				      if(fx.prop =="height"){
-				      	// console.log(fx);
 				      	$(num).css( "margin-bottom", now );
-
 				      }
 				    }
           });
@@ -206,14 +200,51 @@ app.main = (function(){
 
 		//to make accordion sortable
 		$( "#sortable" ).sortable({
-		    update: function( event, ui ) {
-		    	var newOrder = $.map($(this).find('dd'), function(el) {
-                    return $(el).attr('id');
-                });
-		    	order = newOrder;
-		    	synth.setNodeOrder(order);
-		    },
-		    cancel: ".content,.toggle,dd a,.range-slider,.range-slider-handle,.range-slider-active-segment"
+			change: function(event, ui){
+				var dd = $(this).find("dd");
+				var index;
+				var height = 0;
+				var filter = $.grep(dd, function(val){
+					return val != ui.item[0];
+				});
+
+				if(ui.placeholder.is(".active")){
+					//grabbing active
+					index = $(filter).index(ui.placeholder);
+					var content = ui.item.find(".content");
+					height = $(content).outerHeight();
+				}else{
+					//grabbing inactive
+					var active = $(this).find(".accordion-navigation.active:not(.ui-sortable-placeholder)");
+					var open = active.length != 0;
+					//find if there are active panels open
+					if(open){
+						//get active panel index
+						index = $(filter).index(active[0]);
+						var content = $(active[0]).find(".content");
+						height = content.outerHeight();
+					}
+				}
+				//which number to add margin to
+        var num = $( "#numbers li" )[index];
+
+
+      	$( "#numbers li" ).css("margin-bottom","0");
+
+
+        $(num).css("margin-bottom", height);
+
+				
+
+			},
+	    update: function( event, ui ) {
+	    	var newOrder = $.map($(this).find('dd'), function(el) {
+                  return $(el).attr('id');
+              });
+	    	order = newOrder;
+	    	synth.setNodeOrder(order);
+	    },
+	    cancel: ".content,.toggle,dd a,.range-slider,.range-slider-handle,.range-slider-active-segment"
 		});
 
 
