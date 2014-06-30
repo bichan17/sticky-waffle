@@ -8,7 +8,16 @@ $large-range: (64.063em, 90em); /* 1025px, 1440px */
 $xlarge-range: (90.063em, 120em); /* 1441px, 1920px */
 $xxlarge-range: (120.063em); /* 1921px */
 
+$ui-margin-width: percentage(61/1440);
+$ui-margin-top: 1.5rem;
+$list-width: 7%;
+$effect-chain-grey: #787878;
+$effect-font-size: 1.2rem;
+$effect-padding: 0.25rem;
+$effect-button-height: 2.35rem;
 
+$link-color: #fff;
+$link-hover: darken($link-color, 15%);
 
 
 
@@ -35,21 +44,20 @@ body, html {
 }
 
 footer {
+  padding: 0.2rem;
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   // height: 64px;
-  background: #666;
-}
-
-#hover {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 25%;
-  // pointer-events:none;
+  background: #000;
+  color: $effect-chain-grey;
+  a{
+    color: $link-color;
+    &:hover{
+      color: $link-hover;
+    }
+  }
 }
 
 #visualizer {
@@ -67,13 +75,7 @@ footer {
   position: absolute;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
-$ui-margin-width: percentage(61/1440);
-$ui-margin-top: 1.5rem;
-$list-width: 7%;
-$effect-chain-grey: #787878;
-$effect-font-size: 1.2rem;
-$effect-padding: 0.25rem;
-$effect-button-height: 2.35rem;
+
 
 #effects {
   float: right;
@@ -102,9 +104,16 @@ $effect-button-height: 2.35rem;
     width: 93%;
     float: left;
   }
+  .effect-list{
+    li{
+      padding: 0;
+      margin-top: 1rem;
+    }
+  }
   span.propLabel{
     text-align: center;
     white-space: nowrap;
+    display: block;
   }
   .accordion {
     overflow: hidden;
@@ -133,10 +142,13 @@ $effect-button-height: 2.35rem;
         display: inline-block;
         width: 100%;
         float: left;
+        div.active{
+          overflow: hidden;
+        }
       }
-      &:not(:last-child){
-        border-bottom:1px solid $effect-chain-grey;
-      }
+    }
+    dd > .content{
+      padding: 0 0 0.9375rem 0;
     }
     dd > a {
       float: left;
@@ -151,6 +163,11 @@ $effect-button-height: 2.35rem;
     }
   }
 }
+$sine-color: #0071BC;
+$triangle-color: #00B7BA;
+$sawtooth-color: #EDDE00;
+$square-color: #CF0008;
+
 
 #wavetypes{
   width: 25%;
@@ -162,7 +179,34 @@ $effect-button-height: 2.35rem;
       list-style: none;
       margin-bottom: 0.5rem;
       a {
-        color: white;
+        color: $link-color;
+
+        &:hover{
+          &#sine{
+            color: $link-hover;
+          }
+          #sine-icon{
+            background-image: url(../assets/icons_sine_hover.svg);
+          }
+          &#triangle{
+            color: $link-hover;
+          }
+          #triangle-icon{
+            background-image: url(../assets/icons_triangle_hover.svg);
+          }
+          &#sawtooth{
+            color: $link-hover;
+          }
+          #sawtooth-icon{
+            background-image: url(../assets/icons_sawtooth_hover.svg);
+          }
+          &#square{
+            color: $link-hover;
+          }
+          #square-icon{
+            background-image: url(../assets/icons_square_hover.svg);
+          }
+        }
 
         span{
 
@@ -197,25 +241,25 @@ $effect-button-height: 2.35rem;
           width: 100%;
         }
         &#sine.selected {
-          color: #0071BC;
+          color: $sine-color;
           span#sine-icon{
             background-image: url(../assets/icons_sine_color.svg);
           }
         }
         &#triangle.selected {
-          color: #00B7BA;
+          color: $triangle-color;
           span#triangle-icon{
             background-image: url(../assets/icons_triangle_color.svg);
           }
         }
         &#sawtooth.selected {
-          color: #EDDE00;
+          color: $sawtooth-color;
           span#sawtooth-icon{
             background-image: url(../assets/icons_sawtooth_color.svg);
           }
         }
         &#square.selected {
-          color: #CF0008;
+          color: $square-color;
           span#square-icon{
             background-image: url(../assets/icons_square_color.svg);
           }
@@ -247,7 +291,7 @@ $effect-button-height: 2.35rem;
 
 .keyboard {
   font-family: 'aa_qwertz-tastenregular', "Comic Sans";
-  font-size: 2em;
+  font-size: 2.25rem;
   line-height: 1.2;
   letter-spacing: -0.2em;
   margin: 0;

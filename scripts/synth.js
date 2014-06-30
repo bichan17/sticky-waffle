@@ -68,9 +68,6 @@ app.synth = (function() {
 					impulse: "assets/impulses/ir_rev_short.wav",
 					bypass: 1
 				});
-				nodes.wahwah = new tuna.WahWah({
-					bypass: 1
-				});
     } catch(e) {
         proceed = false;
         alert('This website depends on technology that your browser does not support :(');
@@ -111,10 +108,6 @@ app.synth = (function() {
 						nodes.convolver.disconnect();
 						order.push(nodes.convolver);
 					}
-					if(idArray[i] == "wahwah"){
-						nodes.wahwah.disconnect();
-						order.push(nodes.wahwah);
-					}
 				};
 
 
@@ -147,7 +140,7 @@ app.synth = (function() {
 			}
 			//add event listeners
 			window.addEventListener("keydown", function(e){
-				// e.preventDefault();
+				e.preventDefault();
 				keydown[e.keyCode] = true;
 			});
 

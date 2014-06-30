@@ -3,13 +3,12 @@ app.main = (function(){
 	var synth;
 	var viz;
 	var viz_settings; // the "visualizer" object (holds settings)
-	var order = ["overdrive","wahwah","chorus","delay","convolver"];
+	var order = ["overdrive","chorus","delay","convolver"];
 	var effectSettings = {
 		delay : {},
 		chorus : {},
 		overdrive : {},
-		convolver: {},
-		wahwah: {}
+		convolver: {}
 	};
   var ss = document.styleSheets[0];
   var rules = ss.cssRules || ss.rules;
@@ -59,7 +58,7 @@ app.main = (function(){
 		$(document).on('mousemove', function() {
 		    if (timeout !== null) {
 		    		if(moving == false){
-		        	$content.animate({ "top": "-16px" }, "fast" );
+		        	$content.animate({ "top": "-22px" }, "fast" );
 		        	moving = true;
 		    		}
 		        clearTimeout(timeout);
@@ -88,7 +87,8 @@ app.main = (function(){
 
 		//setup knobs
 		var knobDefaults = {
-			width: "91%", 
+			width: "80",
+			height: "80",
 			fgColor : "#ffffff",
 			bgColor:"rgba(255, 255, 255, 0.3)",
 			angleOffset : -125,
@@ -128,15 +128,53 @@ app.main = (function(){
 		$(".accordion dd").on("click", "a:eq(0)", function (event)
       {
         var dd_parent = $(this).parent();
+        var index = $( "dd" ).index( dd_parent );
+        var num = $( "#numbers li" )[index];
 
-        if(dd_parent.hasClass('active'))
-          $(".accordion dd div.content:visible").slideToggle("fast");
+        var speed = 200;
+        dd_parent.find(".dial").knob(knobDefaults);
+
+
+
+
+        if(dd_parent.hasClass('active')){
+        	console.log("close");
+          $(".accordion dd div.content:visible").slideToggle({
+          	duration: speed,
+          	start: function(){
+			      	$( "#numbers li" ).css( "margin-bottom", '0' );
+          	},
+				    step: function( now, fx ){
+				      if(fx.prop =="height"){
+				      	// console.log(fx);
+				      	$(num).css( "margin-bottom", now );
+
+				      }
+				    }
+          });
+        }
         else
         {
-          $(".accordion dd div.content:visible").slideToggle("fast");
-          $(this).parent().find(".content").slideToggle("fast");
+				  //close prev
+          $(".accordion dd div.content:visible").slideToggle({
+          	duration: speed,
+				    step: function( promise ){
+			      	$( "#numbers li" ).css( "margin-bottom", '0' );
+				    }
+          });
+
+          //open new
+          $(this).parent().find(".content").slideToggle({
+          	duration: speed,
+				    step: function( now, fx ){
+				      if(fx.prop =="height"){
+				      	// console.log(fx);
+				      	$(num).css( "margin-bottom", now );
+
+				      }
+				    }
+          });
         }
-      	dd_parent.find(".dial").knob(knobDefaults);
       });
 
 
@@ -175,7 +213,7 @@ app.main = (function(){
 		    	order = newOrder;
 		    	synth.setNodeOrder(order);
 		    },
-		    cancel: ".content,.range-slider,.range-slider-handle,.range-slider-active-segment"
+		    cancel: ".content,.toggle,dd a,.range-slider,.range-slider-handle,.range-slider-active-segment"
 		});
 
 

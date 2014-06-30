@@ -1417,17 +1417,7 @@
                 }
             }
         },
-        sweep: {
-            enumerable: true,
-            get: function () {
-                return this._sweep.value;
-            },
-            set: function (value) {
-                this._sweep = Math.pow(value > 1 ? 1 : value < 0 ? 0 : value, this._sensitivity);
-                this.filterBp.frequency.value = this._baseFrequency + this._excursionFrequency * this._sweep;
-                this.filterPeaking.frequency.value = this._baseFrequency + this._excursionFrequency * this._sweep;
-            }
-        },
+
         baseFrequency: {
             enumerable: true,
             get: function () {
@@ -1435,7 +1425,8 @@
             },
             set: function (value) {
                 this._baseFrequency = 50 * Math.pow(10, value * 2);
-                this._excursionFrequency = Math.min(this.sampleRate / 2, this.baseFrequency * Math.pow(2, this._excursionOctaves));
+
+                this._excursionOctaves = Math.min(this.sampleRate / 2, this.baseFrequency * Math.pow(2, this._excursionOctaves));             
                 this.filterBp.frequency.value = this._baseFrequency + this._excursionFrequency * this._sweep;
                 this.filterPeaking.frequency.value = this._baseFrequency + this._excursionFrequency * this._sweep;
             }
@@ -1459,6 +1450,17 @@
             },
             set: function (value) {
                 this._sensitivity = Math.pow(10, value);
+            }
+        },
+                sweep: {
+            enumerable: true,
+            get: function () {
+                return this._sweep.value;
+            },
+            set: function (value) {
+                this._sweep = Math.pow(value > 1 ? 1 : value < 0 ? 0 : value, this._sensitivity);
+                this.filterBp.frequency.value = this._baseFrequency + this._excursionFrequency * this._sweep;
+                this.filterPeaking.frequency.value = this._baseFrequency + this._excursionFrequency * this._sweep;
             }
         },
         resonance: {
