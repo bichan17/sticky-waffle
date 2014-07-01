@@ -66,9 +66,14 @@ footer {
   bottom:0; 
   left:0; 
   right:0;
-  margin:auto; 
+  margin:auto;
+  padding: 0.875rem;
   height:2.5625rem; 
-  width:340px;
+  width:380px;
+  text-align: center;
+  .close{
+    display: none;
+  }
 }
 
 #visualizer {
