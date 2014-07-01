@@ -8073,16 +8073,13 @@ footer a:hover {
 
 /* line 96, ../scss/app.scss */
 #effects {
-  float: right;
-  margin-top: 1.5rem;
-  margin-right: 4.23611%;
   display: hidden;
 }
-/* line 101, ../scss/app.scss */
+/* line 98, ../scss/app.scss */
 #effects h3 {
   margin-left: 7%;
 }
-/* line 104, ../scss/app.scss */
+/* line 101, ../scss/app.scss */
 #effects ul#numbers {
   width: 7%;
   float: left;
@@ -8091,35 +8088,35 @@ footer a:hover {
   padding: 0.25rem;
   font-size: 1.2rem;
 }
-/* line 111, ../scss/app.scss */
+/* line 108, ../scss/app.scss */
 #effects ul#numbers li {
   width: 100%;
   height: 2.35rem;
   color: #787878;
 }
-/* line 117, ../scss/app.scss */
+/* line 114, ../scss/app.scss */
 #effects #chain {
   margin: 0;
   padding: 0;
   width: 93%;
   float: left;
 }
-/* line 124, ../scss/app.scss */
+/* line 121, ../scss/app.scss */
 #effects .effect-list li {
   padding: 0;
   margin-top: 1rem;
 }
-/* line 129, ../scss/app.scss */
+/* line 126, ../scss/app.scss */
 #effects span.propLabel {
   text-align: center;
   white-space: nowrap;
   display: block;
 }
-/* line 134, ../scss/app.scss */
+/* line 131, ../scss/app.scss */
 #effects .accordion {
   overflow: hidden;
 }
-/* line 136, ../scss/app.scss */
+/* line 133, ../scss/app.scss */
 #effects .accordion button {
   float: left;
   width: 18.5%;
@@ -8130,105 +8127,105 @@ footer a:hover {
   font-weight: bold;
   vertical-align: middle;
 }
-/* line 145, ../scss/app.scss */
+/* line 142, ../scss/app.scss */
 #effects .accordion button.handle {
   background-image: url(../assets/icons_sort.svg);
   background-size: 20px 20px;
   background-position: center;
   background-repeat: no-repeat;
 }
-/* line 152, ../scss/app.scss */
+/* line 149, ../scss/app.scss */
 #effects .accordion button.toggle.on {
   background-color: #5CA904;
 }
-/* line 157, ../scss/app.scss */
+/* line 154, ../scss/app.scss */
 #effects .accordion dd.accordion-navigation {
   display: inline-block;
   width: 100%;
   float: left;
 }
-/* line 161, ../scss/app.scss */
+/* line 158, ../scss/app.scss */
 #effects .accordion dd.accordion-navigation div.active {
   overflow: hidden;
 }
-/* line 166, ../scss/app.scss */
+/* line 163, ../scss/app.scss */
 #effects .accordion dd > .content {
   padding: 0 0 0.9375rem 0;
 }
-/* line 169, ../scss/app.scss */
+/* line 166, ../scss/app.scss */
 #effects .accordion dd > a {
   float: left;
   width: 63%;
   padding: 0.25rem;
   font-size: 1.2rem;
 }
-/* line 174, ../scss/app.scss */
+/* line 171, ../scss/app.scss */
 #effects .accordion dd > a img {
   height: 1rem;
   vertical-align: -0.05rem;
   margin-right: .1rem;
 }
 
-/* line 188, ../scss/app.scss */
+/* line 185, ../scss/app.scss */
 #wavetypes {
-  width: 25%;
+  display: none;
   margin-left: 4.23611%;
   margin-top: 1.5rem;
 }
-/* line 192, ../scss/app.scss */
+/* line 189, ../scss/app.scss */
 #wavetypes ul {
   margin: 0;
 }
-/* line 194, ../scss/app.scss */
+/* line 191, ../scss/app.scss */
 #wavetypes ul li {
   list-style: none;
   margin-bottom: 0.5rem;
 }
-/* line 197, ../scss/app.scss */
+/* line 194, ../scss/app.scss */
 #wavetypes ul li a {
   color: white;
 }
-/* line 202, ../scss/app.scss */
+/* line 199, ../scss/app.scss */
 #wavetypes ul li a:hover#sine {
   color: #d9d9d9;
 }
-/* line 205, ../scss/app.scss */
+/* line 202, ../scss/app.scss */
 #wavetypes ul li a:hover #sine-icon {
   background-image: url(../assets/icons_sine_hover.svg);
 }
-/* line 208, ../scss/app.scss */
+/* line 205, ../scss/app.scss */
 #wavetypes ul li a:hover#triangle {
   color: #d9d9d9;
 }
-/* line 211, ../scss/app.scss */
+/* line 208, ../scss/app.scss */
 #wavetypes ul li a:hover #triangle-icon {
   background-image: url(../assets/icons_triangle_hover.svg);
 }
-/* line 214, ../scss/app.scss */
+/* line 211, ../scss/app.scss */
 #wavetypes ul li a:hover#sawtooth {
   color: #d9d9d9;
 }
-/* line 217, ../scss/app.scss */
+/* line 214, ../scss/app.scss */
 #wavetypes ul li a:hover #sawtooth-icon {
   background-image: url(../assets/icons_sawtooth_hover.svg);
 }
-/* line 220, ../scss/app.scss */
+/* line 217, ../scss/app.scss */
 #wavetypes ul li a:hover#square {
   color: #d9d9d9;
 }
-/* line 223, ../scss/app.scss */
+/* line 220, ../scss/app.scss */
 #wavetypes ul li a:hover #square-icon {
   background-image: url(../assets/icons_square_hover.svg);
 }
-/* line 228, ../scss/app.scss */
+/* line 225, ../scss/app.scss */
 #wavetypes ul li a span {
   display: inline-block;
 }
-/* line 231, ../scss/app.scss */
+/* line 228, ../scss/app.scss */
 #wavetypes ul li a span.text {
   font-size: 1.4rem;
 }
-/* line 234, ../scss/app.scss */
+/* line 231, ../scss/app.scss */
 #wavetypes ul li a span.icon {
   background-size: 1.9rem;
   background-position: center;
@@ -8238,65 +8235,64 @@ footer a:hover {
   margin-right: 0.75rem;
   vertical-align: bottom;
 }
-/* line 243, ../scss/app.scss */
+/* line 240, ../scss/app.scss */
 #wavetypes ul li a span#sine-icon {
   background-image: url(../assets/icons_sine.svg);
 }
-/* line 246, ../scss/app.scss */
+/* line 243, ../scss/app.scss */
 #wavetypes ul li a span#triangle-icon {
   background-image: url(../assets/icons_triangle.svg);
 }
-/* line 249, ../scss/app.scss */
+/* line 246, ../scss/app.scss */
 #wavetypes ul li a span#sawtooth-icon {
   background-image: url(../assets/icons_sawtooth.svg);
 }
-/* line 252, ../scss/app.scss */
+/* line 249, ../scss/app.scss */
 #wavetypes ul li a span#square-icon {
   background-image: url(../assets/icons_square.svg);
 }
-/* line 257, ../scss/app.scss */
+/* line 254, ../scss/app.scss */
 #wavetypes ul li a.wave {
   width: 100%;
 }
-/* line 260, ../scss/app.scss */
+/* line 257, ../scss/app.scss */
 #wavetypes ul li a.selected {
   text-shadow: 0px 0px 7px rgba(68, 68, 68, 0.7);
 }
-/* line 263, ../scss/app.scss */
+/* line 260, ../scss/app.scss */
 #wavetypes ul li a#sine.selected {
   color: #0071bc;
 }
-/* line 265, ../scss/app.scss */
+/* line 262, ../scss/app.scss */
 #wavetypes ul li a#sine.selected span#sine-icon {
   background-image: url(../assets/icons_sine_color.svg);
 }
-/* line 269, ../scss/app.scss */
+/* line 266, ../scss/app.scss */
 #wavetypes ul li a#triangle.selected {
   color: #00b7ba;
 }
-/* line 271, ../scss/app.scss */
+/* line 268, ../scss/app.scss */
 #wavetypes ul li a#triangle.selected span#triangle-icon {
   background-image: url(../assets/icons_triangle_color.svg);
 }
-/* line 275, ../scss/app.scss */
+/* line 272, ../scss/app.scss */
 #wavetypes ul li a#sawtooth.selected {
   color: #edde00;
 }
-/* line 277, ../scss/app.scss */
+/* line 274, ../scss/app.scss */
 #wavetypes ul li a#sawtooth.selected span#sawtooth-icon {
   background-image: url(../assets/icons_sawtooth_color.svg);
 }
-/* line 281, ../scss/app.scss */
+/* line 278, ../scss/app.scss */
 #wavetypes ul li a#square.selected {
   color: #cf0008;
 }
-/* line 283, ../scss/app.scss */
+/* line 280, ../scss/app.scss */
 #wavetypes ul li a#square.selected span#square-icon {
   background-image: url(../assets/icons_square_color.svg);
 }
 
-@-moz-document url-prefix() {}
-/* line 301, ../scss/app.scss */
+/* line 288, ../scss/app.scss */
 #keys {
   position: absolute;
   bottom: 0;
@@ -8308,7 +8304,7 @@ footer a:hover {
   color: #888;
 }
 
-/* line 312, ../scss/app.scss */
+/* line 299, ../scss/app.scss */
 .keyboard {
   font-family: 'aa_qwertz-tastenregular', "Comic Sans";
   font-size: 2.25rem;
@@ -8316,47 +8312,56 @@ footer a:hover {
   letter-spacing: -0.2em;
   margin: 0;
 }
-/* line 318, ../scss/app.scss */
+/* line 305, ../scss/app.scss */
 .keyboard div {
   display: inline-block;
 }
-/* line 320, ../scss/app.scss */
+/* line 307, ../scss/app.scss */
 .keyboard div:nth-child(1) {
   margin-right: 0.5em;
 }
-/* line 323, ../scss/app.scss */
+/* line 310, ../scss/app.scss */
 .keyboard div:nth-child(2) {
   margin: 0 0.875em 0 0.5em;
 }
-/* line 326, ../scss/app.scss */
+/* line 313, ../scss/app.scss */
 .keyboard div:nth-child(3) {
   margin-right: 0.5em;
 }
 
-/* line 332, ../scss/app.scss */
+/* line 319, ../scss/app.scss */
 .played {
   color: #f00;
 }
 
-/* line 335, ../scss/app.scss */
+/* line 322, ../scss/app.scss */
 .FX {
   display: block;
   color: white;
 }
 
-/* line 340, ../scss/app.scss */
+/* line 327, ../scss/app.scss */
 #effects {
   display: none;
 }
 
 @media only screen and (min-width: 64.063em) {
-  /* line 344, ../scss/app.scss */
+  /* line 331, ../scss/app.scss */
   #effects {
+    display: block;
+    width: 25%;
+    float: right;
+    margin-top: 1.5rem;
+    margin-right: 4.23611%;
+  }
+
+  /* line 338, ../scss/app.scss */
+  #wavetypes {
     display: block;
     width: 25%;
   }
 
-  /* line 348, ../scss/app.scss */
+  /* line 343, ../scss/app.scss */
   .FX {
     display: none;
   }

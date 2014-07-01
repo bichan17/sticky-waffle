@@ -55,134 +55,134 @@
               </div>
             </div>
           </div>
-          <div id="wavetypes" class="columns">
-            <h3>WAVEFORM</h3>
-
-            <ul>
-              <li>
-                <a id="sine" data-color="#0071BC" data-type="sine" class="selected wave"><span class="icon" id="sine-icon"></span><span class="text">sine</span></a>
-              </li>
-              <li>
-                <a id="triangle" data-color="#00B7BA" data-type="triangle" class="wave"><span class="icon" id="triangle-icon"></span><span class="text">triangle</span></a>
-              </li>
-              <li>
-                <a id="sawtooth" data-color="#EDDE00" data-type="sawtooth" class="wave"><span class="icon" id="sawtooth-icon"></span><span class="text">sawtooth</span></a>
-              </li>
-              <li>
-                <a id="square" data-color="#CF0008" data-type="square" class="wave"><span class="icon" id="square-icon"></span><span class="text">square</span></a>
-              </li>
-            </ul>
-                
-          </div>
           <div class="FX row">
             <div class="small-12 columns">
                 <h1><a class="left-off-canvas-toggle" href="#" >FX</a></h1>
             </div>
           </div>
-          <aside id="effects" class="columns">
-            <h3>EFFECT CHAIN</h3>
-            <ul id="numbers">
-              <li>1.</li>
-              <li>2.</li>
-              <li>3.</li>
-              <li>4.</li>
-            </ul>
-            <div id="chain" class="columns">
-              <dl id="sortable" class="accordion" data-accordion>
-                <dd id="overdrive" class="accordion-navigation">
-                  <button class="handle"></button>
-                  <a href="#panel3">
-                    <span>overdrive</span>
-                  </a>
-                  <button class="toggle">OFF</button>
-                  <div id="panel3" class="row content">
-                    <div class="small-12 columns text-center">
-                      <ul class="effect-list small-block-grid-1 medium-block-grid-1 large-block-grid-2 xlarge-block-grid-3">
-                        <li>
-                          <input type="text" data-prop="curveAmount" data-min="0" data-max="100" data-scale="100" data-step="1" value="80" class="dial">
-                          <span class="propLabel">curve</span>
-                        </li>
-                      </ul>
+          <aside>
+            <div id="wavetypes" class="columns">
+              <h3>WAVEFORM</h3>
+              <ul>
+                <li>
+                  <a id="sine" data-color="#0071BC" data-type="sine" class="selected wave"><span class="icon" id="sine-icon"></span><span class="text">sine</span></a>
+                </li>
+                <li>
+                  <a id="triangle" data-color="#00B7BA" data-type="triangle" class="wave"><span class="icon" id="triangle-icon"></span><span class="text">triangle</span></a>
+                </li>
+                <li>
+                  <a id="sawtooth" data-color="#EDDE00" data-type="sawtooth" class="wave"><span class="icon" id="sawtooth-icon"></span><span class="text">sawtooth</span></a>
+                </li>
+                <li>
+                  <a id="square" data-color="#CF0008" data-type="square" class="wave"><span class="icon" id="square-icon"></span><span class="text">square</span></a>
+                </li>
+              </ul>             
+            </div>
+            <div id="effects" class="columns">
+              <h3>EFFECT CHAIN</h3>
+              <ul id="numbers">
+                <li>1.</li>
+                <li>2.</li>
+                <li>3.</li>
+                <li>4.</li>
+              </ul>
+              <div id="chain" class="columns">
+                <dl id="sortable" class="accordion" data-accordion>
+                  <dd id="overdrive" class="accordion-navigation">
+                    <button class="handle"></button>
+                    <a href="#panel3">
+                      <span>overdrive</span>
+                    </a>
+                    <button class="toggle">OFF</button>
+                    <div id="panel3" class="row content">
+                      <div class="small-12 columns text-center">
+                        <ul class="effect-list small-block-grid-1 medium-block-grid-1 large-block-grid-2 xlarge-block-grid-3">
+                          <li>
+                            <input type="text" data-prop="curveAmount" data-min="0" data-max="100" data-scale="100" data-step="1" value="80" class="dial">
+                            <span class="propLabel">curve</span>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                </dd>
-                <dd id="chorus" class="accordion-navigation">
-                  <button class="handle"></button>
-                  <a href="#panel2">
-                    <span>chorus</span>
-                  </a>
-                  <button class="toggle">OFF</button>
-                  <div id="panel2" class="row content">
-                    <div class="small-12 columns text-center">
-                      <ul class="effect-list small-block-grid-1 medium-block-grid-1 large-block-grid-2 xlarge-block-grid-3">
-                        <li>
-                          <input type="text" data-prop="feedback" data-min="0" data-max="100" data-scale="100" data-step="1" value="85" class="dial">
-                          <span class="propLabel">feedback</span>
-                        </li>
-                        <li>
-                          <input type="text" data-prop="rate" data-min="0" data-max="800" data-scale="100" data-step="1" value="300" class="dial">
-                          <span class="propLabel">rate</span>
-                        </li>
-                        <li>
-                          <input type="text" data-prop="delay" data-min="0" data-max="1000" data-scale="1000" data-step="1" value="520" class="dial">
-                          <span class="propLabel">delay</span>
-                        </li>
-                      </ul>
+                  </dd>
+                  <dd id="chorus" class="accordion-navigation">
+                    <button class="handle"></button>
+                    <a href="#panel2">
+                      <span>chorus</span>
+                    </a>
+                    <button class="toggle">OFF</button>
+                    <div id="panel2" class="row content">
+                      <div class="small-12 columns text-center">
+                        <ul class="effect-list small-block-grid-1 medium-block-grid-1 large-block-grid-2 xlarge-block-grid-3">
+                          <li>
+                            <input type="text" data-prop="feedback" data-min="0" data-max="100" data-scale="100" data-step="1" value="85" class="dial">
+                            <span class="propLabel">feedback</span>
+                          </li>
+                          <li>
+                            <input type="text" data-prop="rate" data-min="0" data-max="800" data-scale="100" data-step="1" value="300" class="dial">
+                            <span class="propLabel">rate</span>
+                          </li>
+                          <li>
+                            <input type="text" data-prop="delay" data-min="0" data-max="1000" data-scale="1000" data-step="1" value="520" class="dial">
+                            <span class="propLabel">delay</span>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                </dd>                
-                <dd id="delay" class="accordion-navigation">
-                  <button class="handle"></button>
-                  <a href="#panel1">
-                    <span>delay</span>
-                  </a>
-                  <button class="toggle">OFF</button>
-                  <div id="panel1" class="row content">
-                    <div class="small-12 columns text-center">
-                      <ul class="effect-list small-block-grid-1 medium-block-grid-1 large-block-grid-2 xlarge-block-grid-3">
-                        <li>
-                          <input type="text" data-prop="feedback" data-min="0" data-max="100" data-scale="100" data-step="1" value="70" class="dial">
-                          <span class="propLabel">feedback</span>
-                        </li>
-                        <li>
-                          <input type="text" data-prop="delayTime" data-min="0" data-max="2000" data-scale="1" data-step="10" value="350" class="dial">
-                          <span class="propLabel">delay time</span>
+                  </dd>                
+                  <dd id="delay" class="accordion-navigation">
+                    <button class="handle"></button>
+                    <a href="#panel1">
+                      <span>delay</span>
+                    </a>
+                    <button class="toggle">OFF</button>
+                    <div id="panel1" class="row content">
+                      <div class="small-12 columns text-center">
+                        <ul class="effect-list small-block-grid-1 medium-block-grid-1 large-block-grid-2 xlarge-block-grid-3">
+                          <li>
+                            <input type="text" data-prop="feedback" data-min="0" data-max="100" data-scale="100" data-step="1" value="70" class="dial">
+                            <span class="propLabel">feedback</span>
+                          </li>
+                          <li>
+                            <input type="text" data-prop="delayTime" data-min="0" data-max="2000" data-scale="1" data-step="10" value="350" class="dial">
+                            <span class="propLabel">delay time</span>
 
-                        </li>
-                        <li>
-                          <input type="text" data-prop="wetLevel" data-min="0" data-max="100" data-scale="100" data-step="1" value="40" class="dial">
-                          <span class="propLabel">wet signal</span>
-                        </li>
-                        <li>
-                          <input type="text" data-prop="dryLevel" data-min="0" data-max="100" data-scale="100" data-step="1"  value="100" class="dial">
-                          <span class="propLabel">dry signal</span>
-                        </li>
-                      </ul>
+                          </li>
+                          <li>
+                            <input type="text" data-prop="wetLevel" data-min="0" data-max="100" data-scale="100" data-step="1" value="40" class="dial">
+                            <span class="propLabel">wet signal</span>
+                          </li>
+                          <li>
+                            <input type="text" data-prop="dryLevel" data-min="0" data-max="100" data-scale="100" data-step="1"  value="100" class="dial">
+                            <span class="propLabel">dry signal</span>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                </dd>
-                <dd id="convolver" class="accordion-navigation">
-                  <button class="handle"></button>
-                  <a href="#panel5">
-                    <span>reverb</span>
-                  </a>
-                  <button class="toggle">OFF</button>
-                  <div id="panel5" class="row content">
-                    <div class="small-12 columns text-center">
-                      <ul class="effect-list small-block-grid-1 medium-block-grid-1 large-block-grid-2 xlarge-block-grid-3">
-                        <li>
-                          <input type="text" data-prop="dryLevel" data-min="0" data-max="200" data-scale="100" data-step="1" value="100" class="dial">
-                          <span class="propLabel">dry level</span>
-                        </li>
-                        <li>
-                          <input type="text" data-prop="wetLevel" data-min="0" data-max="200" data-scale="100" data-step="1" value="100" class="dial">
-                          <span class="propLabel">wet level</span>
-                        </li>
-                      </ul>
+                  </dd>
+                  <dd id="convolver" class="accordion-navigation">
+                    <button class="handle"></button>
+                    <a href="#panel5">
+                      <span>reverb</span>
+                    </a>
+                    <button class="toggle">OFF</button>
+                    <div id="panel5" class="row content">
+                      <div class="small-12 columns text-center">
+                        <ul class="effect-list small-block-grid-1 medium-block-grid-1 large-block-grid-2 xlarge-block-grid-3">
+                          <li>
+                            <input type="text" data-prop="dryLevel" data-min="0" data-max="200" data-scale="100" data-step="1" value="100" class="dial">
+                            <span class="propLabel">dry level</span>
+                          </li>
+                          <li>
+                            <input type="text" data-prop="wetLevel" data-min="0" data-max="200" data-scale="100" data-step="1" value="100" class="dial">
+                            <span class="propLabel">wet level</span>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                </dd>
-              </dl>
+                  </dd>
+                </dl>
+              </div>
             </div>
           </aside>
           <div data-alert class="alert-box">

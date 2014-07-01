@@ -22,6 +22,8 @@ app.main = (function(){
 			$("#iWrap").addClass("inner-wrap");
 			$("#iWrap aside").addClass("left-off-canvas-menu");
 			$("#effects").show();
+			$("#wavetypes").show();
+
 		}
 		function breakMenu(){
 			$("#cWrap").removeClass("off-canvas-wrap");

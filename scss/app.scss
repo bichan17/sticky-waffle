@@ -94,9 +94,6 @@ footer {
 
 
 #effects {
-  float: right;
-  margin-top: $ui-margin-top;
-  margin-right: $ui-margin-width;
   display: hidden;
   h3{
     margin-left: $list-width;
@@ -186,7 +183,7 @@ $square-color: #CF0008;
 
 
 #wavetypes{
-  width: 25%;
+  display: none;
   margin-left: $ui-margin-width;
   margin-top: $ui-margin-top;
   ul{
@@ -288,16 +285,6 @@ $square-color: #CF0008;
     }
   }
 }
-
-
-
-//MOZ hack :(
-@-moz-document url-prefix() {
-  button.toggle {
-    // padding: 1.1rem 0 1.1rem;
-  }
-}
-
 #keys {
   position: absolute;
   bottom: 0;
@@ -344,6 +331,14 @@ $square-color: #CF0008;
   #effects{
     display: block;
     width: 25%;
+    float: right;
+    margin-top: $ui-margin-top;
+    margin-right: $ui-margin-width;
+  }
+  #wavetypes{
+    display: block;
+    width: 25%;
+
   }
   .FX{
     display: none;
