@@ -69,7 +69,7 @@ footer {
   margin:auto;
   padding: 0.875rem;
   height:2.5625rem; 
-  width:380px;
+  width:95%;
   text-align: center;
   .close{
     display: none;
@@ -334,6 +334,9 @@ $square-color: #CF0008;
     float: right;
     margin-top: $ui-margin-top;
     margin-right: $ui-margin-width;
+  }
+  .alert-box{
+    width: 500px;
   }
   #wavetypes{
     display: block;

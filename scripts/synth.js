@@ -70,9 +70,9 @@ app.synth = (function() {
 				});
     } catch(e) {
         proceed = false;
-        alert('This website depends on technology that your browser does not support :(');
-    }
-
+        $('.alert-box').text('This website depends on technology that your browser does not support :(').css('background-color', "#CF0008");
+        
+      }
     if (proceed) {
 		
 			//initialize object variables
