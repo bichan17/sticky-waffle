@@ -197,6 +197,7 @@ $square-color: #CF0008;
       a {
         color: $link-color;
 
+
         &:hover{
           &#sine{
             color: $link-hover;
@@ -255,6 +256,9 @@ $square-color: #CF0008;
 
         &.wave {
           width: 100%;
+        }
+        &.selected{
+          text-shadow: 0px 0px 7px rgba(68, 68, 68, 0.7);
         }
         &#sine.selected {
           color: $sine-color;

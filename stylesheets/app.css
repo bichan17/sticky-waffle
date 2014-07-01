@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'sansserif-flf-medium';
   src: url("../fonts/sansserifflf-webfont.eot");
-  src: url("../fonts/sansserifflf-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/sansserifflf-webfont.woff") format("woff"), url("../fonts/sansserifflf-webfont.ttf") format("truetype"), url("../fonts/sansserifflf-webfont.svg#sansserifflfmedium") format("svg");
+  src: url("../fonts/sansserifflf-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/sansserifflf-webfont.svg#sansserifflfmedium") format("svg"), url("../fonts/sansserifflf-webfont.woff") format("woff"), url("../fonts/sansserifflf-webfont.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -9,7 +9,7 @@
 @font-face {
   font-family: 'sansserif-flf-demibold';
   src: url("../fonts/sansserifflf-demibold-webfont.eot");
-  src: url("../fonts/sansserifflf-demibold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/sansserifflf-demibold-webfont.woff") format("woff"), url("../fonts/sansserifflf-demibold-webfont.ttf") format("truetype"), url("../fonts/sansserifflf-demibold-webfont.svg#sansserifflfdemibold") format("svg");
+  src: url("../fonts/sansserifflf-demibold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/sansserifflf-demibold-webfont.svg#sansserifflfdemibold") format("svg"), url("../fonts/sansserifflf-demibold-webfont.woff") format("woff"), url("../fonts/sansserifflf-demibold-webfont.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -17,7 +17,7 @@
 @font-face {
   font-family: 'sansserif-bld-flf-medium';
   src: url("../fonts/sansserifbldflf-webfont.eot");
-  src: url("../fonts/sansserifbldflf-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/sansserifbldflf-webfont.woff") format("woff"), url("../fonts/sansserifbldflf-webfont.ttf") format("truetype"), url("../fonts/sansserifbldflf-webfont.svg#sansserifbldflfmedium") format("svg");
+  src: url("../fonts/sansserifbldflf-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/sansserifbldflf-webfont.svg#sansserifbldflfmedium") format("svg"), url("../fonts/sansserifbldflf-webfont.woff") format("woff"), url("../fonts/sansserifbldflf-webfont.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -8188,47 +8188,47 @@ footer a:hover {
 #wavetypes ul li a {
   color: white;
 }
-/* line 201, ../scss/app.scss */
+/* line 202, ../scss/app.scss */
 #wavetypes ul li a:hover#sine {
   color: #d9d9d9;
 }
-/* line 204, ../scss/app.scss */
+/* line 205, ../scss/app.scss */
 #wavetypes ul li a:hover #sine-icon {
   background-image: url(../assets/icons_sine_hover.svg);
 }
-/* line 207, ../scss/app.scss */
+/* line 208, ../scss/app.scss */
 #wavetypes ul li a:hover#triangle {
   color: #d9d9d9;
 }
-/* line 210, ../scss/app.scss */
+/* line 211, ../scss/app.scss */
 #wavetypes ul li a:hover #triangle-icon {
   background-image: url(../assets/icons_triangle_hover.svg);
 }
-/* line 213, ../scss/app.scss */
+/* line 214, ../scss/app.scss */
 #wavetypes ul li a:hover#sawtooth {
   color: #d9d9d9;
 }
-/* line 216, ../scss/app.scss */
+/* line 217, ../scss/app.scss */
 #wavetypes ul li a:hover #sawtooth-icon {
   background-image: url(../assets/icons_sawtooth_hover.svg);
 }
-/* line 219, ../scss/app.scss */
+/* line 220, ../scss/app.scss */
 #wavetypes ul li a:hover#square {
   color: #d9d9d9;
 }
-/* line 222, ../scss/app.scss */
+/* line 223, ../scss/app.scss */
 #wavetypes ul li a:hover #square-icon {
   background-image: url(../assets/icons_square_hover.svg);
 }
-/* line 227, ../scss/app.scss */
+/* line 228, ../scss/app.scss */
 #wavetypes ul li a span {
   display: inline-block;
 }
-/* line 230, ../scss/app.scss */
+/* line 231, ../scss/app.scss */
 #wavetypes ul li a span.text {
   font-size: 1.4rem;
 }
-/* line 233, ../scss/app.scss */
+/* line 234, ../scss/app.scss */
 #wavetypes ul li a span.icon {
   background-size: 1.9rem;
   background-position: center;
@@ -8238,61 +8238,65 @@ footer a:hover {
   margin-right: 0.75rem;
   vertical-align: bottom;
 }
-/* line 242, ../scss/app.scss */
+/* line 243, ../scss/app.scss */
 #wavetypes ul li a span#sine-icon {
   background-image: url(../assets/icons_sine.svg);
 }
-/* line 245, ../scss/app.scss */
+/* line 246, ../scss/app.scss */
 #wavetypes ul li a span#triangle-icon {
   background-image: url(../assets/icons_triangle.svg);
 }
-/* line 248, ../scss/app.scss */
+/* line 249, ../scss/app.scss */
 #wavetypes ul li a span#sawtooth-icon {
   background-image: url(../assets/icons_sawtooth.svg);
 }
-/* line 251, ../scss/app.scss */
+/* line 252, ../scss/app.scss */
 #wavetypes ul li a span#square-icon {
   background-image: url(../assets/icons_square.svg);
 }
-/* line 256, ../scss/app.scss */
+/* line 257, ../scss/app.scss */
 #wavetypes ul li a.wave {
   width: 100%;
 }
-/* line 259, ../scss/app.scss */
+/* line 260, ../scss/app.scss */
+#wavetypes ul li a.selected {
+  text-shadow: 0px 0px 7px rgba(68, 68, 68, 0.7);
+}
+/* line 263, ../scss/app.scss */
 #wavetypes ul li a#sine.selected {
   color: #0071bc;
 }
-/* line 261, ../scss/app.scss */
+/* line 265, ../scss/app.scss */
 #wavetypes ul li a#sine.selected span#sine-icon {
   background-image: url(../assets/icons_sine_color.svg);
 }
-/* line 265, ../scss/app.scss */
+/* line 269, ../scss/app.scss */
 #wavetypes ul li a#triangle.selected {
   color: #00b7ba;
 }
-/* line 267, ../scss/app.scss */
+/* line 271, ../scss/app.scss */
 #wavetypes ul li a#triangle.selected span#triangle-icon {
   background-image: url(../assets/icons_triangle_color.svg);
 }
-/* line 271, ../scss/app.scss */
+/* line 275, ../scss/app.scss */
 #wavetypes ul li a#sawtooth.selected {
   color: #edde00;
 }
-/* line 273, ../scss/app.scss */
+/* line 277, ../scss/app.scss */
 #wavetypes ul li a#sawtooth.selected span#sawtooth-icon {
   background-image: url(../assets/icons_sawtooth_color.svg);
 }
-/* line 277, ../scss/app.scss */
+/* line 281, ../scss/app.scss */
 #wavetypes ul li a#square.selected {
   color: #cf0008;
 }
-/* line 279, ../scss/app.scss */
+/* line 283, ../scss/app.scss */
 #wavetypes ul li a#square.selected span#square-icon {
   background-image: url(../assets/icons_square_color.svg);
 }
 
 @-moz-document url-prefix() {}
-/* line 297, ../scss/app.scss */
+/* line 301, ../scss/app.scss */
 #keys {
   position: absolute;
   bottom: 0;
@@ -8304,7 +8308,7 @@ footer a:hover {
   color: #888;
 }
 
-/* line 308, ../scss/app.scss */
+/* line 312, ../scss/app.scss */
 .keyboard {
   font-family: 'aa_qwertz-tastenregular', "Comic Sans";
   font-size: 2.25rem;
@@ -8312,47 +8316,47 @@ footer a:hover {
   letter-spacing: -0.2em;
   margin: 0;
 }
-/* line 314, ../scss/app.scss */
+/* line 318, ../scss/app.scss */
 .keyboard div {
   display: inline-block;
 }
-/* line 316, ../scss/app.scss */
+/* line 320, ../scss/app.scss */
 .keyboard div:nth-child(1) {
   margin-right: 0.5em;
 }
-/* line 319, ../scss/app.scss */
+/* line 323, ../scss/app.scss */
 .keyboard div:nth-child(2) {
   margin: 0 0.875em 0 0.5em;
 }
-/* line 322, ../scss/app.scss */
+/* line 326, ../scss/app.scss */
 .keyboard div:nth-child(3) {
   margin-right: 0.5em;
 }
 
-/* line 328, ../scss/app.scss */
+/* line 332, ../scss/app.scss */
 .played {
   color: #f00;
 }
 
-/* line 331, ../scss/app.scss */
+/* line 335, ../scss/app.scss */
 .FX {
   display: block;
   color: white;
 }
 
-/* line 336, ../scss/app.scss */
+/* line 340, ../scss/app.scss */
 #effects {
   display: none;
 }
 
 @media only screen and (min-width: 64.063em) {
-  /* line 340, ../scss/app.scss */
+  /* line 344, ../scss/app.scss */
   #effects {
     display: block;
     width: 25%;
   }
 
-  /* line 344, ../scss/app.scss */
+  /* line 348, ../scss/app.scss */
   .FX {
     display: none;
   }
