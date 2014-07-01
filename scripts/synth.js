@@ -30,12 +30,12 @@ app.synth = (function() {
 
 		var proceed = true;
 		var NUM_KEYS = Object.keys(KEYBOARD).length - 1;
-		var tuna
+		var tuna;
+
+		var alertClose = false;
 
 		//default values for synth
 		this.wavetype = "sine"; //start on sine
-		this.delay = 0.200;
-		this.feedback = 0;
 		this.filter = 7; //all pass filter
 
 		this.nodeOrder = settings.order;
@@ -140,6 +140,10 @@ app.synth = (function() {
 			}
 			//add event listeners
 			window.addEventListener("keydown", function(e){
+				if(alertClose == false){
+					$(".alert-box a.close").trigger("click.fndtn.alert");
+					alertClose = true;
+				}
 				e.preventDefault();
 				keydown[e.keyCode] = true;
 			});

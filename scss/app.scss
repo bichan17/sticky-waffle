@@ -60,6 +60,17 @@ footer {
   }
 }
 
+.alert-box{
+  position:absolute; 
+  top:0; 
+  bottom:0; 
+  left:0; 
+  right:0;
+  margin:auto; 
+  height:2.5625rem; 
+  width:340px;
+}
+
 #visualizer {
   position: absolute;
   top: 0;
