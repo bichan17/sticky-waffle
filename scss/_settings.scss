@@ -6,6 +6,42 @@
 // FOUNDATION SETTINGS
 //
 
+
+
+@font-face {
+    font-family: 'sansserif-flf-medium';
+    src: url('../fonts/sansserifflf-webfont.eot');
+    src: url('../fonts/sansserifflf-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sansserifflf-webfont.woff') format('woff'),
+         url('../fonts/sansserifflf-webfont.ttf') format('truetype'),
+         url('../fonts/sansserifflf-webfont.svg#sansserifflfmedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'sansserif-flf-demibold';
+    src: url('../fonts/sansserifflf-demibold-webfont.eot');
+    src: url('../fonts/sansserifflf-demibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sansserifflf-demibold-webfont.woff') format('woff'),
+         url('../fonts/sansserifflf-demibold-webfont.ttf') format('truetype'),
+         url('../fonts/sansserifflf-demibold-webfont.svg#sansserifflfdemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'sansserif-bld-flf-medium';
+    src: url('../fonts/sansserifbldflf-webfont.eot');
+    src: url('../fonts/sansserifbldflf-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sansserifbldflf-webfont.woff') format('woff'),
+         url('../fonts/sansserifbldflf-webfont.ttf') format('truetype'),
+         url('../fonts/sansserifbldflf-webfont.svg#sansserifbldflfmedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 // This is the default html and body font-size for the base rem value.
 // $rem-base: 16px;
 
@@ -43,7 +79,9 @@
 // We use these to control various global styles
 // $body-bg: #fff;
 $body-font-color: #fff;
-$body-font-family: "Futura", Futura, Helvetica, Arial, sans-serif;
+// $body-font-family: "Futura", Futura, Helvetica, Arial, sans-serif;
+$body-font-family: "Futura", Futura, 'sansserif-flf-demibold', Helvetica, Arial, sans-serif;
+
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
 
@@ -120,8 +158,8 @@ $primary-color: #4f4f4f;
 // $include-html-type-classes: $include-html-classes;
 
 // We use these to control header font styles
-// $header-font-family: $body-font-family;
-// $header-font-weight: $font-weight-normal;
+$header-font-family: 'sansserif-bld-flf-medium', "Futura", Futura, Helvetica, Arial, sans-serif;;
+$header-font-weight: 100;
 // $header-font-style: normal;
 $header-font-color: #fff;
 // $header-line-height: 1.4;
