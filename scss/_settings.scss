@@ -12,9 +12,10 @@
     font-family: 'sansserif-flf-medium';
     src: url('../fonts/sansserifflf-webfont.eot');
     src: url('../fonts/sansserifflf-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sansserifflf-webfont.svg#sansserifflfmedium') format('svg'),
          url('../fonts/sansserifflf-webfont.woff') format('woff'),
-         url('../fonts/sansserifflf-webfont.ttf') format('truetype'),
-         url('../fonts/sansserifflf-webfont.svg#sansserifflfmedium') format('svg');
+         url('../fonts/sansserifflf-webfont.ttf') format('truetype');
+         
     font-weight: normal;
     font-style: normal;
 
@@ -23,9 +24,10 @@
     font-family: 'sansserif-flf-demibold';
     src: url('../fonts/sansserifflf-demibold-webfont.eot');
     src: url('../fonts/sansserifflf-demibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sansserifflf-demibold-webfont.svg#sansserifflfdemibold') format('svg'),
          url('../fonts/sansserifflf-demibold-webfont.woff') format('woff'),
-         url('../fonts/sansserifflf-demibold-webfont.ttf') format('truetype'),
-         url('../fonts/sansserifflf-demibold-webfont.svg#sansserifflfdemibold') format('svg');
+         url('../fonts/sansserifflf-demibold-webfont.ttf') format('truetype');
+         
     font-weight: normal;
     font-style: normal;
 
@@ -34,9 +36,10 @@
     font-family: 'sansserif-bld-flf-medium';
     src: url('../fonts/sansserifbldflf-webfont.eot');
     src: url('../fonts/sansserifbldflf-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sansserifbldflf-webfont.svg#sansserifbldflfmedium') format('svg'),
          url('../fonts/sansserifbldflf-webfont.woff') format('woff'),
-         url('../fonts/sansserifbldflf-webfont.ttf') format('truetype'),
-         url('../fonts/sansserifbldflf-webfont.svg#sansserifbldflfmedium') format('svg');
+         url('../fonts/sansserifbldflf-webfont.ttf') format('truetype');
+         
     font-weight: normal;
     font-style: normal;
 
