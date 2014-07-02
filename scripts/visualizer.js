@@ -42,10 +42,12 @@ app.visualizer = (function() {
     var freqByteData = new Uint8Array(analyser.frequencyBinCount);
 
     this.drawBars = function(){
-      var multiplier = 2,
-          bar_width = 20,
-          barCount,
-          magnitude;
+      var multiplier = 1.75;
+      var bar_width = 20;
+      var barCount;
+      var magnitude;
+
+
 
       //draw bg
       ctx.fillStyle = this.bgColor;
@@ -54,6 +56,8 @@ app.visualizer = (function() {
       ctx.fillStyle = this.color;
       analyser.getByteFrequencyData(freqByteData); // this what updates the area with new info
       barCount = Math.round(canvas.width / bar_width);
+        console.log(freqByteData);
+
 
       for (i = 0; i < barCount; i += 1) {
         magnitude = freqByteData[i];
@@ -66,7 +70,9 @@ app.visualizer = (function() {
 
         // drawing origin: middle
         // bars expand out from middle
+        // ctx.fillRect(bar_width * i, (canvas.height/2+ Math.round(magnitude/2)), bar_width - 1, -magnitude * multiplier);
         ctx.fillRect(bar_width * i, (canvas.height/2+ Math.round(magnitude/2)), bar_width - 1, -magnitude * multiplier);
+
 
         // drawing origin: bottom
         // this.ctx.fillRect(bar_width * i, height, bar_width - 1, -magnitude * multiplier);

@@ -71,7 +71,7 @@ app.synth = (function() {
     } catch(e) {
         proceed = false;
         $('.alert-box').text('This website depends on technology that your browser does not support :(').css('background-color', "#CF0008");
-        
+
       }
     if (proceed) {
 		
@@ -116,27 +116,12 @@ app.synth = (function() {
 			}
 
 			this.changeSettings = function(settings){
-				// console.log("settings");
-				// console.log(settings);
-
-				// console.log("nodes");
-				// console.log(nodes);
-
 				for(var effect in settings){
 					for(var prop in settings[effect]){
 						var val = settings[effect][prop];
-						// nodes.chorus.bypass = false;
-						console.log("setting " + effect + " " + prop + " to " + val);
 						nodes[effect][prop] = val;
-
 					}
 				}
-				// console.log("nodes after");
-				// console.log(nodes);
-				console.log("------");
-
-
-
 			}
 			//add event listeners
 			window.addEventListener("keydown", function(e){
