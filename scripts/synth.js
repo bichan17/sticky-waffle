@@ -18,7 +18,7 @@ app.synth = (function() {
 		"KEY_O": 79,
 		"KEY_L": 76,
 		"KEY_P": 80,
-		"KEY_SEMI": 186,
+		"KEY_SEMI": [186,59],
 		"KEY_APOS": 222,
 		key: function(n) {
             return this[Object.keys(this)[n]];
@@ -146,17 +146,21 @@ app.synth = (function() {
 				for (var i = 0; i < NUM_KEYS; i++) {
 					// fn = f0 * (a)^n 
 					var fq = root * Math.pow(a, i)
-					var note = new app.note.Note(fq, KEYBOARD.key(i));
-					noteArray.push(note);
+					if(KEYBOARD.key(i).length){
+						for (var j = 0; j < KEYBOARD.key(i).length; j++) {
+							var code = KEYBOARD.key(i)[j];
+							var note = new app.note.Note(fq, code, document.getElementById(KEYBOARD.key(i)[0]));
+							noteArray.push(note);
+						};
+					}else{
+						var code = KEYBOARD.key(i);
+						var note = new app.note.Note(fq, code, document.getElementById(code));
+						noteArray.push(note);
+					}
 				};
-
 				return noteArray;
 			}
 			this.notes = buildNotes();
-			//add DOM element of each key to their objects
-			for (var i = 0; i < this.notes.length; i++) {
-				this.notes[i].keyDisplay = document.getElementById(this.notes[i].key);
-			}
 		} //end proceed
 	}//end constructor
 

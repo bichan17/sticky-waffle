@@ -9,7 +9,7 @@ window.addEventListener("load",function(){
 
 		//called when all files have finished loading and executing
 		complete: function(){
-			console.log("all files loaded!");
+			console.log("all files loaded!!!!");
 
 			//run init
 			app.main.init();

@@ -56,7 +56,6 @@ app.visualizer = (function() {
       ctx.fillStyle = this.color;
       analyser.getByteFrequencyData(freqByteData); // this what updates the area with new info
       barCount = Math.round(canvas.width / bar_width);
-        console.log(freqByteData);
 
 
       for (i = 0; i < barCount; i += 1) {
