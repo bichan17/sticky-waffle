@@ -8305,9 +8305,15 @@ footer a:hover {
   font-size: 0.875em;
   color: #888;
   white-space: nowrap;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-/* line 302, ../scss/app.scss */
+/* line 308, ../scss/app.scss */
 .keyboard {
   font-family: 'aa_qwertz-tastenregular', "Comic Sans";
   font-size: 2rem;
@@ -8315,52 +8321,52 @@ footer a:hover {
   letter-spacing: -0.2em;
   margin: 0;
 }
-/* line 308, ../scss/app.scss */
+/* line 314, ../scss/app.scss */
 .keyboard div {
   display: inline-block;
 }
-/* line 310, ../scss/app.scss */
+/* line 316, ../scss/app.scss */
 .keyboard div:nth-child(1) {
   margin-right: 0.5em;
 }
-/* line 313, ../scss/app.scss */
+/* line 319, ../scss/app.scss */
 .keyboard div:nth-child(2) {
   margin: 0 0.875em 0 0.5em;
 }
-/* line 316, ../scss/app.scss */
+/* line 322, ../scss/app.scss */
 .keyboard div:nth-child(3) {
   margin-right: 0.5em;
 }
 
-/* line 322, ../scss/app.scss */
+/* line 328, ../scss/app.scss */
 .played {
   color: #f00;
 }
 
-/* line 325, ../scss/app.scss */
+/* line 331, ../scss/app.scss */
 .FX {
   display: block;
   color: white;
 }
 
-/* line 330, ../scss/app.scss */
+/* line 336, ../scss/app.scss */
 #effects {
   display: none;
 }
 
 @media only screen and (min-width: 40.063em) {
-  /* line 334, ../scss/app.scss */
+  /* line 340, ../scss/app.scss */
   .keyboard {
     font-size: 3rem;
   }
 
-  /* line 337, ../scss/app.scss */
+  /* line 343, ../scss/app.scss */
   .alert-box {
     height: 3rem;
   }
 }
 @media only screen and (min-width: 64.063em) {
-  /* line 342, ../scss/app.scss */
+  /* line 348, ../scss/app.scss */
   #effects {
     display: block;
     width: 25%;
@@ -8369,18 +8375,18 @@ footer a:hover {
     margin-right: 4.23611%;
   }
 
-  /* line 349, ../scss/app.scss */
+  /* line 355, ../scss/app.scss */
   .alert-box {
     width: 500px;
   }
 
-  /* line 352, ../scss/app.scss */
+  /* line 358, ../scss/app.scss */
   #wavetypes {
     display: block;
     width: 25%;
   }
 
-  /* line 357, ../scss/app.scss */
+  /* line 363, ../scss/app.scss */
   .FX {
     display: none;
   }

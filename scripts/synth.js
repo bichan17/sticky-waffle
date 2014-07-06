@@ -125,17 +125,28 @@ app.synth = (function() {
 			}
 			//add event listeners
 			window.addEventListener("keydown", function(e){
+				checkAlert();
+				e.preventDefault();
+				keydown[e.keyCode] = true;
+			});
+			window.addEventListener("keyup", function(e){
+				keydown[e.keyCode] = false;
+			});
+
+			$(document).on('touchstart touchenter mousedown', '.keyboard span', function(e){
+				checkAlert();
+				keydown[parseInt(e.target.id)] = true;
+			});
+			$(document).on('touchend touchleave mouseout mouseup', '.keyboard span', function(e){
+				keydown[parseInt(e.target.id)] = false;
+			});
+
+			function checkAlert(){
 				if(alertClose == false){
 					$(".alert-box a.close").trigger("click.fndtn.alert");
 					alertClose = true;
 				}
-				e.preventDefault();
-				keydown[e.keyCode] = true;
-			});
-
-			window.addEventListener("keyup", function(e){
-				keydown[e.keyCode] = false;
-			});
+			}
 
 
 			var root = 261.63;
