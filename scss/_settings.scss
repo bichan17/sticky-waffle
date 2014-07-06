@@ -77,7 +77,7 @@
 // $body-bg: #fff;
 $body-font-color: #fff;
 // $body-font-family: "Futura", Futura, Helvetica, Arial, sans-serif;
-$body-font-family: "Futura", Futura, 'sansserif-flf-demibold', Helvetica, Arial, sans-serif;
+$body-font-family: "Futura", Futura, 'sansserif-flf-demibold','sansserif-bld-flf-medium','sansserif-flf-medium', Helvetica, Arial, sans-serif;
 
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
@@ -379,7 +379,7 @@ $block-grid-media-queries: true;
 // $button-margin-bottom: rem-calc(20);
 
 // We use these to control button text styles.
-// $button-font-family: $body-font-family;
+$button-font-family: $body-font-family;
 // $button-font-color: #fff;
 // $button-font-color-alt: #333;
 // $button-font-tny: rem-calc(11);
