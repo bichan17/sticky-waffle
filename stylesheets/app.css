@@ -8044,16 +8044,17 @@ footer a:hover {
   right: 0;
   margin: auto;
   padding: 0.875rem;
-  height: 2.5625rem;
+  height: 4rem;
+  line-height: 1rem;
   width: 70%;
   text-align: center;
 }
-/* line 74, ../scss/app.scss */
+/* line 75, ../scss/app.scss */
 .alert-box .close {
   display: none;
 }
 
-/* line 79, ../scss/app.scss */
+/* line 80, ../scss/app.scss */
 #visualizer {
   position: absolute;
   top: 0;
@@ -8063,7 +8064,7 @@ footer a:hover {
   background: #000;
 }
 
-/* line 88, ../scss/app.scss */
+/* line 89, ../scss/app.scss */
 #content {
   height: 100%;
   width: 100%;
@@ -8071,15 +8072,15 @@ footer a:hover {
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* line 96, ../scss/app.scss */
+/* line 97, ../scss/app.scss */
 #effects {
   display: hidden;
 }
-/* line 98, ../scss/app.scss */
+/* line 99, ../scss/app.scss */
 #effects h3 {
   margin-left: 7%;
 }
-/* line 101, ../scss/app.scss */
+/* line 102, ../scss/app.scss */
 #effects ul#numbers {
   width: 7%;
   float: left;
@@ -8088,35 +8089,35 @@ footer a:hover {
   padding: 0.25rem;
   font-size: 1.2rem;
 }
-/* line 108, ../scss/app.scss */
+/* line 109, ../scss/app.scss */
 #effects ul#numbers li {
   width: 100%;
   height: 2.35rem;
   color: #787878;
 }
-/* line 114, ../scss/app.scss */
+/* line 115, ../scss/app.scss */
 #effects #chain {
   margin: 0;
   padding: 0;
   width: 93%;
   float: left;
 }
-/* line 121, ../scss/app.scss */
+/* line 122, ../scss/app.scss */
 #effects .effect-list li {
   padding: 0;
   margin-top: 1rem;
 }
-/* line 126, ../scss/app.scss */
+/* line 127, ../scss/app.scss */
 #effects span.propLabel {
   text-align: center;
   white-space: nowrap;
   display: block;
 }
-/* line 131, ../scss/app.scss */
+/* line 132, ../scss/app.scss */
 #effects .accordion {
   overflow: hidden;
 }
-/* line 133, ../scss/app.scss */
+/* line 134, ../scss/app.scss */
 #effects .accordion button {
   float: left;
   width: 18.5%;
@@ -8127,32 +8128,32 @@ footer a:hover {
   font-weight: bold;
   vertical-align: middle;
 }
-/* line 142, ../scss/app.scss */
+/* line 143, ../scss/app.scss */
 #effects .accordion button.handle {
   background-image: url(../assets/icons_sort.svg);
   background-size: 20px 20px;
   background-position: center;
   background-repeat: no-repeat;
 }
-/* line 149, ../scss/app.scss */
+/* line 150, ../scss/app.scss */
 #effects .accordion button.toggle.on {
   background-color: #5CA904;
 }
-/* line 154, ../scss/app.scss */
+/* line 155, ../scss/app.scss */
 #effects .accordion dd.accordion-navigation {
   display: inline-block;
   width: 100%;
   float: left;
 }
-/* line 158, ../scss/app.scss */
+/* line 159, ../scss/app.scss */
 #effects .accordion dd.accordion-navigation div.active {
   overflow: hidden;
 }
-/* line 163, ../scss/app.scss */
+/* line 164, ../scss/app.scss */
 #effects .accordion dd > .content {
   padding: 0 0 0.9375rem 0;
 }
-/* line 166, ../scss/app.scss */
+/* line 167, ../scss/app.scss */
 #effects .accordion dd > a {
   float: left;
   width: 63%;
@@ -8160,73 +8161,73 @@ footer a:hover {
   font-size: 1.2rem;
   transition: background-color 300ms ease-out;
 }
-/* line 172, ../scss/app.scss */
+/* line 173, ../scss/app.scss */
 #effects .accordion dd > a img {
   height: 1rem;
   vertical-align: -0.05rem;
   margin-right: .1rem;
 }
 
-/* line 186, ../scss/app.scss */
+/* line 187, ../scss/app.scss */
 #wavetypes {
   display: none;
   margin-left: 4.23611%;
   margin-top: 1.5rem;
 }
-/* line 190, ../scss/app.scss */
+/* line 191, ../scss/app.scss */
 #wavetypes ul {
   margin: 0;
 }
-/* line 192, ../scss/app.scss */
+/* line 193, ../scss/app.scss */
 #wavetypes ul li {
   list-style: none;
   margin-bottom: 0.5rem;
 }
-/* line 195, ../scss/app.scss */
+/* line 196, ../scss/app.scss */
 #wavetypes ul li a {
   color: white;
 }
-/* line 200, ../scss/app.scss */
+/* line 201, ../scss/app.scss */
 #wavetypes ul li a:hover#sine {
   color: #d9d9d9;
 }
-/* line 203, ../scss/app.scss */
+/* line 204, ../scss/app.scss */
 #wavetypes ul li a:hover #sine-icon {
   background-image: url(../assets/icons_sine_hover.svg);
 }
-/* line 206, ../scss/app.scss */
+/* line 207, ../scss/app.scss */
 #wavetypes ul li a:hover#triangle {
   color: #d9d9d9;
 }
-/* line 209, ../scss/app.scss */
+/* line 210, ../scss/app.scss */
 #wavetypes ul li a:hover #triangle-icon {
   background-image: url(../assets/icons_triangle_hover.svg);
 }
-/* line 212, ../scss/app.scss */
+/* line 213, ../scss/app.scss */
 #wavetypes ul li a:hover#sawtooth {
   color: #d9d9d9;
 }
-/* line 215, ../scss/app.scss */
+/* line 216, ../scss/app.scss */
 #wavetypes ul li a:hover #sawtooth-icon {
   background-image: url(../assets/icons_sawtooth_hover.svg);
 }
-/* line 218, ../scss/app.scss */
+/* line 219, ../scss/app.scss */
 #wavetypes ul li a:hover#square {
   color: #d9d9d9;
 }
-/* line 221, ../scss/app.scss */
+/* line 222, ../scss/app.scss */
 #wavetypes ul li a:hover #square-icon {
   background-image: url(../assets/icons_square_hover.svg);
 }
-/* line 226, ../scss/app.scss */
+/* line 227, ../scss/app.scss */
 #wavetypes ul li a span {
   display: inline-block;
 }
-/* line 229, ../scss/app.scss */
+/* line 230, ../scss/app.scss */
 #wavetypes ul li a span.text {
   font-size: 1.4rem;
 }
-/* line 232, ../scss/app.scss */
+/* line 233, ../scss/app.scss */
 #wavetypes ul li a span.icon {
   background-size: 1.9rem;
   background-position: center;
@@ -8236,64 +8237,64 @@ footer a:hover {
   margin-right: 0.75rem;
   vertical-align: bottom;
 }
-/* line 241, ../scss/app.scss */
+/* line 242, ../scss/app.scss */
 #wavetypes ul li a span#sine-icon {
   background-image: url(../assets/icons_sine.svg);
 }
-/* line 244, ../scss/app.scss */
+/* line 245, ../scss/app.scss */
 #wavetypes ul li a span#triangle-icon {
   background-image: url(../assets/icons_triangle.svg);
 }
-/* line 247, ../scss/app.scss */
+/* line 248, ../scss/app.scss */
 #wavetypes ul li a span#sawtooth-icon {
   background-image: url(../assets/icons_sawtooth.svg);
 }
-/* line 250, ../scss/app.scss */
+/* line 251, ../scss/app.scss */
 #wavetypes ul li a span#square-icon {
   background-image: url(../assets/icons_square.svg);
 }
-/* line 255, ../scss/app.scss */
+/* line 256, ../scss/app.scss */
 #wavetypes ul li a.wave {
   width: 100%;
 }
-/* line 258, ../scss/app.scss */
+/* line 259, ../scss/app.scss */
 #wavetypes ul li a.selected {
   text-shadow: 0px 0px 7px rgba(68, 68, 68, 0.7);
 }
-/* line 261, ../scss/app.scss */
+/* line 262, ../scss/app.scss */
 #wavetypes ul li a#sine.selected {
   color: #0071bc;
 }
-/* line 263, ../scss/app.scss */
+/* line 264, ../scss/app.scss */
 #wavetypes ul li a#sine.selected span#sine-icon {
   background-image: url(../assets/icons_sine_color.svg);
 }
-/* line 267, ../scss/app.scss */
+/* line 268, ../scss/app.scss */
 #wavetypes ul li a#triangle.selected {
   color: #00b7ba;
 }
-/* line 269, ../scss/app.scss */
+/* line 270, ../scss/app.scss */
 #wavetypes ul li a#triangle.selected span#triangle-icon {
   background-image: url(../assets/icons_triangle_color.svg);
 }
-/* line 273, ../scss/app.scss */
+/* line 274, ../scss/app.scss */
 #wavetypes ul li a#sawtooth.selected {
   color: #edde00;
 }
-/* line 275, ../scss/app.scss */
+/* line 276, ../scss/app.scss */
 #wavetypes ul li a#sawtooth.selected span#sawtooth-icon {
   background-image: url(../assets/icons_sawtooth_color.svg);
 }
-/* line 279, ../scss/app.scss */
+/* line 280, ../scss/app.scss */
 #wavetypes ul li a#square.selected {
   color: #cf0008;
 }
-/* line 281, ../scss/app.scss */
+/* line 282, ../scss/app.scss */
 #wavetypes ul li a#square.selected span#square-icon {
   background-image: url(../assets/icons_square_color.svg);
 }
 
-/* line 289, ../scss/app.scss */
+/* line 290, ../scss/app.scss */
 #keys {
   position: absolute;
   bottom: 0;
@@ -8303,51 +8304,63 @@ footer a:hover {
   padding-bottom: 1em;
   font-size: 0.875em;
   color: #888;
+  white-space: nowrap;
 }
 
-/* line 300, ../scss/app.scss */
+/* line 302, ../scss/app.scss */
 .keyboard {
   font-family: 'aa_qwertz-tastenregular', "Comic Sans";
-  font-size: 2.25rem;
+  font-size: 2rem;
   line-height: 1.2;
   letter-spacing: -0.2em;
   margin: 0;
 }
-/* line 306, ../scss/app.scss */
+/* line 308, ../scss/app.scss */
 .keyboard div {
   display: inline-block;
 }
-/* line 308, ../scss/app.scss */
+/* line 310, ../scss/app.scss */
 .keyboard div:nth-child(1) {
   margin-right: 0.5em;
 }
-/* line 311, ../scss/app.scss */
+/* line 313, ../scss/app.scss */
 .keyboard div:nth-child(2) {
   margin: 0 0.875em 0 0.5em;
 }
-/* line 314, ../scss/app.scss */
+/* line 316, ../scss/app.scss */
 .keyboard div:nth-child(3) {
   margin-right: 0.5em;
 }
 
-/* line 320, ../scss/app.scss */
+/* line 322, ../scss/app.scss */
 .played {
   color: #f00;
 }
 
-/* line 323, ../scss/app.scss */
+/* line 325, ../scss/app.scss */
 .FX {
   display: block;
   color: white;
 }
 
-/* line 328, ../scss/app.scss */
+/* line 330, ../scss/app.scss */
 #effects {
   display: none;
 }
 
+@media only screen and (min-width: 40.063em) {
+  /* line 334, ../scss/app.scss */
+  .keyboard {
+    font-size: 3rem;
+  }
+
+  /* line 337, ../scss/app.scss */
+  .alert-box {
+    height: 3rem;
+  }
+}
 @media only screen and (min-width: 64.063em) {
-  /* line 332, ../scss/app.scss */
+  /* line 342, ../scss/app.scss */
   #effects {
     display: block;
     width: 25%;
@@ -8356,18 +8369,18 @@ footer a:hover {
     margin-right: 4.23611%;
   }
 
-  /* line 339, ../scss/app.scss */
+  /* line 349, ../scss/app.scss */
   .alert-box {
     width: 500px;
   }
 
-  /* line 342, ../scss/app.scss */
+  /* line 352, ../scss/app.scss */
   #wavetypes {
     display: block;
     width: 25%;
   }
 
-  /* line 347, ../scss/app.scss */
+  /* line 357, ../scss/app.scss */
   .FX {
     display: none;
   }

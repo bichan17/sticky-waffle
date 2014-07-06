@@ -68,7 +68,8 @@ footer {
   right:0;
   margin:auto;
   padding: 0.875rem;
-  height:2.5625rem; 
+  height:4rem;
+  line-height: 1rem;
   width:70%;
   text-align: center;
   .close{
@@ -295,11 +296,12 @@ $square-color: #CF0008;
   padding-bottom: 1em;
   font-size: 0.875em;
   color: #888;
+  white-space: nowrap;
 }
 
 .keyboard {
   font-family: 'aa_qwertz-tastenregular', "Comic Sans";
-  font-size: 2.25rem;
+  font-size: 2rem;
   line-height: 1.2;
   letter-spacing: -0.2em;
   margin: 0;
@@ -327,6 +329,14 @@ $square-color: #CF0008;
 
 #effects{
   display: none;
+}
+@media #{$medium-up}{
+  .keyboard{
+    font-size: 3rem;
+  }
+  .alert-box{
+    height:3rem;
+  }
 }
 @media #{$large-up} {
   #effects{
