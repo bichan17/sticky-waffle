@@ -127,7 +127,7 @@ app.main = (function(){
 		});
 
 		// for smooth accordion opening
-		$(".accordion dd").on("click", "a:eq(0)", function (event)
+		$(".accordion dd").on("click touchstart", "a:eq(0)", function (event)
       {
         var dd_parent = $(this).parent();
         var index = $( "dd" ).index( dd_parent );

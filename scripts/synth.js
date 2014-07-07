@@ -137,7 +137,7 @@ app.synth = (function() {
 				checkAlert();
 				keydown[parseInt(e.target.id)] = true;
 			});
-			$(document).on('touchend touchleave mouseout mouseup', '.keyboard span', function(e){
+			$(document).on('touchend touchleave touchcancel mouseout mouseup', '.keyboard span', function(e){
 				keydown[parseInt(e.target.id)] = false;
 			});
 
