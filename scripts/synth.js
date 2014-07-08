@@ -123,6 +123,19 @@ app.synth = (function() {
 					}
 				}
 			}
+
+			var pointerEventToXY = function(e){
+	      var out = {x:0, y:0};
+	      if(e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel'){
+	        var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+	        out.x = touch.pageX;
+	        out.y = touch.pageY;
+	      } else if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover'|| e.type=='mouseout' || e.type=='mouseenter' || e.type=='mouseleave') {
+	        out.x = e.pageX;
+	        out.y = e.pageY;
+	      }
+	      return out;
+	    };
 			//add event listeners
 			window.addEventListener("keydown", function(e){
 				checkAlert();
@@ -132,14 +145,50 @@ app.synth = (function() {
 			window.addEventListener("keyup", function(e){
 				keydown[e.keyCode] = false;
 			});
-
-			$(document).on('touchstart touchenter mousedown', '.keyboard span', function(e){
+			var touching = false;
+			$(document).on("mousedown touchstart", function(e){
+				console.log("touching");
+				touching = true;
+			});
+			$(document).on("mouseup touchend", function(e){
+				if(e.type == 'touchend'){
+					if(e.originalEvent.touches.length == 0){
+						touching = false;
+					}
+				}else{
+					touching = false;
+				}
+			});
+			$(document).on("mousedown touchstart", '.keyboard span', function(e){
 				checkAlert();
 				keydown[parseInt(e.target.id)] = true;
 			});
-			$(document).on('touchend touchleave touchcancel mouseout mouseup', '.keyboard span', function(e){
+			$(document).on("mouseup mouseleave touchend touchleave", '.keyboard span', function(e){
 				keydown[parseInt(e.target.id)] = false;
 			});
+			$(document).on("mouseenter touchenter", '.keyboard span', function(e){
+				if (touching) {
+					var pos = pointerEventToXY(e);
+					var ele = document.elementFromPoint(pos.x,pos.y);
+					if($(ele).is('span')){
+						keydown[parseInt(ele.id)] = true;
+					}
+				}
+			});
+
+			// $(document).on('touchenter mousedown', '.keyboard span', function(e){
+			// 	console.log("on");
+			// 	checkAlert();
+			// 	keydown[parseInt(e.target.id)] = true;
+			// });
+			// $('.keyboard span').on('touchleave touchcancel mouseleave mouseup', function(e){
+			// 	var pos = pointerEventToXY(e);
+			// 	var ele = document.elementFromPoint(pos.x,pos.y);
+			// 	console.log(e);
+			// 	// if($(ele).is('span')){
+			// 	// 	keydown[parseInt(ele.id)] = false;
+			// 	// }
+			// });
 
 			function checkAlert(){
 				if(alertClose == false){
