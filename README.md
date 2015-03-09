@@ -12,5 +12,29 @@ Originally build and designed by [Luis Rosario][luis] and [Eric Bichan][eric] in
   * [compass](http://compass-style.org/): `gem install compass`
   * [bower](http://bower.io): `npm install bower -g`
 
+## To Do Sooner:
+* Add Grunt, build script and minified files
+* Git deployments
+* Separate development + production branches
+* Test effect browser support
+* Debug effect browser support
+* General QA testing
+
+## To Do Later:
+* First key press on refresh visual bug
+* Effect icon flicker
+* Improve UX with instructions (tooltips?)
+* Octave control slider
+* Visualizations scale with pitch and screen width nicer
+* Visualizations more interesting
+
+## Some ideas
+* Pitch modulation controls
+* Recording, exporting audio functionality
+
+
+
+
+
 [eric]: http://www.ericbichan.com
 [luis]: http://www.luisrosar.io/
